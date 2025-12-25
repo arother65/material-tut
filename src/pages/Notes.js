@@ -157,7 +157,7 @@ export default function Notes() {
                   color="primary"
                   onClick={switchContainerWidth}
                   variant="contained" />
-              </Tooltip>
+              </Tooltip> 
             </div>
           </div>
 
