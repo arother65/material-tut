@@ -11,7 +11,6 @@
 
 // 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import { ThemeProvider } from '@mui/material/styles'  // errs out
 
 //
 import Notes from './pages/Notes'
@@ -24,7 +23,6 @@ import Layout from './components/Layout'
 // 
 export default function App() {
   return (
-    // <ThemeProvider>
     <Router>
       <Layout>
         <Routes>
@@ -36,6 +34,5 @@ export default function App() {
         </Routes>
       </Layout>
     </Router>
-    // </ThemeProvider>
   )
 }
