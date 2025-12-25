@@ -1,0 +1,12 @@
+// index.scss
+// Option A: Includes all of Bootstrap
+
+// Include any default variable overrides here (though functions won’t be available)
+
+//
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// additional custom code goes here
+body {
+  background-color: lighten( #556cd6ff, 35%); // 
+}
