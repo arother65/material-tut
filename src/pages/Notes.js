@@ -4,11 +4,13 @@
 */
 
 import React, { useState } from 'react'  // Standard use-hooks
-import { Accordion, AccordionSummary, AccordionDetails, Button, Card, Container, Typography } from '@mui/material'  //
+import { Accordion, AccordionSummary, AccordionDetails, Card, Container, Button, Typography, Tooltip } from '@mui/material'  //
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material/styles'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 // import MongoClient 
 // import { MongoClient } from 'mongodb';  // errs out 
@@ -26,19 +28,19 @@ export default function Notes() {
   };
 
   // reducing/restoring the container size
-  const [containerClassList, setContainerClassList] = useState();
-  const [isReduced, setIsReduced] = useState(false);
+  const [containerClassList, setContainerClassList] = useState()
+  const [isReduced, setIsReduced] = useState(false)
 
+  let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
+
+  // fn used to reduce container size
   const switchContainerWidth = async () => {
 
-    // fn used to reduce container size
     const container = document.querySelector('.MuiContainer-root')
     setContainerClassList(container.classList)
 
-    const btn = document.getElementById('idBtnSwitchContainer')
-
-    switch (btn.innerText) {
-      case 'REDUCE CONTAINER':
+    switch (isReduced) {
+      case false:
         if (container) {
           container.style.maxWidth = '50%';
           // container.style.justifyContent = 'left';  // ?
@@ -58,26 +60,22 @@ export default function Notes() {
 
           // container.style.transition = '50% 2s';  // errs
           // container.style.transform = 'rotate(20deg)';  //ok
-          // container.style.animation = 'mymove 3s infinite alternate';
-          setIsReduced(true);
+          setIsReduced(true)
         }
-        btn.innerText = 'EXPAND CONTAINER';
         break;
 
-      case 'EXPAND CONTAINER':
+      case true:
         if (container) {
 
           //? set window.innerWidth, window.innerHeight : errs 
-          container.style.maxWidth = '100%';
+          container.style.maxWidth = '100%'
 
           // setContainerClassList(containerClassList);  // no effect
           // container.setAttribute('classList', containerClassList);  // no effect
-          container.classList = containerClassList;
+          container.classList = containerClassList 
           // container.style.position = 'relative';
-          container.style.backgroundColor = 'transparent';
-          // ? edit classList to apply some margin/padding 
+          container.style.backgroundColor = 'transparent'
 
-          btn.innerText = 'REDUCE CONTAINER'
           setIsReduced(false);
         }
         break;
@@ -111,12 +109,12 @@ export default function Notes() {
       primary: {
         main: '#556cd6ff',
         light: '#778deaff',
-        dark: '#334ac2ff',  
+        dark: '#334ac2ff',
       },
       secondary: {
         main: '#19857b',
         light: '#4fb3aaff',
-        dark: '#00514aff',  
+        dark: '#00514aff',
       },
       error: {
         main: '#ff0000',
@@ -152,7 +150,14 @@ export default function Notes() {
               <p>Notes page with ThemeProvider</p>
             </div>
             <div className="col text-end">
-              <Button id='idBtnSwitchContainer' variant="contained" onClick={switchContainerWidth} style={{}}>reduce container</Button>
+              <Tooltip title="Switch container width">
+                <Button
+                  id='idBtnSwitchContainer'
+                  startIcon={ startIcon }
+                  color="primary"
+                  onClick={switchContainerWidth}
+                  variant="contained" />
+              </Tooltip>
             </div>
           </div>
 
