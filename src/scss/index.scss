@@ -43,8 +43,9 @@
   // --bs-body-color: var(--bs-white);  // colors any text on a view 
   --bs-body-color: #{$orange-900};  // colors any text on a view 
 
+  // --bs-body-bg: var(--bs-orange);  // colors the background of one view 
+  --bs-body-bg: #{mix($orange-300, $orange-400)};
 
-  --bs-body-bg: var(--bs-orange);  // colors the background of one view 
   --bs-tertiary-bg: #{$orange-600};
 
   // colors component "dropdown-menu": https://getbootstrap.com/docs/5.3/components/dropdowns/
@@ -61,6 +62,35 @@
     --bs-btn-hover-bg: #{darken(mix($gray-600, $orange-400, .5), 5%)};
     --bs-btn-hover-border-color: #{rgba($white, .25)};
     --bs-btn-active-bg: #{darken(mix($gray-600, $orange-400, .5), 10%)};
+    --bs-btn-active-border-color: #{rgba($white, .5)};
+    --bs-btn-focus-border-color: #{rgba($white, .5)};
+    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+  }
+}
+
+[data-bs-theme="red"] {
+  // --bs-body-color: var(--bs-white);  // colors any text on a view 
+  --bs-body-color: #{$red-900};  // colors any text on a view 
+
+  // --bs-body-bg: var(--bs-red);  // colors the background of one view 
+  --bs-body-bg: #{mix($red-300, $red-400)};
+
+  --bs-tertiary-bg: #{$red-600};
+
+  // colors component "dropdown-menu": https://getbootstrap.com/docs/5.3/components/dropdowns/
+  // class="dropdown", class="dropdown-menu"
+  .dropdown-menu {
+    --bs-dropdown-bg: #{mix($red-500, $red-600)};
+    --bs-dropdown-link-active-bg: #{$red-700};
+  }
+
+  // the component (button in this case) you want to theme / color:
+  .btn-secondary {
+    --bs-btn-bg: #{mix($gray-600, $red-400, .5)};
+    --bs-btn-border-color: #{rgba($white, .25)};
+    --bs-btn-hover-bg: #{darken(mix($gray-600, $red-400, .5), 5%)};
+    --bs-btn-hover-border-color: #{rgba($white, .25)};
+    --bs-btn-active-bg: #{darken(mix($gray-600, $red-400, .5), 10%)};
     --bs-btn-active-border-color: #{rgba($white, .5)};
     --bs-btn-focus-border-color: #{rgba($white, .5)};
     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);

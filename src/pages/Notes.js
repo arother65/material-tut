@@ -7,10 +7,16 @@
 import React, { useState } from 'react'  // Standard use-hooks
 import {
   Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
-  Divider, Typography, Tooltip
+  Divider, Typography, Tooltip,
+  Zoom,
+  // Fade
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material/styles'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -28,7 +34,6 @@ export default function Notes({ theme }) {
   // get the current windows sizes:
   console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
 
-
   // 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -45,24 +50,14 @@ export default function Notes({ theme }) {
   let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
   // fn to switch the them uding the main body-tag
-  const switchTheme = async () => {
-    // idBodyIndexHtml
+  const switchTheme = async (event) => {
+
+    // idBodyIndexHtml from "index.html"
     const bodyTag = document.getElementById('idBodyIndexHtml')
     console.log(bodyTag)
 
-    const actTheme = bodyTag.getAttribute('data-bs-theme')
-
-    switch (actTheme) {
-      case 'blue':
-        bodyTag.setAttribute('data-bs-theme', 'orange')
-        break;
-      case 'orange':
-        bodyTag.setAttribute('data-bs-theme', 'blue')
-        break
-      default:
-        break
-    }  // switch()
-    console.log()
+    // const actTheme = bodyTag.getAttribute('data-bs-theme')
+    bodyTag.setAttribute('data-bs-theme', event.target.value)
   }
 
   // fn used to reduce container size
@@ -151,17 +146,41 @@ export default function Notes({ theme }) {
             </div>
             <div className="col text-end">
 
-              <Tooltip title="Switch theme">
-                <Button
+              <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
+                slots={{
+                  transition: Zoom
+                  // transition: Fade
+                }}
+                slotProps={{
+                  transition: { timeout: 500 },
+                }}>
+                {/*                 <Button
                   id='idBtnSwitchContainer'
                   // startIcon={startIcon}
                   color="primary"
                   onClick={switchTheme}
                   variant="contained">
                   switch theme
-                </Button>
+                </Button> */}
+
+                <FormControl variant="filled" sx={{ m: 1, minWidth: 100 }}>
+                  <InputLabel id="demo-simple-select-label" color='darkgrey'>Theme</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={''}
+                    // defaultValue='blue'
+                    label="Theme"
+                    onChange={switchTheme}
+                  >
+                    <MenuItem value={'red'}>Red</MenuItem>
+                    <MenuItem value={'orange'}>Orange</MenuItem>
+                    <MenuItem value={'blue'}>Blue</MenuItem>
+                  </Select>
+                </FormControl>
               </Tooltip>
-              <Divider orientation='vertical' flexItem />
+
+              <Divider orientation='vertical' component={FormControl} sx={{ width: 10 }} />
               <Tooltip title="Switch container width">
                 <Button
                   id='idBtnSwitchContainer'
@@ -231,7 +250,7 @@ export default function Notes({ theme }) {
             </Box>
           </>
         }
-      </ThemeProvider>
+      </ThemeProvider >
     </>
   )
 }

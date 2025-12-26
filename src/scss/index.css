@@ -11884,7 +11884,7 @@ textarea.form-control-lg {
 
 [data-bs-theme=orange] {
   --bs-body-color: rgb(50.6, 25.2, 4);
-  --bs-body-bg: var(--bs-orange);
+  --bs-body-bg: rgb(253.6, 164.7, 90.5);
   --bs-tertiary-bg: rgb(202.4, 100.8, 16);
 }
 [data-bs-theme=orange] .dropdown-menu {
@@ -11897,6 +11897,26 @@ textarea.form-control-lg {
   --bs-btn-hover-bg: rgb(252.3607529113, 137.754822282, 42.1022470887);
   --bs-btn-hover-border-color: rgba(255, 255, 255, 0.25);
   --bs-btn-active-bg: rgb(252.0485058226, 123.883644564, 16.9144941774);
+  --bs-btn-active-border-color: rgba(255, 255, 255, 0.5);
+  --bs-btn-focus-border-color: rgba(255, 255, 255, 0.5);
+  --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+}
+
+[data-bs-theme=red] {
+  --bs-body-color: rgb(44, 10.6, 13.8);
+  --bs-body-bg: rgb(230.5, 113.6, 124.8);
+  --bs-tertiary-bg: rgb(176, 42.4, 55.2);
+}
+[data-bs-theme=red] .dropdown-menu {
+  --bs-dropdown-bg: rgb(198, 47.7, 62.1);
+  --bs-dropdown-link-active-bg: rgb(132, 31.8, 41.4);
+}
+[data-bs-theme=red] .btn-secondary {
+  --bs-btn-bg: rgb(226.405, 93.518, 106.294);
+  --bs-btn-border-color: rgba(255, 255, 255, 0.25);
+  --bs-btn-hover-bg: rgb(222.5688046686, 71.8541953314, 86.344174403);
+  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.25);
+  --bs-btn-active-bg: rgb(218.7326093373, 50.1903906627, 66.394348806);
   --bs-btn-active-border-color: rgba(255, 255, 255, 0.5);
   --bs-btn-focus-border-color: rgba(255, 255, 255, 0.5);
   --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
