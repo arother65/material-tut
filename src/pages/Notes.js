@@ -5,7 +5,11 @@
 
 //
 import React, { useState } from 'react'  // Standard use-hooks
-import { Accordion, AccordionSummary, AccordionDetails, Box, Card, Container, Button, Typography, Tooltip } from '@mui/material'  //
+import {
+  Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
+  Divider, Typography, Tooltip
+} from '@mui/material'
+
 import { ThemeProvider } from '@mui/material/styles'
 import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material/styles'
 
@@ -39,6 +43,27 @@ export default function Notes({ theme }) {
   const [isReduced, setIsReduced] = useState(false)
 
   let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
+
+  // fn to switch the them uding the main body-tag
+  const switchTheme = async () => {
+    // idBodyIndexHtml
+    const bodyTag = document.getElementById('idBodyIndexHtml')
+    console.log(bodyTag)
+
+    const actTheme = bodyTag.getAttribute('data-bs-theme')
+
+    switch (actTheme) {
+      case 'blue':
+        bodyTag.setAttribute('data-bs-theme', 'orange')
+        break;
+      case 'orange':
+        bodyTag.setAttribute('data-bs-theme', 'blue')
+        break
+      default:
+        break
+    }  // switch()
+    console.log()
+  }
 
   // fn used to reduce container size
   const switchContainerWidth = async () => {
@@ -125,6 +150,18 @@ export default function Notes({ theme }) {
               <p>Notes page with ThemeProvider</p>
             </div>
             <div className="col text-end">
+
+              <Tooltip title="Switch theme">
+                <Button
+                  id='idBtnSwitchContainer'
+                  // startIcon={startIcon}
+                  color="primary"
+                  onClick={switchTheme}
+                  variant="contained">
+                  switch theme
+                </Button>
+              </Tooltip>
+              <Divider orientation='vertical' flexItem />
               <Tooltip title="Switch container width">
                 <Button
                   id='idBtnSwitchContainer'
