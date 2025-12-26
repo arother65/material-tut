@@ -1,24 +1,32 @@
 /** 
-*   Stand: 16.10.2025
+*   Stand: 25.12.2025
 *   Theming and colors: https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette
 */
 
+//
 import React, { useState } from 'react'  // Standard use-hooks
-import { Accordion, AccordionSummary, AccordionDetails, Card, Container, Button, Typography, Tooltip } from '@mui/material'  //
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { Accordion, AccordionSummary, AccordionDetails, Box, Card, Container, Button, Typography, Tooltip } from '@mui/material'  //
+import { ThemeProvider } from '@mui/material/styles'
 import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material/styles'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import { Margin } from '@mui/icons-material';
 
 // import MongoClient 
 // import { MongoClient } from 'mongodb';  // errs out 
 // const { MongoClient, ServerApiVersion } = require("mongodb"); // errs out
 
 // 
-export default function Notes() {
+export default function Notes({ theme }) {
 
+  // console.log( {...theme } ) // puts out the whole object
+  // get the current windows sizes:
+  console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
+
+
+  // 
   const [expanded, setExpanded] = React.useState(false);
 
   // event handler, other functions 
@@ -36,7 +44,10 @@ export default function Notes() {
   // fn used to reduce container size
   const switchContainerWidth = async () => {
 
-    const container = document.querySelector('.MuiContainer-root')
+    // const container = document.querySelector('.MuiContainer-root')
+
+    const container = document.getElementById('idMainBox')
+
     setContainerClassList(container.classList)
 
     switch (isReduced) {
@@ -72,7 +83,7 @@ export default function Notes() {
 
           // setContainerClassList(containerClassList);  // no effect
           // container.setAttribute('classList', containerClassList);  // no effect
-          container.classList = containerClassList 
+          container.classList = containerClassList
           // container.style.position = 'relative';
           container.style.backgroundColor = 'transparent'
 
@@ -103,48 +114,13 @@ export default function Notes() {
   })
   const classes = useStyles()
 
-  // create theme: typeof Theme
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#556cd6ff',
-        light: '#778deaff',
-        dark: '#334ac2ff',
-      },
-      secondary: {
-        main: '#19857b',
-        light: '#4fb3aaff',
-        dark: '#00514aff',
-      },
-      error: {
-        main: '#ff0000',
-      },
-      success: {
-        main: '#0ea30eff',
-      },
-      warning: {
-        main: '#ff9900',
-      },
-      info: {
-        main: '#0000ff',
-      },
-      contrastThreshold: 3,
-      tonalOffset: 0.5,
-    }  // palette
-
-    // .typography
-    // .spacing
-    // .breakpoints
-    // .zIndex
-    // .transitions
-    // .components
-  })  // createTheme()
-
   // 
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container maxWidth="xl">
+        {/* <Container maxWidth="xl"> */}
+        <Box id="idMainBox" sx={{ mt: 1, ml: 5, width: 1850 }}>
+
           <div className="row mt-1">
             <div className="col">
               <p>Notes page with ThemeProvider</p>
@@ -153,11 +129,11 @@ export default function Notes() {
               <Tooltip title="Switch container width">
                 <Button
                   id='idBtnSwitchContainer'
-                  startIcon={ startIcon }
+                  startIcon={startIcon}
                   color="primary"
                   onClick={switchContainerWidth}
                   variant="contained" />
-              </Tooltip> 
+              </Tooltip>
             </div>
           </div>
 
@@ -196,7 +172,7 @@ export default function Notes() {
               Typography on Card
             </Typography>
           </Card>
-        </Container >
+        </Box >
 
         {isReduced &&
           <>
@@ -204,8 +180,8 @@ export default function Notes() {
                 Container is reduced
               </Typography> */}
             {/* <Container className="text-center" sx={{ position: 'relative', left: '560px', right:'25px'}}> */}
-            <Container sx={{ position: 'relative', left: '575px' }}>
-              <div className="col text-center">
+            <Box sx={{ position: 'relative', left: 1000, width: '50%', border: 1, borderColor: 'primary.main' }}>
+              <div className="col text-center mt-2">
                 <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
                   <p>Card 01 theme.palette.primary.main</p>
                 </Card>
@@ -216,7 +192,7 @@ export default function Notes() {
                   <p>Card 03 theme.palette.secondary.light</p>
                 </Card>
               </div>
-            </Container>
+            </Box>
           </>
         }
       </ThemeProvider>

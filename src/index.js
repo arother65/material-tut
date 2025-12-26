@@ -1,7 +1,7 @@
 
 //
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import App from './App.js';
 
 // global CSS file:
 import '../src/scss/index.css'; 
@@ -12,6 +12,7 @@ const domNode = document.getElementById('root');
 // https://react.dev/reference/react-dom/client/createRoot#createroot
 const root = createRoot(domNode, {});
 root.render(<App />);
+
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
