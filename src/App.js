@@ -10,6 +10,7 @@
 */
 
 // 
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { createTheme } from '@mui/material/styles'
 
@@ -22,10 +23,9 @@ import NotFound from './pages/NotFound.js'
 import Layout from './components/Layout.js'
 
 // 
-export default function App( props ) {
+export default function App(props) {
 
-  console.log(props)
-
+  // console.log(props)
   // create theme: typeof Theme
   const theme = createTheme({
     palette: {
@@ -54,7 +54,7 @@ export default function App( props ) {
         main: '#0000ff',
       },
       background: {
-        main: '#67060666', 
+        main: '#88090982',
       },
       contrastThreshold: 3,
       tonalOffset: 0.5,
@@ -67,16 +67,32 @@ export default function App( props ) {
     // .transitions
     // .components
   })  // createTheme()
+  const [actTheme, setActTheme] = useState(theme)
 
+  // fn to GET the actual theme using the main body-tag
+  const getActTheme = () => {
+    // idBodyIndexHtml from "index.html"
+    const bodyTag = document.getElementById('idBodyIndexHtml')
+    return bodyTag.getAttribute('data-bs-theme')
+  }  // getActTheme()
+
+  //
+  useEffect(() => {
+    // get the actual them from INDEX.HTML
+    // const actTheme = getActTheme()
+    setActTheme(theme)
+  }, [])  // useEffect()
+
+  //
   return (
     <Router>
       <Layout>
         <Routes>
           {/* Each route has it's own URL */}
-          <Route index exact path="/" element={<Notes theme={theme} />} />
-          <Route path="/create" element={<Create />} />
+          <Route index exact path="/" element={<Notes theme={actTheme} />} />
+          <Route path="/create" element={<Create theme={actTheme} />} />
           {/* other route(s) to diffenrent components */}
-          <Route path="*" element={<NotFound props={props} theme={theme} />} />
+          <Route path="*" element={<NotFound props={props} theme={actTheme} />} />
         </Routes>
       </Layout>
     </Router>

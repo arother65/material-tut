@@ -49,7 +49,7 @@ export default function Notes({ theme }) {
 
   let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
-  // fn to switch the them uding the main body-tag
+  // fn to switch the theme using the main body-tag
   const switchTheme = async (event) => {
 
     // idBodyIndexHtml from "index.html"

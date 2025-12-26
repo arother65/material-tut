@@ -7,7 +7,7 @@ import React from 'react'  // useState etc.
 import { Container, Typography, TextField, RadioGroup, Radio, FormControlLabel } from '@mui/material'  //
 // use component "material icons"? 
 
-export default function Create() {
+export default function Create({ theme }) {
 
   // const [localVariable, setFunction] = React.useState(initialValue);
 
