@@ -17,10 +17,14 @@
   --bs-body-color: var(--bs-white);
   // --bs-body-color-rgb: #{to-rgb($white)};
 
-  --bs-body-bg: var(--bs-blue);  // #{mix($gray-600, $blue-400, .5)};
+  --bs-body-bg: #{mix($blue-900, $purple-800)};
   // --bs-body-bg-rgb: #{to-rgb($blue)};
-  
+
   --bs-tertiary-bg: #{$blue-600};
+
+  .bg-blue {
+    --bs-body-bg: #{mix($blue-900, $purple-800)};
+  }
 
   .dropdown-menu {
     --bs-dropdown-bg: #{mix($blue-500, $blue-600)};
@@ -41,7 +45,7 @@
 
 [data-bs-theme="orange"] {
   // --bs-body-color: var(--bs-white);  // colors any text on a view 
-  --bs-body-color: #{$orange-900};  // colors any text on a view 
+  --bs-body-color: #{$orange-900}; // colors any text on a view 
 
   // --bs-body-bg: var(--bs-orange);  // colors the background of one view 
   --bs-body-bg: #{mix($orange-300, $orange-400)};
@@ -70,10 +74,11 @@
 
 [data-bs-theme="red"] {
   // --bs-body-color: var(--bs-white);  // colors any text on a view 
-  --bs-body-color: #{$red-900};  // colors any text on a view 
+  --bs-body-color: #{$red-900}; // colors any text on a view 
 
   // --bs-body-bg: var(--bs-red);  // colors the background of one view 
-  --bs-body-bg: #{mix($red-300, $red-400)};
+  // --bs-body-bg: #{mix($red-100, $red-900)};
+  --bs-body-bg: #{mix($red-500, $orange-500)};
 
   --bs-tertiary-bg: #{$red-600};
 

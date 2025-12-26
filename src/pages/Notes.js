@@ -164,7 +164,7 @@ export default function Notes({ theme }) {
                 </Button> */}
 
                 <FormControl variant="filled" sx={{ m: 1, minWidth: 100 }}>
-                  <InputLabel id="demo-simple-select-label" color='darkgrey'>Theme</InputLabel>
+                  <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -172,6 +172,7 @@ export default function Notes({ theme }) {
                     // defaultValue='blue'
                     label="Theme"
                     onChange={switchTheme}
+                    sx={{ color: 'white' }}
                   >
                     <MenuItem value={'red'}>Red</MenuItem>
                     <MenuItem value={'orange'}>Orange</MenuItem>
@@ -185,7 +186,7 @@ export default function Notes({ theme }) {
                 <Button
                   id='idBtnSwitchContainer'
                   startIcon={startIcon}
-                  color="primary"
+                  color="background"
                   onClick={switchContainerWidth}
                   variant="contained" />
               </Tooltip>
@@ -203,11 +204,14 @@ export default function Notes({ theme }) {
 
           {/* using component Accordion */}
           <Accordion
-            className='rounded-2 mt-1'
+            className='rounded-2 mt-1 shadow'
             expanded={expanded}
-            onChange={handleExpansion}>
+            onChange={handleExpansion}
+            // sx={{ backgroundColor: 'darkred' }}>
+            sx={{ backgroundColor: theme.palette.background.main }}>
             <AccordionSummary
               id="panel1-header"
+              className='mt-1'
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1-content"
             >
@@ -221,7 +225,7 @@ export default function Notes({ theme }) {
           </Accordion>
 
           {/* comment  */}
-          <Card className="border rounded-2 mt-1 shadow">
+          <Card className="rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
             <p>p on card comp</p>
             <Typography component="h6" variant="h6">
               Typography on Card

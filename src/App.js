@@ -53,6 +53,9 @@ export default function App( props ) {
       info: {
         main: '#0000ff',
       },
+      background: {
+        main: '#67060666', 
+      },
       contrastThreshold: 3,
       tonalOffset: 0.5,
     }  // palette
