@@ -22,8 +22,10 @@
 
   --bs-tertiary-bg: #{$blue-600};
 
-  .bg-blue {
-    --bs-body-bg: #{mix($blue-900, $purple-800)};
+  // for styling MUI-components:
+  .bg-component {
+    background-color: #{mix($blue-800, $purple-700)};
+    color: lightsteelblue
   }
 
   .dropdown-menu {

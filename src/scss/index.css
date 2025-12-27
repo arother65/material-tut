@@ -11867,8 +11867,9 @@ textarea.form-control-lg {
   --bs-body-bg: rgb(23.5, 24.2, 63.9);
   --bs-tertiary-bg: rgb(10.4, 88, 202.4);
 }
-[data-bs-theme=blue] .bg-blue {
-  --bs-body-bg: rgb(23.5, 24.2, 63.9);
+[data-bs-theme=blue] .bg-component {
+  background-color: rgb(35.9, 41.8, 108.5);
+  color: lightsteelblue;
 }
 [data-bs-theme=blue] .dropdown-menu {
   --bs-dropdown-bg: rgb(11.7, 99, 227.7);

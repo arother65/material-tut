@@ -204,7 +204,7 @@ export default function Notes({ theme }) {
 
           {/* using component Accordion */}
           <Accordion
-            className='rounded-2 mt-1 shadow'
+            className='bg-component rounded-2 mt-1 shadow'
             expanded={expanded}
             onChange={handleExpansion}
             // sx={{ backgroundColor: 'darkred' }}>
@@ -225,9 +225,9 @@ export default function Notes({ theme }) {
           </Accordion>
 
           {/* comment  */}
-          <Card className="rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
+          <Card className="bg-component rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
             <p>p on card comp</p>
-            <Typography component="h6" variant="h6">
+            <Typography className='bg-light' component="h6" variant="h6">
               Typography on Card
             </Typography>
           </Card>
