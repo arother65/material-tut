@@ -4,11 +4,12 @@
 */
 
 //
-import React, { useState } from 'react'  // Standard use-hooks
+import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
   Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
-  Divider, Typography, Tooltip,
+  Divider, Radio, Typography, Tooltip,
   Zoom,
+  RadioGroup
   // Fade
 } from '@mui/material'
 
@@ -133,19 +134,36 @@ export default function Notes({ theme }) {
   })
   const classes = useStyles()
 
+  // animate radio buttons 
+  const [rbState, setRbState] = useState('a')
+  const [rbStateYellow, setRbStateYellow] = useState('')
+  const [rbStateGreen, setRbStateGreen] = useState('')
+
+  useEffect(() => {
+    // setting checked on one radio button
+    setTimeout(() => {
+      setRbState('')
+      setRbStateYellow('b')
+
+      setTimeout(() => {
+        // 
+        setRbStateYellow('')
+        setRbStateGreen('c')
+      }, 1500)  // setTimeout()
+    }, 1500)  // setTimeout()
+  }, []) // 
+
   // 
   return (
     <>
       <ThemeProvider theme={theme}>
         {/* <Container maxWidth="xl"> */}
         <Box id="idMainBox" sx={{ mt: 1, ml: 5, width: 1850 }}>
-
           <div className="row mt-1">
             <div className="col">
               <p>Notes page with ThemeProvider</p>
             </div>
             <div className="col text-end">
-
               <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
                 slots={{
                   transition: Zoom
@@ -225,11 +243,32 @@ export default function Notes({ theme }) {
           </Accordion>
 
           {/* comment  */}
-          <Card className="bg-component border-danger border-5 border-start rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
+          <Card className="bg-component border-danger border-5 border-start rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main }}>
             <p>p on card comp</p>
             <Typography className='bg-light' component="h6" variant="h6">
               Typography on Card
             </Typography>
+          </Card>
+
+          <Card className="bg-component rounded-2 mt-1 shadow"
+            sx={{ backgroundColor: theme.palette.background.main }}>
+            <Card
+              sx={{ width: '8%' }}
+            >
+              {/* <Radio color="error" checked icon={<RadioButtonIcon />}/> */}
+              <RadioGroup row defaultValue="a">
+                <Radio id="idRadioRed" color="error" checked={rbState} value={'a'} />
+                <Radio id="idRadioYellow" color="warning" checked={rbStateYellow} value={'b'} />
+                <Radio id="idRadioGreen" color="success" checked={rbStateGreen} value={'c'} />
+              </RadioGroup>
+            </Card>
+
+            {/*             <Card sx={{ width: '10%' }}>
+              <Radio color="error" checked />
+              <Radio color="warning" />
+              <Radio color="success" />
+            </Card> */}
+
           </Card>
         </Box>
 
