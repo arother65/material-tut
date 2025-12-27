@@ -225,13 +225,13 @@ export default function Notes({ theme }) {
           </Accordion>
 
           {/* comment  */}
-          <Card className="bg-component rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
+          <Card className="bg-component border-danger border-5 border-start rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main}}>
             <p>p on card comp</p>
             <Typography className='bg-light' component="h6" variant="h6">
               Typography on Card
             </Typography>
           </Card>
-        </Box >
+        </Box>
 
         {isReduced &&
           <>

@@ -11867,9 +11867,19 @@ textarea.form-control-lg {
   --bs-body-bg: rgb(23.5, 24.2, 63.9);
   --bs-tertiary-bg: rgb(10.4, 88, 202.4);
 }
+@keyframes animateBg {
+  from {
+    background-color: rgb(164.4, 90.4, 141.2);
+  }
+  to {
+    background-color: rgb(48.3, 59.4, 153.1);
+  }
+}
 [data-bs-theme=blue] .bg-component {
   background-color: rgb(35.9, 41.8, 108.5);
   color: lightsteelblue;
+  animation-name: animateBg;
+  animation-duration: 2s;
 }
 [data-bs-theme=blue] .dropdown-menu {
   --bs-dropdown-bg: rgb(11.7, 99, 227.7);

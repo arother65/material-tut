@@ -23,9 +23,20 @@
   --bs-tertiary-bg: #{$blue-600};
 
   // for styling MUI-components:
+  @keyframes animateBg {
+	from {
+		// background-color: lightcoral;
+    background-color: #{mix(lightcoral, $purple-600)};
+	}
+	to {
+		background-color: #{mix($blue-700, $purple-600)};
+	}
+}
   .bg-component {
     background-color: #{mix($blue-800, $purple-700)};
-    color: lightsteelblue
+    color: lightsteelblue;
+    animation-name: animateBg;
+    animation-duration: 2s;
   }
 
   .dropdown-menu {
