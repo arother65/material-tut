@@ -181,7 +181,7 @@ export default function Notes({ theme }) {
                   switch theme
                 </Button> */}
 
-                <FormControl variant="filled" sx={{ m: 1, minWidth: 100 }}>
+                <FormControl variant="filled" sx={{ minWidth: 100 }}>
                   <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
@@ -195,11 +195,13 @@ export default function Notes({ theme }) {
                     <MenuItem value={'red'}>Red</MenuItem>
                     <MenuItem value={'orange'}>Orange</MenuItem>
                     <MenuItem value={'blue'}>Blue</MenuItem>
+                    <MenuItem value={'light'}>Light</MenuItem>
+                    <MenuItem value={'dark'}>Dark</MenuItem>
                   </Select>
                 </FormControl>
               </Tooltip>
 
-              <Divider orientation='vertical' component={FormControl} sx={{ width: 10 }} />
+              <Divider orientation='vertical' component={FormControl} sx={{ color: theme.palette.error.main, mr: 1, width: 10 }} />
               <Tooltip title="Switch container width">
                 <Button
                   id='idBtnSwitchContainer'
