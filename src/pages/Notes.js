@@ -23,6 +23,7 @@ import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import { red } from '@mui/material/colors';
 
 // import MongoClient 
 // import { MongoClient } from 'mongodb';  // errs out 
@@ -140,15 +141,25 @@ export default function Notes({ theme }) {
   const [rbStateGreen, setRbStateGreen] = useState('')
 
   useEffect(() => {
+
+    // idCardAmple
+    const ampleCardBorder = document.getElementById('idCardAmple')
+    let className = ampleCardBorder.className
+
+
     // setting checked on one radio button
     setTimeout(() => {
       setRbState('')
       setRbStateYellow('b')
+      className = className.replace('border-danger', 'border-warning')
+      ampleCardBorder.className = className
 
       setTimeout(() => {
         // 
         setRbStateYellow('')
         setRbStateGreen('c')
+        className = className.replace('border-warning', 'border-success')
+        ampleCardBorder.className = className
       }, 1500)  // setTimeout()
     }, 1500)  // setTimeout()
   }, []) // 
@@ -245,16 +256,22 @@ export default function Notes({ theme }) {
           </Accordion>
 
           {/* comment  */}
-          <Card className="bg-component border-danger border-5 border-start rounded-2 mt-1 shadow" sx={{ backgroundColor: theme.palette.background.main }}>
+          <Card
+            className="bg-component rounded-2 mt-1 shadow"
+            sx={{ backgroundColor: theme.palette.background.main }}>
             <p>p on card comp</p>
             <Typography className='bg-light' component="h6" variant="h6">
               Typography on Card
             </Typography>
           </Card>
 
+          {/* Card with RadioGroup */}
           <Card className="bg-component rounded-2 mt-1 shadow"
             sx={{ backgroundColor: theme.palette.background.main }}>
             <Card
+              id='idCardAmple'
+              className="rounded-2 m-2 border-5 border-bottom border-danger"
+              // sx={{ width: '8%', borderLeft: 15, borderColor: 'red' }}
               sx={{ width: '8%' }}
             >
               {/* <Radio color="error" checked icon={<RadioButtonIcon />}/> */}
