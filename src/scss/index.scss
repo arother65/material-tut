@@ -11,6 +11,19 @@
   background-color: lighten( #556cd6ff, 35%); // 
 } */
 
+.animationBlueTheme {
+  @keyframes animateBg {
+    from {
+      background-color: #{mix(lightcoral, $purple-600)};
+    }
+
+    to {
+      background-color: #{mix($blue-700, $purple-600)};
+    }
+  }
+}  // cannot be used as a value for property "animation-name"
+
+//
 
 // Themes 
 [data-bs-theme="blue"] {
@@ -24,18 +37,20 @@
 
   // for styling MUI-components:
   @keyframes animateBg {
-	from {
-		// background-color: lightcoral;
-    background-color: #{mix(lightcoral, $purple-600)};
-	}
-	to {
-		background-color: #{mix($blue-700, $purple-600)};
-	}
-}
+    from {
+      background-color: #{mix(lightcoral, $purple-600)};
+    }
+
+    to {
+      background-color: #{mix($blue-700, $purple-600)};
+    }
+  }
+
   .bg-component {
     background-color: #{mix($blue-800, $purple-700)};
     color: lightsteelblue;
     animation-name: animateBg;
+    // animation-name: animationBlueTheme;
     animation-duration: 2s;
   }
 
