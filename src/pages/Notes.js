@@ -146,7 +146,6 @@ export default function Notes({ theme }) {
     const ampleCardBorder = document.getElementById('idCardAmple')
     let className = ampleCardBorder.className
 
-
     // setting checked on one radio button
     setTimeout(() => {
       setRbState('')
