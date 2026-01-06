@@ -1,16 +1,16 @@
 /** 
-*   Stand: 25.12.2025
+*   Stand: 06.01.2025
 *   Theming and colors: https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette
 */
 
 //
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
-  Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
-  Divider, Radio, Typography, Tooltip,
-  Zoom,
-  RadioGroup
-  // Fade
+   Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
+   Container, Divider, Radio, Typography, Tooltip,
+   Zoom,
+   RadioGroup
+   // Fade
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
@@ -25,164 +25,154 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { red } from '@mui/material/colors';
 
-// import MongoClient 
-// import { MongoClient } from 'mongodb';  // errs out 
-// const { MongoClient, ServerApiVersion } = require("mongodb"); // errs out
 
 // 
 export default function Notes({ theme }) {
 
-  // console.log( {...theme } ) // puts out the whole object
-  // get the current windows sizes:
-  console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
+   // console.log( {...theme } ) // puts out the whole object
+   // get the current windows sizes:
+   console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
 
-  // 
-  const [expanded, setExpanded] = React.useState(false);
+   // 
+   const [expanded, setExpanded] = React.useState(false);
 
-  // event handler, other functions 
-  const handleExpansion = () => {
-    // setExpanded( (prevExpanded) => !prevExpanded );  // ok
-    setExpanded((expanded) => !expanded);  // ok
-  };
+   // event handler for <Accordion />
+   const handleExpansion = () => {
+      // setExpanded( (prevExpanded) => !prevExpanded );  // ok
+      setExpanded((expanded) => !expanded);  // ok
+   };
 
-  // reducing/restoring the container size
-  const [containerClassList, setContainerClassList] = useState()
-  const [isReduced, setIsReduced] = useState(false)
+   // reducing/restoring the container size
+   const [containerClassList, setContainerClassList] = useState()
+   const [isReduced, setIsReduced] = useState(false)
 
-  let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
+   let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
-  // fn to switch the theme using the main body-tag
-  const switchTheme = async (event) => {
+   // fn to switch the theme using the main body-tag
+   const switchTheme = async (event) => {
 
-    // idBodyIndexHtml from "index.html"
-    const bodyTag = document.getElementById('idBodyIndexHtml')
-    console.log(bodyTag)
+      // idBodyIndexHtml from "index.html"
+      const bodyTag = document.getElementById('idBodyIndexHtml')
+      console.log(bodyTag)
 
-    // const actTheme = bodyTag.getAttribute('data-bs-theme')
-    bodyTag.setAttribute('data-bs-theme', event.target.value)
-  }
+      // const actTheme = bodyTag.getAttribute('data-bs-theme')
+      bodyTag.setAttribute('data-bs-theme', event.target.value)
+   }
 
-  // fn used to reduce container size
-  const switchContainerWidth = async () => {
+   // fn used to reduce size of <Box />
+   const switchContainerWidth = async () => {
 
-    // const container = document.querySelector('.MuiContainer-root')
+      const mainBox = document.getElementById('idMainBox')
 
-    const container = document.getElementById('idMainBox')
+      setContainerClassList(mainBox.classList)
 
-    setContainerClassList(container.classList)
+      switch (isReduced) {
+         case false:
+            if (mainBox) {
 
-    switch (isReduced) {
-      case false:
-        if (container) {
-          container.style.maxWidth = '50%';
-          // container.style.justifyContent = 'left';  // ?
+               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-          // container.style.border = '2px solid red';
-          // container.style.padding = '10px';
-          // container.style.margin = '0 auto';  // center the container
+               mainBox.getAttribute('style')
+               mainBox.style.maxWidth = '50%'
+               // mainBox.style.backgroundColor = 'transparent'
 
-          // container.style.position = 'fixed';
-          // container.style.top = '1px';
-          // container.style.left = '50px';
-          // container.style.right = '800px';
+               mainBox.setAttribute('style', 'maxWidth: 50%')
+               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-          container.style.position = 'fixed';  // fixed
-          container.style.top = '0';
-          // container.style.backgroundColor = 'rgba(10, 5, 70, 0.75)';  //ok
+               setIsReduced(true)
+            }
+            break;
 
-          // container.style.transition = '50% 2s';  // errs
-          // container.style.transform = 'rotate(20deg)';  //ok
-          setIsReduced(true)
-        }
-        break;
+         case true:
+            if (mainBox) {
 
-      case true:
-        if (container) {
+               //? set window.innerWidth, window.innerHeight : errs 
+               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-          //? set window.innerWidth, window.innerHeight : errs 
-          container.style.maxWidth = '100%'
+               mainBox.getAttribute('style')
+               mainBox.style.maxWidth = '100%'
+               // mainBox.style.backgroundColor = 'transparent'
 
-          // setContainerClassList(containerClassList);  // no effect
-          // container.setAttribute('classList', containerClassList);  // no effect
-          container.classList = containerClassList
-          // container.style.position = 'relative';
-          container.style.backgroundColor = 'transparent'
+               mainBox.setAttribute('style', 'maxWidth: 100%')
+               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-          setIsReduced(false);
-        }
-        break;
-      default:
-        break;
-    }
-  }  // switchContainerWidth()
+               setIsReduced(false);
+            }
+            break;
+         default:
+            break;
+      }
+   }  // switchContainerWidth()
 
-  const sText = "local Text variable"
+   const sText = "local Text variable"
 
-  // create CSS class / classes (test only)
-  const useStyles = makeStyles({
-    heading: {
-      color: 'olivedrab',
-      fontSize: '18px',
-      fontWeight: 'initial',
-    },
-    details: {
-      backgroundColor: 'rgba(220, 175, 30, 0.5)',
-    },
-    color: 'white',
-    border: 'solid',
-    // border-color: 'blue',
-    // borderColor: 'red',  // errs
-  })
-  const classes = useStyles()
+   // create CSS class / classes (test only)
+   const useStyles = makeStyles({
+      heading: {
+         color: 'olivedrab',
+         fontSize: '18px',
+         fontWeight: 'initial',
+      },
+      details: {
+         backgroundColor: 'rgba(220, 175, 30, 0.5)',
+      },
+      color: 'white',
+      border: 'solid',
+      // border-color: 'blue',
+      // borderColor: 'red',  // errs
+   })
+   const classes = useStyles()
 
-  // animate radio buttons 
-  const [rbState, setRbState] = useState('a')
-  const [rbStateYellow, setRbStateYellow] = useState('')
-  const [rbStateGreen, setRbStateGreen] = useState('')
+   // animate radio buttons 
+   const [rbState, setRbState] = useState('a')
+   const [rbStateYellow, setRbStateYellow] = useState('')
+   const [rbStateGreen, setRbStateGreen] = useState('')
 
-  useEffect(() => {
+   useEffect(() => {
 
-    // idCardAmple
-    const ampleCardBorder = document.getElementById('idCardAmple')
-    let className = ampleCardBorder.className
+      // idCardAmple
+      const ampleCardBorder = document.getElementById('idCardAmple')
+      let className = ampleCardBorder.className
 
-    // setting checked on one radio button
-    setTimeout(() => {
-      setRbState('')
-      setRbStateYellow('b')
-      className = className.replace('border-danger', 'border-warning')
-      ampleCardBorder.className = className
-
+      // setting checked on one radio button
       setTimeout(() => {
-        // 
-        setRbStateYellow('')
-        setRbStateGreen('c')
-        className = className.replace('border-warning', 'border-success')
-        ampleCardBorder.className = className
-      }, 1500)  // setTimeout()
-    }, 1500)  // setTimeout()
-  }, []) // 
+         setRbState('')
+         setRbStateYellow('b')
+         className = className.replace('border-danger', 'border-warning')
+         ampleCardBorder.className = className
 
-  // 
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        {/* <Container maxWidth="xl"> */}
-        <Box id="idMainBox" sx={{ mt: 1, ml: 5, width: 1850 }}>
-          <div className="row mt-1">
-            <div className="col">
-              <p>Notes page with ThemeProvider</p>
-            </div>
-            <div className="col text-end">
-              <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
-                slots={{
-                  transition: Zoom
-                  // transition: Fade
-                }}
-                slotProps={{
-                  transition: { timeout: 500 },
-                }}>
-                {/*                 <Button
+         setTimeout(() => {
+            // 
+            setRbStateYellow('')
+            setRbStateGreen('c')
+            className = className.replace('border-warning', 'border-success')
+            ampleCardBorder.className = className
+         }, 1500)  // setTimeout()
+      }, 1500)  // setTimeout()
+   }, []) // Ampel anzeigen
+
+   // 
+   return (
+      <>
+         <ThemeProvider theme={theme}>
+
+            <div className="row m-1" style={{ width: '100%' }}>
+               <div className="col m-1">
+                  <Box id="idMainBox" maxWidth="xl" sx={{ mt: 1, ml: 5, mr: 5 }}>
+                     <div className="row mt-1">
+                        <div className="col">
+                           <p>Notes page with ThemeProvider</p>
+                        </div>
+                        <div className="col text-end">
+                           <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
+                              slots={{
+                                 transition: Zoom
+                                 // transition: Fade
+                              }}
+                              slotProps={{
+                                 transition: { timeout: 500 },
+                              }}>
+                              {/*                 <Button
                   id='idBtnSwitchContainer'
                   // startIcon={startIcon}
                   color="primary"
@@ -191,127 +181,121 @@ export default function Notes({ theme }) {
                   switch theme
                 </Button> */}
 
-                <FormControl variant="filled" sx={{ minWidth: 100 }}>
-                  <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={''}
-                    // defaultValue='blue'
-                    label="Theme"
-                    onChange={switchTheme}
-                    sx={{ color: 'white' }}
-                  >
-                    <MenuItem value={'red'}>Red</MenuItem>
-                    <MenuItem value={'orange'}>Orange</MenuItem>
-                    <MenuItem value={'blue'}>Blue</MenuItem>
-                    <MenuItem value={'light'}>Light</MenuItem>
-                    <MenuItem value={'dark'}>Dark</MenuItem>
-                  </Select>
-                </FormControl>
-              </Tooltip>
+                              <FormControl variant="filled" sx={{ minWidth: 100 }}>
+                                 <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
+                                 <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={''}
+                                    // defaultValue='blue'
+                                    label="Theme"
+                                    onChange={switchTheme}
+                                    sx={{ color: 'white' }}
+                                 >
+                                    <MenuItem value={'red'}>Red</MenuItem>
+                                    <MenuItem value={'orange'}>Orange</MenuItem>
+                                    <MenuItem value={'blue'}>Blue</MenuItem>
+                                    <MenuItem value={'light'}>Light</MenuItem>
+                                    <MenuItem value={'dark'}>Dark</MenuItem>
+                                 </Select>
+                              </FormControl>
+                           </Tooltip>
 
-              <Divider orientation='vertical' component={FormControl} sx={{ color: theme.palette.error.main, mr: 1, width: 10 }} />
-              <Tooltip title="Switch container width">
-                <Button
-                  id='idBtnSwitchContainer'
-                  startIcon={startIcon}
-                  color="background"
-                  onClick={switchContainerWidth}
-                  variant="contained" />
-              </Tooltip>
+                           <Divider orientation='vertical' component={FormControl} sx={{ color: theme.palette.error.main, mr: 1, width: 10 }} />
+                           <Tooltip title="Switch container width">
+                              <Button
+                                 id='idBtnSwitchContainer'
+                                 startIcon={startIcon}
+                                 color="background"
+                                 onClick={switchContainerWidth}
+                                 variant="contained" />
+                           </Tooltip>
+                        </div>
+                     </div>
+
+                     <Typography component="h4" variant="h4" gutterBottom="true" className={classes.heading}>
+                        Notes page h4
+                     </Typography>
+                     <Typography component="h5" variant="h5" gutterBottom="true">
+                        <ul>
+                           <li>text from li h5</li>
+                        </ul>
+                     </Typography>
+
+                     {/* using component Accordion */}
+                     <Accordion
+                        className='bg-component rounded-2 mt-1 shadow'
+                        expanded={expanded}
+                        onChange={handleExpansion}
+                        // sx={{ backgroundColor: 'darkred' }}>
+                        sx={{ backgroundColor: theme.palette.background.main }}>
+                        <AccordionSummary
+                           id="panel1-header"
+                           className='mt-1'
+                           expandIcon={<ExpandMoreIcon />}
+                           aria-controls="panel1-content"
+                        >
+                           <Typography className={classes.details} component="span">
+                              Typography on AccordionSummary
+                           </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                           <Typography color={theme.secondary}>
+                              {sText}
+                           </Typography>
+                        </AccordionDetails>
+                     </Accordion>
+
+                     {/* Card with Typography */}
+                     <Card
+                        className="bg-component rounded-2 mt-1 shadow"
+                        sx={{ backgroundColor: theme.palette.background.main }}>
+                        <p>p on card comp</p>
+                        <Typography className='bg-light' component="h6" variant="h6">
+                           Typography on Card
+                        </Typography>
+                     </Card>
+
+                     {/* Card with another Card wrapping a RadioGroup */}
+                     <Card className="bg-component rounded-2 mt-1 shadow"
+                        sx={{ backgroundColor: theme.palette.background.main }}>
+                        <Card
+                           id='idCardAmple'
+                           className="rounded-2 m-2 border-5 border-bottom border-danger"
+                           // sx={{ width: '8%', borderLeft: 15, borderColor: 'red' }}
+                           sx={{ width: '8%' }}
+                        >
+                           {/* <Radio color="error" checked icon={<RadioButtonIcon />}/> */}
+                           <RadioGroup row defaultValue="a">
+                              <Radio id="idRadioRed" color="error" checked={rbState} value={'a'} />
+                              <Radio id="idRadioYellow" color="warning" checked={rbStateYellow} value={'b'} />
+                              <Radio id="idRadioGreen" color="success" checked={rbStateGreen} value={'c'} />
+                           </RadioGroup>
+                        </Card>
+                     </Card>
+                  </Box>
+               </div>
+
+               {isReduced &&
+                  <div className='col mr-2' style={{ width: '50%' }}>
+                     <Box sx={{ position: 'relative' }}>
+                        <div className="col text-center mt-2">
+                           <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
+                              <p>Card 01 theme.palette.primary.main</p>
+                           </Card>
+                           <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
+                              <p>Card 02 theme.palette.primary.dark</p>
+                           </Card>
+                           <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
+                              <p>Card 03 theme.palette.secondary.light</p>
+                           </Card>
+                        </div>
+                     </Box>
+                  </div>
+               }
             </div>
-          </div>
 
-          <Typography component="h4" variant="h4" gutterBottom="true" className={classes.heading}>
-            Notes page h4
-          </Typography>
-          <Typography component="h5" variant="h5" gutterBottom="true">
-            <ul>
-              <li>text from li h5</li>
-            </ul>
-          </Typography>
-
-          {/* using component Accordion */}
-          <Accordion
-            className='bg-component rounded-2 mt-1 shadow'
-            expanded={expanded}
-            onChange={handleExpansion}
-            // sx={{ backgroundColor: 'darkred' }}>
-            sx={{ backgroundColor: theme.palette.background.main }}>
-            <AccordionSummary
-              id="panel1-header"
-              className='mt-1'
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-            >
-              <Typography className={classes.details} component="span">Typography on AccordionSummary</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography color={theme.secondary}>
-                {sText}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-
-          {/* comment  */}
-          <Card
-            className="bg-component rounded-2 mt-1 shadow"
-            sx={{ backgroundColor: theme.palette.background.main }}>
-            <p>p on card comp</p>
-            <Typography className='bg-light' component="h6" variant="h6">
-              Typography on Card
-            </Typography>
-          </Card>
-
-          {/* Card with RadioGroup */}
-          <Card className="bg-component rounded-2 mt-1 shadow"
-            sx={{ backgroundColor: theme.palette.background.main }}>
-            <Card
-              id='idCardAmple'
-              className="rounded-2 m-2 border-5 border-bottom border-danger"
-              // sx={{ width: '8%', borderLeft: 15, borderColor: 'red' }}
-              sx={{ width: '8%' }}
-            >
-              {/* <Radio color="error" checked icon={<RadioButtonIcon />}/> */}
-              <RadioGroup row defaultValue="a">
-                <Radio id="idRadioRed" color="error" checked={rbState} value={'a'} />
-                <Radio id="idRadioYellow" color="warning" checked={rbStateYellow} value={'b'} />
-                <Radio id="idRadioGreen" color="success" checked={rbStateGreen} value={'c'} />
-              </RadioGroup>
-            </Card>
-
-            {/*             <Card sx={{ width: '10%' }}>
-              <Radio color="error" checked />
-              <Radio color="warning" />
-              <Radio color="success" />
-            </Card> */}
-
-          </Card>
-        </Box>
-
-        {isReduced &&
-          <>
-            {/* <Typography component="h6" variant="h6" color="warning.main" sx={{ ml: 400 }}>
-                Container is reduced
-              </Typography> */}
-            {/* <Container className="text-center" sx={{ position: 'relative', left: '560px', right:'25px'}}> */}
-            <Box sx={{ position: 'relative', left: 1000, width: '50%', border: 1, borderColor: 'primary.main' }}>
-              <div className="col text-center mt-2">
-                <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
-                  <p>Card 01 theme.palette.primary.main</p>
-                </Card>
-                <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
-                  <p>Card 02 theme.palette.primary.dark</p>
-                </Card>
-                <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
-                  <p>Card 03 theme.palette.secondary.light</p>
-                </Card>
-              </div>
-            </Box>
-          </>
-        }
-      </ThemeProvider >
-    </>
-  )
+         </ThemeProvider >
+      </>
+   )
 }
