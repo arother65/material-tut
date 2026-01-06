@@ -28,9 +28,7 @@
 .col-animate {
   animation-name: animateCol;
   animation-duration: 2s;
-
 }
-
 
 .animationBlueTheme {
   @keyframes animateBg {
@@ -43,8 +41,26 @@
     }
   }
 }
-
 // cannot be used as a value for property "animation-name"
+
+
+
+@keyframes rotateAvatar {
+  from {
+    background-color: #{mix(lightcoral, $purple-100)};
+    transform: rotate(0deg);
+  }
+  to {
+    background-color: #{mix(lightcoral, $purple-500)};
+    transform: rotate(360deg);
+  }
+}
+
+.avatar-rotate {
+  animation-name: rotateAvatar;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
 
 // Themes 
 [data-bs-theme="blue"] {

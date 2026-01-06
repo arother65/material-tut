@@ -6,7 +6,7 @@
 //
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
-   Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
+   Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Button, Card,
    Divider, Radio, RadioGroup, Typography, Tooltip,
    Zoom
    // Fade
@@ -55,6 +55,7 @@ export default function Notes({ theme }) {
 
    // handler for <Accordion />
    const [expanded, setExpanded] = React.useState(false);
+   const [expanded00, setExpanded00] = React.useState(false);
    const [expanded02, setExpanded02] = React.useState(false);
 
    // event handler for <Accordion />
@@ -65,6 +66,9 @@ export default function Notes({ theme }) {
       let actAccordion = document.getElementById(e.currentTarget.id) // ! gets event from icon, not from accordion
 
       switch (actAccordion.id) {
+         case 'idAccordion00':
+            setExpanded00((expanded00) => !expanded00);  // ok      
+            break;
          case 'idAccordion01':
             setExpanded((expanded) => !expanded);  // ok      
             break;
@@ -235,7 +239,7 @@ export default function Notes({ theme }) {
                               </FormControl>
                            </Tooltip>
 
-                           <Divider orientation='vertical' component={FormControl} sx={{ color: theme.palette.error.main, mr: 1, width: 10 }} />
+                           <Divider orientation='vertical' component={FormControl} sx={{ color: 'white', ml: 3, mr: 3, width: 5 }} />
                            <Tooltip title="Switch container width">
                               <Button
                                  id='idBtnSwitchContainer'
@@ -247,7 +251,7 @@ export default function Notes({ theme }) {
                         </div>
                      </div>
 
-                     <Typography component="h4" variant="h4" gutterBottom="true" className={classes.heading}>
+                     <Typography component="h4" variant="h4" gutterBottom="true" className={classes.details}>
                         Notes page h4
                      </Typography>
                      <Typography component="h5" variant="h5" gutterBottom="true">
@@ -259,12 +263,12 @@ export default function Notes({ theme }) {
                      {/* using component Accordion */}
                      <Accordion
                         className='bg-component rounded-2 mt-1 shadow'
-                        expanded={expanded}
+                        expanded={expanded00}
                         onChange={handleExpansion}
                         // sx={{ backgroundColor: 'darkred' }}>
                         sx={{ backgroundColor: theme.palette.background.main }}>
                         <AccordionSummary
-                           id="panel1-header"
+                           id="idAccordion00"
                            className='mt-1'
                            expandIcon={<ExpandMoreIcon />}
                            aria-controls="panel1-content"
@@ -393,6 +397,20 @@ export default function Notes({ theme }) {
                      </Typography>
                   </AccordionDetails>
                </Accordion>
+
+               <div className='row m-2 p-0' style={{ width: '50%', height: '50%' }}>
+                  <Avatar className='avatar-rotate m-1'>
+                     <p>01</p>
+                  </Avatar>
+
+                  <Avatar className='avatar-rotate m-1'>
+                     <p>02</p>
+                  </Avatar>
+
+                  <Avatar className='avatar-rotate m-1'>
+                     <p>03</p>
+                  </Avatar>
+               </div>
             </div>
          </ThemeProvider >
       </>
