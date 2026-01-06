@@ -7,9 +7,8 @@
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
    Accordion, AccordionSummary, AccordionDetails, Box, Button, Card,
-   Container, Divider, Radio, Typography, Tooltip,
-   Zoom,
-   RadioGroup
+   Divider, Radio, RadioGroup, Typography, Tooltip,
+   Zoom
    // Fade
 } from '@mui/material'
 
@@ -25,21 +24,56 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { red } from '@mui/material/colors';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
 
 // 
 export default function Notes({ theme }) {
+
+   // connect to hosting site firebase
+
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+
+   // Your web app's Firebase configuration
+   const firebaseConfig = {
+      apiKey: "AIzaSyBvvrVevAgumjE-U2e2Wp43VdZb9Y8RSh8",
+      authDomain: "prj-test-98994.firebaseapp.com",
+      projectId: "prj-test-98994",
+      storageBucket: "prj-test-98994.firebasestorage.app",
+      messagingSenderId: "487823466018",
+      appId: "1:487823466018:web:f375d773e8e401ae76747b"
+   };
+
+
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
 
    // console.log( {...theme } ) // puts out the whole object
    // get the current windows sizes:
    console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
 
-   // 
+   // handler for <Accordion />
    const [expanded, setExpanded] = React.useState(false);
+   const [expanded02, setExpanded02] = React.useState(false);
 
    // event handler for <Accordion />
-   const handleExpansion = () => {
+   const handleExpansion = (e) => {
       // setExpanded( (prevExpanded) => !prevExpanded );  // ok
-      setExpanded((expanded) => !expanded);  // ok
+
+      // get accordion id: idAccordion01
+      let actAccordion = document.getElementById(e.currentTarget.id) // ! gets event from icon, not from accordion
+
+      switch (actAccordion.id) {
+         case 'idAccordion01':
+            setExpanded((expanded) => !expanded);  // ok      
+            break;
+         case 'idAccordion02':
+            setExpanded02((expanded02) => !expanded02);  // ok      
+            break;
+         default:
+            break;
+      }
    };
 
    // reducing/restoring the container size
@@ -310,6 +344,56 @@ export default function Notes({ theme }) {
                }
             </div>
 
+
+            {/* using component Accordion */}
+            <div className="row m-3 rounded shadow">
+               <Accordion
+
+                  className='bg-component rounded-2 mt-1 shadow'
+                  expanded={expanded}
+                  onChange={handleExpansion}
+                  // sx={{ backgroundColor: 'darkred' }}>
+                  sx={{ backgroundColor: theme.palette.background.main }}>
+                  <AccordionSummary
+                     id="idAccordion01"
+                     className='mt-1'
+                     expandIcon={<ExpandMoreIcon />}
+                     aria-controls="idAccordion01"
+                  >
+                     <Typography>
+                        AccordionSummary
+                     </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                     <Typography color={theme.secondary}>
+                        {sText}
+                     </Typography>
+                  </AccordionDetails>
+               </Accordion>
+
+               <Accordion
+                  className='bg-component rounded-2 mt-1 shadow'
+                  expanded={expanded02}
+                  onChange={handleExpansion}
+                  // sx={{ backgroundColor: 'darkred' }}>
+                  sx={{ backgroundColor: theme.palette.background.main }}>
+                  <AccordionSummary
+                     id="idAccordion02"
+                     className='mt-1'
+                     expandIcon={<ExpandMoreIcon />}
+                     aria-controls="idAccordion02"
+                  >
+                     <Typography>
+                        AccordionSummary
+                     </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                     <Typography color={theme.secondary}>
+                        {sText}
+                     </Typography>
+                  </AccordionDetails>
+               </Accordion>
+            </div>
          </ThemeProvider >
       </>
    )
