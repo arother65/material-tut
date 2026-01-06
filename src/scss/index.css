@@ -11865,9 +11865,11 @@ textarea.form-control-lg {
 @keyframes animateCol {
   from {
     background-color: rgb(175.5, 97, 160.5);
+    transform: translate(50%, -50%);
   }
   to {
-    background-color: rgb(216.4, 221.6, 248.6);
+    background-color: rgb(233.1, 172.6, 185.3);
+    transform: translate(0%, 0%);
   }
 }
 .col-animate {

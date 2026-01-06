@@ -13,18 +13,22 @@
 
 // for styling MUI-components:
 @keyframes animateCol {
+
   from {
     background-color: #{mix(lightcoral, $purple-500)};
+    transform: translate(50%, -50%);
   }
 
   to {
-    background-color: #{mix($blue-100, $purple-100)};
+    background-color: #{mix(lightcoral, $purple-100)};
+    transform: translate(0%, 0%);
   }
 }
 
 .col-animate {
   animation-name: animateCol;
   animation-duration: 2s;
+
 }
 
 
