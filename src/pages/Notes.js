@@ -23,6 +23,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { red } from '@mui/material/colors';
+import ClickableWheel from './Wheel.js'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -193,7 +194,6 @@ export default function Notes({ theme }) {
    return (
       <>
          <ThemeProvider theme={theme}>
-
             <div className="row m-1" style={{ width: '100%' }}>
                <div className="col m-1">
                   <Box id="idMainBox" maxWidth="xl" sx={{ mt: 1, ml: 5, mr: 5 }}>
@@ -348,7 +348,6 @@ export default function Notes({ theme }) {
                }
             </div>
 
-
             {/* using component Accordion */}
             <div className="row m-3 rounded shadow">
                <Accordion
@@ -417,6 +416,10 @@ export default function Notes({ theme }) {
                   <div className='circleInner border mx-2 p-1'>
                      <span class="label">inner</span>
                   </div>
+               </div>
+
+               <div className='row m-1 p-1'>
+                  <ClickableWheel />
                </div>
 
             </div>

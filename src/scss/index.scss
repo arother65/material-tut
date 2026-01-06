@@ -84,6 +84,26 @@
   position: absolute;
 }
 
+// classes for Wheel.js
+.segment {
+  background-color: #{mix(lightcoral, $purple-500)};
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.segment:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.label {
+  font-family: sans-serif;
+  font-size: 16px;
+  fill: white;
+  pointer-events: none;
+}
+
+
 // Themes 
 [data-bs-theme="blue"] {
   --bs-body-color: var(--bs-white);
