@@ -290,6 +290,21 @@ export default function Notes({ theme }) {
                               <p>Card 03 theme.palette.secondary.light</p>
                            </Card>
                         </div>
+                        <div className='row m-1 border border-danger rounded'>
+                           row
+                           <div className='col m-1 border border-info rounded'>
+                              col
+                           </div>
+                           <div className='col m-1 border border-info rounded'>
+                              col
+                           </div>
+                           <div className='col m-1 border border-info rounded'>
+                              col
+                           </div>
+                        </div>
+
+                        <div className='row m-1 border border-danger rounded'>row</div>
+                        <div className='row m-1 border border-danger rounded'>row</div>
                      </Box>
                   </div>
                }
