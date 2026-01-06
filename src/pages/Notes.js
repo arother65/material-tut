@@ -411,6 +411,14 @@ export default function Notes({ theme }) {
                      <p>03</p>
                   </Avatar>
                </div>
+
+               <div className='circle border'>
+                  <span class="label">1</span>
+                  <div className='circleInner border mx-2 p-1'>
+                     <span class="label">inner</span>
+                  </div>
+               </div>
+
             </div>
          </ThemeProvider >
       </>
