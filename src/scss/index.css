@@ -11862,6 +11862,19 @@ textarea.form-control-lg {
 /* body {
   background-color: lighten( #556cd6ff, 35%); // 
 } */
+@keyframes animateCol {
+  from {
+    background-color: rgb(175.5, 97, 160.5);
+  }
+  to {
+    background-color: rgb(216.4, 221.6, 248.6);
+  }
+}
+.col-animate {
+  animation-name: animateCol;
+  animation-duration: 2s;
+}
+
 @keyframes animateBg {
   from {
     background-color: rgb(164.4, 90.4, 141.2);
@@ -11885,8 +11898,8 @@ textarea.form-control-lg {
   }
 }
 [data-bs-theme=blue] .bg-component {
-  background-color: rgb(35.9, 41.8, 108.5);
-  color: lightsteelblue;
+  background-color: rgb(37.2, 52.8, 133.8);
+  color: rgb(191.3, 211, 238.3);
   animation-name: animateBg;
   animation-duration: 2s;
 }

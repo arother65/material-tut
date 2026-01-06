@@ -277,7 +277,7 @@ export default function Notes({ theme }) {
                </div>
 
                {isReduced &&
-                  <div className='col mr-2' style={{ width: '50%' }}>
+                  <div className='col mr-2 col-animate' style={{ width: '50%' }}>
                      <Box sx={{ position: 'relative' }}>
                         <div className="col text-center mt-2">
                            <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
