@@ -419,9 +419,12 @@ export default function Notes({ theme }) {
                </div>
 
                <div className='row m-1 p-1'>
-                  <ClickableWheel />
+                  <ClickableWheel segments={12}
+                     onSelect={(segment) => {
+                        // console.log("Clicked segment:", segment);
+                        alert(segment)
+                     }} />
                </div>
-
             </div>
          </ThemeProvider >
       </>

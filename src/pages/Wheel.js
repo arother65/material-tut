@@ -67,19 +67,19 @@ const getSVG = () => {
 
 
 const polarToCartesian = (cx, cy, r, angle) => {
-  const rad = (angle - 90) * Math.PI / 180;
-  return {
-    x: cx + r * Math.cos(rad),
-    y: cy + r * Math.sin(rad)
-  };
+   const rad = (angle - 90) * Math.PI / 180;
+   return {
+      x: cx + r * Math.cos(rad),
+      y: cy + r * Math.sin(rad)
+   };
 };
 
 const describeArc = (cx, cy, r, startAngle, endAngle) => {
-  const start = polarToCartesian(cx, cy, r, endAngle);
-  const end = polarToCartesian(cx, cy, r, startAngle);
-  const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+   const start = polarToCartesian(cx, cy, r, endAngle);
+   const end = polarToCartesian(cx, cy, r, startAngle);
+   const largeArc = endAngle - startAngle > 180 ? 1 : 0;
 
-  return `
+   return `
     M ${cx} ${cy}
     L ${start.x} ${start.y}
     A ${r} ${r} 0 ${largeArc} 0 ${end.x} ${end.y}
@@ -115,7 +115,6 @@ export default function ClickableWheel({
             const start = i * angleStep;
             const end = start + angleStep;
             const mid = start + angleStep / 2;
-
             const labelPos = polarToCartesian(cx, cy, radius * 0.65, mid);
 
             return (
