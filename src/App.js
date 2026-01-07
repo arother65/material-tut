@@ -15,9 +15,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { createTheme } from '@mui/material/styles'
 
 //
-import Notes from './pages/Notes.js'
-import Create from './pages/Create.js'
-import NotFound from './pages/NotFound.js'
+import Notes from './pages/Notes.jsx'
+import Create from './pages/Create.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 //
 import Layout from './components/Layout.js'
