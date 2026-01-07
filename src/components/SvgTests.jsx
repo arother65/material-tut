@@ -6,7 +6,7 @@
 
 // imports 
 import { useState } from 'react'
-import img from './icons8-joker-64.png'
+import img from '../pics/icons8-joker-64.png'
 
 //
 export default function SvgTests({ theme }) {
@@ -35,8 +35,7 @@ export default function SvgTests({ theme }) {
             </svg> */}
 
             <svg xmlns="http://www.w3.org/2000/svg">
-               <circle cx={initCxCy.cx} cy={initCxCy.cy} r="50" fill={theme.palette.primary.main}>
-               </circle>
+               <circle cx={initCxCy.cx} cy={initCxCy.cy} r="50" fill={theme.palette.primary.main}></circle>
                <g transform="rotate(45 50 50)">
                   <image
                      href={img}
@@ -58,8 +57,8 @@ export default function SvgTests({ theme }) {
                         attributeName="cx"
                         begin="0s"
                         dur="2s"
-                        from="50"
-                        to="25%"
+                        from="-50"
+                        to="45%"
                         repeatCount="indefinite"
                      // till='freeze'
                      />
@@ -77,8 +76,8 @@ export default function SvgTests({ theme }) {
                         attributeName="x"
                         begin="0s"
                         dur="2s"
-                        from="50"
-                        to="25%"
+                        from="-50"
+                        to="45%"
                         repeatCount="indefinite"
                      // till='freeze'
                      />
