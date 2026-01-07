@@ -40,7 +40,7 @@ export default function App(props) {
         dark: '#00514aff',
       },
       error: {
-        main: '#ff0000',
+        main: '#ff0000', 
         light: '#ff3333',
         dark: '#920707ff',
       },
@@ -69,19 +69,12 @@ export default function App(props) {
   })  // createTheme()
   const [actTheme, setActTheme] = useState(theme)
 
-  // fn to GET the actual theme using the main body-tag
-  const getActTheme = () => {
-    // idBodyIndexHtml from "index.html"
-    const bodyTag = document.getElementById('idBodyIndexHtml')
-    return bodyTag.getAttribute('data-bs-theme')
-  }  // getActTheme()
-
   //
-  useEffect(() => {
+/*   useEffect(() => {
     // get the actual them from INDEX.HTML
     // const actTheme = getActTheme()
     setActTheme(theme)
-  }, [])  // useEffect()
+  }, [theme])  // useEffect() */
 
   //
   return (

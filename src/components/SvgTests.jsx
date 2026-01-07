@@ -43,11 +43,25 @@ export default function SvgTests({ theme }) {
             <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
                <circle cx="50" cy="50" r="50" fill={theme.palette.primary.dark}>
                   <animate
-                     attributeName="cy"
+                     attributeName="cx"
                      begin="0s"
-                     dur="2s"
-                     from="0"
+                     dur="3s"
+                     from="50%"
                      to="90%"
+                     repeatCount="indefinite" />
+                  <animate
+                     attributeName="fill"
+                     begin="0s"
+                     dur="3s"
+                     from={theme.palette.primary.dark}
+                     to={theme.palette.error.light}
+                     repeatCount="indefinite" />
+                  <animate
+                     attributeName="r"
+                     begin="0s"
+                     dur="3s"
+                     from="10"
+                     to="50"
                      repeatCount="indefinite" />
                </circle>
                {/* <text x={100}
