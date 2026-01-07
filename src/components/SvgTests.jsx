@@ -21,8 +21,27 @@ export default function SvgTests({ theme }) {
 
    return (
       <>
-         <div className='row m-1 p-1 border rounded'>
 
+         <div className='row m-1 p-1 border rounded'>
+            <>
+               {Array.from({length: 5}).map((_, i) => (
+
+                  <div className="col m-1 border rounded" key={i} id={i}>
+                     {/* <p>array.map(){i}</p> */}
+
+                     <svg xmlns="http://www.w3.org/2000/svg">
+                        <circle id={`circle-${i}`}
+                           cx={initCxCy.cx}
+                           cy={initCxCy.cy}
+                           r="50"
+                           fill={theme.palette.primary.main}></circle>
+                     </svg>
+                  </div>
+               ))}
+            </>
+         </div>
+
+         <div className='row m-1 p-1 border rounded'>
             {/*             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="60">
                <image
                   // href="./icons8-joker-74.png"
