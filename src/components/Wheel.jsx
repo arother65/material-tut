@@ -2,7 +2,7 @@
 import React from "react";
 
 // fn'S
-const getSVG = () => {
+/* const getSVG = () => {
 
    const svg = document.getElementById("wheel");
    const cx = 150;
@@ -63,7 +63,7 @@ const getSVG = () => {
 
       svg.appendChild(text);
    }
-}  // getSVG()
+}  // getSVG() */
 
 
 const polarToCartesian = (cx, cy, r, angle) => {
@@ -112,17 +112,21 @@ export default function ClickableWheel({
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
 
          {Array.from({ length: segments }).map((_, i) => {
+
             const start = i * angleStep;
             const end = start + angleStep;
             const mid = start + angleStep / 2;
             const labelPos = polarToCartesian(cx, cy, radius * 0.65, mid);
 
             return (
-               <g key={i}>
+               <g key={i} id={`idGroup${i}`}>  {/* <g>group</g> */}
+                  
                   {/* Segment */}
                   <path
                      d={describeArc(cx, cy, radius, start, end)}
+
                      fill={colors[i] || defaultColors[i % defaultColors.length]}
+                     
                      style={{
                         cursor: "pointer",
                         transition: "opacity 0.2s, transform 0.2s"

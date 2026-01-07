@@ -23,7 +23,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { red } from '@mui/material/colors';
-import ClickableWheel from './Wheel.js'
+import ClickableWheel from '../components/Wheel.jsx'
+
+import SvgTests from '../components/SvgTests.jsx'
+
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -425,7 +429,12 @@ export default function Notes({ theme }) {
                         alert(segment)
                      }} />
                </div>
+
             </div>
+            <div className='row m-1 p-1'>
+               <SvgTests theme={theme}> </SvgTests>
+            </div>
+
          </ThemeProvider >
       </>
    )
