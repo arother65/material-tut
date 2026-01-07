@@ -282,9 +282,13 @@ export default function Notes({ theme }) {
                            </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                           <Typography color={theme.secondary}>
-                              {sText}
-                           </Typography>
+                           <div className='row m-1 p-1'>
+                              <ClickableWheel segments={12}
+                                 onSelect={(segment) => {
+                                    // console.log("Clicked segment:", segment);
+                                    alert(segment)
+                                 }} />
+                           </div>
                         </AccordionDetails>
                      </Accordion>
 
@@ -355,7 +359,6 @@ export default function Notes({ theme }) {
             {/* using component Accordion */}
             <div className="row m-3 rounded shadow">
                <Accordion
-
                   className='bg-component rounded-2 mt-1 shadow'
                   expanded={expanded}
                   onChange={handleExpansion}
@@ -372,69 +375,53 @@ export default function Notes({ theme }) {
                      </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                     <Typography color={theme.secondary}>
-                        {sText}
-                     </Typography>
+                     <div className='row m-2 p-0' style={{ width: '50%', height: '50%' }}>
+                        <Avatar className='avatar-rotate m-1'>
+                           <p>01</p>
+                        </Avatar>
+
+                        <Avatar className='avatar-rotate m-1'>
+                           <p>02</p>
+                        </Avatar>
+
+                        <Avatar className='avatar-rotate m-1'>
+                           <p>03</p>
+                        </Avatar>
+                     </div>
+                     <div className='circle border'>
+                        <span class="label">1</span>
+                        <div className='circleInner border mx-2 p-1'>
+                           <span class="label">inner</span>
+                        </div>
+                     </div>
                   </AccordionDetails>
                </Accordion>
 
                <Accordion
-                  className='bg-component rounded-2 mt-1 shadow'
+                  className='bg-component mt-1 rounded-2 shadow'
                   expanded={expanded02}
                   onChange={handleExpansion}
                   // sx={{ backgroundColor: 'darkred' }}>
-                  sx={{ backgroundColor: theme.palette.background.main }}>
+                  sx={{ backgroundColor: theme.palette.secondary.main }}>
                   <AccordionSummary
                      id="idAccordion02"
-                     className='mt-1'
+                     className='mt-1 rounded-2'
                      expandIcon={<ExpandMoreIcon />}
                      aria-controls="idAccordion02"
+                     sx={{ backgroundColor: theme.palette.secondary.light }}
                   >
                      <Typography>
-                        AccordionSummary
+                        Testing SVG's
                      </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                     <Typography color={theme.secondary}>
-                        {sText}
-                     </Typography>
+                     <div className='row m-1 p-1'>
+                        <SvgTests theme={theme} />
+                     </div>
                   </AccordionDetails>
                </Accordion>
 
-               <div className='row m-2 p-0' style={{ width: '50%', height: '50%' }}>
-                  <Avatar className='avatar-rotate m-1'>
-                     <p>01</p>
-                  </Avatar>
-
-                  <Avatar className='avatar-rotate m-1'>
-                     <p>02</p>
-                  </Avatar>
-
-                  <Avatar className='avatar-rotate m-1'>
-                     <p>03</p>
-                  </Avatar>
-               </div>
-
-               <div className='circle border'>
-                  <span class="label">1</span>
-                  <div className='circleInner border mx-2 p-1'>
-                     <span class="label">inner</span>
-                  </div>
-               </div>
-
-               <div className='row m-1 p-1'>
-                  <ClickableWheel segments={12}
-                     onSelect={(segment) => {
-                        // console.log("Clicked segment:", segment);
-                        alert(segment)
-                     }} />
-               </div>
-
             </div>
-            <div className='row m-1 p-1'>
-               <SvgTests theme={theme}> </SvgTests>
-            </div>
-
          </ThemeProvider >
       </>
    )

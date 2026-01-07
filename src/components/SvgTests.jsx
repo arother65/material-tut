@@ -14,41 +14,48 @@ export default function SvgTests({ theme }) {
    return (
       <>
          <p>Tests SVG's</p>
-         <svg xmlns="http://www.w3.org/2000/svg">
-            <g transform="rotate(45 50 50)" >
-               <circle cx="50" cy="50" r="30" fill={theme.palette.primary.main} />
-            </g>
-         </svg>
+         <div className='row m-1 p-1'>
+            <svg xmlns="http://www.w3.org/2000/svg">
+               <g transform="rotate(45 50 50)" >
+                  <circle cx="50" cy="50" r="30" fill={theme.palette.primary.main} />
+               </g>
+            </svg>
+         </div>
 
-         <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="50" fill={theme.palette.primary.light}>
-               <animate
-                  attributeName="cx"
-                  begin="0s"
-                  dur="2s"
-                  from="50"
-                  to="25%"
-                  repeatCount="indefinite" />
-            </circle>
-         </svg>
+         <div className='row m-1 p-1'>
+            <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+               <circle cx="50" cy="50" r="50" fill={theme.palette.primary.light}>
+                  <animate
+                     attributeName="cx"
+                     begin="0s"
+                     dur="2s"
+                     from="50"
+                     to="25%"
+                     repeatCount="indefinite"
+                  // till='freeze'
+                  />
+               </circle>
+            </svg>
+         </div>
 
-         {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> */}
-         <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="50" fill={theme.palette.primary.dark}>
-               <animate
-                  attributeName="cx"
-                  begin="0s"
-                  dur="2s"
-                  from="50"
-                  to="50%"
-                  repeatCount="indefinite" />
-            </circle>
-            {/* <text x={100}
+         <div className='row m-1 p-1'>
+            {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"> */}
+            <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+               <circle cx="50" cy="50" r="50" fill={theme.palette.primary.dark}>
+                  <animate
+                     attributeName="cy"
+                     begin="0s"
+                     dur="2s"
+                     from="0"
+                     to="90%"
+                     repeatCount="indefinite" />
+               </circle>
+               {/* <text x={100}
                y={100}
                textAnchor="middle"
                dominantBaseline="middle">SVG!</text> */}
-         </svg>
-
+            </svg>
+         </div>
       </>
    )
 }  // SvgTests()
