@@ -23,7 +23,7 @@ import NotFound from './pages/NotFound.jsx'
 import Layout from './components/Layout.js'
 
 // 
-export default function App(props) {
+export default function AppRouter(props) {
 
   // console.log(props)
   // create theme: typeof Theme
@@ -40,7 +40,7 @@ export default function App(props) {
         dark: '#00514aff',
       },
       error: {
-        main: '#ff0000', 
+        main: '#ff0000',
         light: '#ff3333',
         dark: '#920707ff',
       },
@@ -70,11 +70,11 @@ export default function App(props) {
   const [actTheme, setActTheme] = useState(theme)
 
   //
-/*   useEffect(() => {
-    // get the actual them from INDEX.HTML
-    // const actTheme = getActTheme()
-    setActTheme(theme)
-  }, [theme])  // useEffect() */
+  /*   useEffect(() => {
+      // get the actual them from INDEX.HTML
+      // const actTheme = getActTheme()
+      setActTheme(theme)
+    }, [theme])  // useEffect() */
 
   //
   return (
@@ -82,12 +82,13 @@ export default function App(props) {
       <Layout>
         <Routes>
           {/* Each route has it's own URL */}
-          <Route index exact path="/" element={<Notes theme={actTheme} />} />
-          <Route path="/create" element={<Create theme={actTheme} />} />
+          <Route index exact path="/" element={<Notes props={props} theme={actTheme} />} />
+          <Route path="/create" element={<Create props={props} theme={actTheme} />} />
+
           {/* other route(s) to diffenrent components */}
           <Route path="*" element={<NotFound props={props} theme={actTheme} />} />
         </Routes>
       </Layout>
     </Router>
   )
-}
+}  // AppRouter()

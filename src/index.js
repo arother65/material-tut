@@ -1,7 +1,7 @@
 
 //
 import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
+import AppRouter from './App.jsx';
 
 // global CSS file:
 import '../src/scss/index.css'; 
@@ -11,7 +11,7 @@ const domNode = document.getElementById('root');
 
 // https://react.dev/reference/react-dom/client/createRoot#createroot
 const root = createRoot(domNode, {});
-root.render(<App />);
+root.render(<AppRouter />);
 
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

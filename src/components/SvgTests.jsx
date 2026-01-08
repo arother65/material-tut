@@ -21,13 +21,11 @@ export default function SvgTests({ theme }) {
 
    return (
       <>
-
          <div className='row m-1 p-1 border rounded'>
             <>
-               {Array.from({length: 5}).map((_, i) => (
-
+               {Array.from({length: 10}).map((_, i) => (
                   <div className="col m-1 border rounded" key={i} id={i}>
-                     {/* <p>array.map(){i}</p> */}
+                     <p>{`array.map()-col-${i}`}</p>
 
                      <svg xmlns="http://www.w3.org/2000/svg">
                         <circle id={`circle-${i}`}

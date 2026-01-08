@@ -41,9 +41,7 @@
     }
   }
 }
-
 // cannot be used as a value for property "animation-name"
-
 
 @keyframes rotateAvatar {
   from {
@@ -78,8 +76,7 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: conic-gradient(darkslategrey 0deg 360deg,
-    );
+  background: conic-gradient(darkslategrey 0deg 360deg);
   position: absolute;
 }
 
