@@ -195,7 +195,7 @@ export default function Notes({ props, theme }) {
       <>
          <ThemeProvider theme={theme}>
             <header>
-               <AppBarTop />
+               <AppBarTop theme={theme}/>
             </header>
 
             <main>

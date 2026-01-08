@@ -3,15 +3,14 @@
 */
 
 // imports
-import { useState, forwardRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import { useNavigate } from 'react-router-dom'  // or imported from react-router
-// import Slide from '@mui/material/Slide'
 import AlertDialogSlide from '../components/AlertDialogSlide'
 
 //
-export default function AppBarTop() {
+export default function AppBarTop(theme) {
 
    // hooks for a menu-component 
    const [anchorEl, setAnchorEl] = useState(null)
@@ -112,19 +111,6 @@ export default function AppBarTop() {
 						</DialogActions>
 					</Dialog> */}
 
-               {/*                <MenuItem
-                  sx={ menuItemSx }
-                  onClick={() => {
-                     setTimeout(() => {
-                        // handleNavigate4gewinnt('/VierGewinnt')
-                        // setLoading(true)
-                        fnNavigate('/Dice', {})
-                     }, 1000)
-                     setLoading(true)
-                  }}>
-                  Würfeln...
-               </MenuItem> */}
-
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
@@ -155,7 +141,7 @@ export default function AppBarTop() {
             </Menu>
 
             {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
-            <AlertDialogSlide openState={openState} setopenState={setopenState} />
+            <AlertDialogSlide theme= {theme} openState={openState} setopenState={setopenState} />
 
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
