@@ -4,10 +4,19 @@
 
 // imports
 import { useState, useEffect } from 'react'
-import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, } from "@mui/material"
+import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, FormControl, InputLabel, Select, Tooltip, Zoom } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 
+// rbg
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
+
+// customer components
 import AlertDialogSlide from '../components/AlertDialogSlide'
+
+
 
 //
 export default function AppBarTop(theme) {
@@ -41,6 +50,17 @@ export default function AppBarTop(theme) {
       }
    }  // 
 
+   // fn to switch the theme using the main body-tag
+   const switchTheme = async (event) => {
+
+      // idBodyIndexHtml from "index.html"
+      const bodyTag = document.getElementById('idBodyIndexHtml')
+      console.log(bodyTag)
+
+      // const actTheme = bodyTag.getAttribute('data-bs-theme')
+      bodyTag.setAttribute('data-bs-theme', event.target.value)
+   }
+
    // 
    return (
       <AppBar sx={{ backgroundColor: 'rgba(40, 45, 60, 0.85)', position: 'fixed' }} >
@@ -72,47 +92,6 @@ export default function AppBarTop(theme) {
                   horizontal: 'left',
                }}
             >
-               {/* 					<MenuItem
-						sx={{
-							'&:hover': {
-								color: 'white',
-								backgroundColor: 'olivedrab',
-							}
-						}}
-						onClick={handleOpenDialog}>
-						open dialog
-					</MenuItem> {/* opens Dialog */}
-               {/* <Dialog
-						open={openDialog}
-						slots={{
-							transition: lvTransition,
-						}}
-						keepMounted= {false}
-						onClose={handleCloseDialog}
-						aria-describedby="alert-dialog-slide-description"
-					>
-						<DialogTitle>{"Title DialogTitle"}</DialogTitle>
-						<DialogContent>
-							<DialogContentText id="alert-dialog-slide-description">
-								This is a component of type "Dialog".
-								No functionality, you are safe...
-							</DialogContentText>
-						</DialogContent>
-						<DialogActions>
-							<IconButton
-								id="idBtnCloseDialog"
-								size="large"
-								edge="start"
-								color="inherit"
-								aria-label="close dialog"
-								sx={{ mr: 2 }}
-								onClick={handleCloseDialog}
-							>
-								<CloseRoundedIcon sx={{ color: 'red' }} />
-							</IconButton>
-						</DialogActions>
-					</Dialog> */}
-
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
@@ -138,13 +117,77 @@ export default function AppBarTop(theme) {
                </Backdrop>
             </Menu>
 
+
             {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
             <AlertDialogSlide theme={theme}
                openState={openState}
                setopenState={setopenState}
-               navTarget={navTarget}/>
+               navTarget={navTarget} />
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
+
+            <div className="col m-3 p-1 border rounded">
+               <Tooltip title="Switch theme" placement="bottom" arrow sx={{}}>
+                  <RadioGroup
+                     aria-labelledby="radio-buttons-group-label"
+                     defaultValue="blue"
+                     name="radio-buttons-group"
+                     row
+                  >
+                     <FormControlLabel value="blue"
+                        label="blue"
+                        control={<Radio color='primary' />}
+                        onChange={(event) => {
+                           switchTheme(event)
+                        }}
+                     />
+                     <FormControlLabel value="red"
+                        label="red"
+                        control={<Radio color='error' />}
+                        onChange={(event) => {
+                           switchTheme(event)
+                        }}
+                     />
+                     <FormControlLabel value="orange"
+                        label="orange"
+                        control={<Radio color='warning' />}
+                        onChange={(event) => {
+                           switchTheme(event)
+                        }}
+                     />
+                  </RadioGroup>
+               </Tooltip>
+            </div>
+
+            <div className="col text-end">
+               <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
+                  slots={{
+                     transition: Zoom
+                     // transition: Fade
+                  }}
+                  slotProps={{
+                     transition: { timeout: 500 },
+                  }}>
+                  <FormControl variant="filled" sx={{ minWidth: 100 }}>
+                     <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
+                     <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={''}
+                        // defaultValue='blue'
+                        label="Theme"
+                        onChange={switchTheme}
+                        sx={{ color: 'white' }}
+                     >
+                        <MenuItem value={'red'}>Red</MenuItem>
+                        <MenuItem value={'orange'}>Orange</MenuItem>
+                        <MenuItem value={'blue'}>Blue</MenuItem>
+                        <MenuItem value={'light'}>Light</MenuItem>
+                        <MenuItem value={'dark'}>Dark</MenuItem>
+                     </Select>
+                  </FormControl>
+               </Tooltip>
+            </div>
          </Toolbar>
       </AppBar>
 

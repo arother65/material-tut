@@ -89,17 +89,6 @@ export default function Notes({ props, theme }) {
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
-   // fn to switch the theme using the main body-tag
-   const switchTheme = async (event) => {
-
-      // idBodyIndexHtml from "index.html"
-      const bodyTag = document.getElementById('idBodyIndexHtml')
-      console.log(bodyTag)
-
-      // const actTheme = bodyTag.getAttribute('data-bs-theme')
-      bodyTag.setAttribute('data-bs-theme', event.target.value)
-   }
-
    // fn used to reduce size of <Box />
    const switchContainerWidth = async () => {
 
@@ -205,46 +194,7 @@ export default function Notes({ props, theme }) {
                         <div className="row mt-1">
                            <div className="col">
                               <p>Notes page with ThemeProvider</p>
-                           </div>
-                           <div className="col text-end">
-                              <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
-                                 slots={{
-                                    transition: Zoom
-                                    // transition: Fade
-                                 }}
-                                 slotProps={{
-                                    transition: { timeout: 500 },
-                                 }}>
-                                 {/*                 <Button
-                  id='idBtnSwitchContainer'
-                  // startIcon={startIcon}
-                  color="primary"
-                  onClick={switchTheme}
-                  variant="contained">
-                  switch theme
-                </Button> */}
-
-                                 <FormControl variant="filled" sx={{ minWidth: 100 }}>
-                                    <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
-                                    <Select
-                                       labelId="demo-simple-select-label"
-                                       id="demo-simple-select"
-                                       value={''}
-                                       // defaultValue='blue'
-                                       label="Theme"
-                                       onChange={switchTheme}
-                                       sx={{ color: 'white' }}
-                                    >
-                                       <MenuItem value={'red'}>Red</MenuItem>
-                                       <MenuItem value={'orange'}>Orange</MenuItem>
-                                       <MenuItem value={'blue'}>Blue</MenuItem>
-                                       <MenuItem value={'light'}>Light</MenuItem>
-                                       <MenuItem value={'dark'}>Dark</MenuItem>
-                                    </Select>
-                                 </FormControl>
-                              </Tooltip>
-
-                              <Divider orientation='vertical' component={FormControl} sx={{ color: 'white', ml: 3, mr: 3, width: 5 }} />
+                              {/* <Divider orientation='vertical' component={FormControl} sx={{ color: 'white', ml: 3, mr: 3, width: 5 }} />                               */}
                               <Tooltip title="Switch container width">
                                  <Button
                                     id='idBtnSwitchContainer'
