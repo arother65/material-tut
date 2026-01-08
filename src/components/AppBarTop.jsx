@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
-import { useNavigate } from 'react-router-dom'  // or imported from react-router
+
 import AlertDialogSlide from '../components/AlertDialogSlide'
 
 //
@@ -18,14 +18,16 @@ export default function AppBarTop(theme) {
    const handleClick = (event) => { setAnchorEl(event.currentTarget) }
    const handleClose = () => { setAnchorEl(null) }
 
-   // hook for openState in child-component
+   // hook for openState (Dialog) in child-component
    const [openState, setopenState] = useState(false)
    useEffect(() => {
       setopenState(openState)
    }, [openState])
 
-   // navigation for MenuItem
-   const fnNavigate = useNavigate()
+   const [navTarget, setNavTarget] = useState(null)
+   useEffect(() => {
+      setNavTarget(navTarget)
+   }, [navTarget])
 
    // handleNavigate4gewinnt('/VierGewinnt')
    const [loading, setLoading] = useState(false)
@@ -114,10 +116,8 @@ export default function AppBarTop(theme) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setTimeout(() => {
-                        fnNavigate('/create')
-                     }, 2000)
-                     setopenState(true)
+                     setopenState(true)  // just open a dialog component
+                     setNavTarget('/create')
                   }}>
                   create page
                </MenuItem>
@@ -125,10 +125,8 @@ export default function AppBarTop(theme) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setTimeout(() => {
-                        fnNavigate('/about')
-                     }, 2000)
                      setopenState(true)
+                     setNavTarget('/about')
                   }}>
                   about page
                </MenuItem>
@@ -141,8 +139,10 @@ export default function AppBarTop(theme) {
             </Menu>
 
             {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
-            <AlertDialogSlide theme= {theme} openState={openState} setopenState={setopenState} />
-
+            <AlertDialogSlide theme={theme}
+               openState={openState}
+               setopenState={setopenState}
+               navTarget={navTarget}/>
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
          </Toolbar>

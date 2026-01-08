@@ -12,6 +12,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+
+import { useNavigate } from 'react-router-dom'  // or imported from react-router
+
 import SendIcon from '@mui/icons-material/Send';
 // import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -23,16 +26,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 // View / Component 
-export default function AlertDialogSlide({ theme, openState, setopenState }) {
+export default function AlertDialogSlide({ theme, openState, setopenState, navTarget }) {
+
+   // navigation for MenuItem
+   const fnNavigate = useNavigate()
 
    /**
     * Handler-functions. Only properties imported from the parent-component are used:
     */
    const handleClickOpen = () => { setopenState(true) }
    const handleClose = () => { setopenState(false) }
+   const handleBtnAgree = () => { fnNavigate(navTarget) }
 
-   console.log('theme in child: ', theme.theme)
-   // console.log(theme.palette.primary.main)
+   // console.log('theme in child: ', theme.theme)
 
    // 
    return (
@@ -77,7 +83,7 @@ export default function AlertDialogSlide({ theme, openState, setopenState }) {
                      <Button variant="outlined" color="error" onClick={handleClose}>Disagree</Button>
                   </div> */}
                   <div className='col m-1'>
-                     <Button variant="outlined" color="info" onClick={handleClose} endIcon={<SendIcon />}>Agree</Button>
+                     <Button variant="outlined" color="info" onClick={handleBtnAgree} endIcon={<SendIcon />}>Agree</Button>
                   </div>
                </div>
             </DialogActions>
