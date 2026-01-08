@@ -6,7 +6,7 @@
 //
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
-   Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Button, Card,
+   Accordion, AccordionSummary, AccordionDetails, Alert, Avatar, Box, Button, Card,
    Divider, Radio, RadioGroup, Typography, Tooltip,
    Zoom
    // Fade
@@ -199,9 +199,9 @@ export default function Notes({ props, theme }) {
             </header>
 
             <main>
-               <div className="row mt-5" style={{ width: '100%' }}>
-                  <div className="col m-1">
-                     <Box id="idMainBox" maxWidth="xl" sx={{ mt: 1, ml: 5, mr: 5 }}>
+               <div className="row" style={{ width: '100%' }}>
+                  <div className="col m-1 mt-5">
+                     <Box id="idMainBox" maxWidth="xl" sx={{ mt: 5, ml: 5, mr: 5 }}>
                         <div className="row mt-1">
                            <div className="col">
                               <p>Notes page with ThemeProvider</p>
@@ -324,8 +324,8 @@ export default function Notes({ props, theme }) {
                   </div>
 
                   {isReduced &&
-                     <div className='col mr-2 col-animate' style={{ width: '50%' }}>
-                        <Box sx={{ position: 'relative' }}>
+                     <div className='col mt-5 mr-2 col-animate' style={{ width: '50%' }}>
+                        <Box sx={{ position: 'relative', mt: 5 }}>
                            <div className="col text-center mt-2">
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
                                  <p>Card 01 theme.palette.primary.main</p>
@@ -351,7 +351,15 @@ export default function Notes({ props, theme }) {
                            </div>
 
                            <div className='row m-1 border border-danger rounded'>row</div>
-                           <div className='row m-1 border border-danger rounded'>row</div>
+                        </Box>
+
+                        <Box sx={{ position: 'relative', mt: 1 }}>
+                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)',borderRadius: 2, boxShadow: 1 }}></Alert>
+                           <Alert severity="success"
+                              variant="outlined"
+                              sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
+                              This is a success Alert.
+                           </Alert>
                         </Box>
                      </div>
                   }

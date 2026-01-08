@@ -19,7 +19,7 @@ export default function AppBarStd() {
 
    // 
    return (
-      <AppBar sx={{ backgroundColor: 'rgba(40, 45, 60, 0.75)', position: 'fixed' }} >
+      <AppBar sx={{ backgroundColor: 'rgba(40, 45, 60, 0.85)', position: 'fixed' }} >
          <Toolbar>
             <Tooltip title='Home' arrow sx={{}}>
                <IconButton

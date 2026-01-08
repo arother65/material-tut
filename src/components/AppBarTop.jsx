@@ -3,11 +3,12 @@
 */
 
 // imports
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import { useNavigate } from 'react-router-dom'  // or imported from react-router
 // import Slide from '@mui/material/Slide'
+import AlertDialogSlide from '../components/AlertDialogSlide'
 
 //
 export default function AppBarTop() {
@@ -17,6 +18,12 @@ export default function AppBarTop() {
    const open = Boolean(anchorEl)
    const handleClick = (event) => { setAnchorEl(event.currentTarget) }
    const handleClose = () => { setAnchorEl(null) }
+
+   // hook for openState in child-component
+   const [openState, setopenState] = useState(false)
+   useEffect(() => {
+      setopenState(openState)
+   }, [openState])
 
    // navigation for MenuItem
    const fnNavigate = useNavigate()
@@ -121,7 +128,10 @@ export default function AppBarTop() {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     fnNavigate('/create')
+                     setTimeout(() => {
+                        fnNavigate('/create')
+                     }, 2000)
+                     setopenState(true)
                   }}>
                   create page
                </MenuItem>
@@ -129,7 +139,10 @@ export default function AppBarTop() {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     fnNavigate('/about')
+                     setTimeout(() => {
+                        fnNavigate('/about')
+                     }, 2000)
+                     setopenState(true)
                   }}>
                   about page
                </MenuItem>
@@ -141,10 +154,14 @@ export default function AppBarTop() {
                </Backdrop>
             </Menu>
 
+            {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
+            <AlertDialogSlide openState={openState} setopenState={setopenState} />
+
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
          </Toolbar>
       </AppBar>
+
    )  // return()
 }  // AppBarTop()
 

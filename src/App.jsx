@@ -17,6 +17,7 @@ import { createTheme } from '@mui/material/styles'
 //
 import Notes from './pages/Notes.jsx'
 import Create from './pages/Create.jsx'
+import About from './pages/About.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 //
@@ -84,6 +85,7 @@ export default function AppRouter(props) {
           {/* Each route has it's own URL */}
           <Route index exact path="/" element={<Notes props={props} theme={actTheme} />} />
           <Route path="/create" element={<Create props={props} theme={actTheme} />} />
+          <Route path="/about" element={<About props={props} theme={actTheme} />} />
 
           {/* other route(s) to diffenrent components */}
           <Route path="*" element={<NotFound props={props} theme={actTheme} />} />

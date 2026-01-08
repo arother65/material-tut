@@ -1,20 +1,15 @@
 /** 
-*   Stand: 15.10.2025   
+*   Stand: 08.01.2026
 *   Controller and view "Create", data from JSON-Server 
 */
 
-import React from 'react'  // useState etc.
-import { Container, Typography, TextField, RadioGroup, Radio, FormControlLabel } from '@mui/material'  //
+// import React from 'react'  // useState etc.
+import { Container, Typography, TextField, RadioGroup, Radio } from '@mui/material'  //
 import AppBarStd from '../components/AppBarStd'
 
 
 //
 export default function Create({ theme }) {
-
-  // const [localVariable, setFunction] = React.useState(initialValue);
-
-  // interact with object from json-server, data from ./data-folder
-  // React.useEffect( () => { fetch() }, [] )  // useEffect() 
 
   // 
   return (
