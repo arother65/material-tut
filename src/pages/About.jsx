@@ -6,8 +6,7 @@
 // import React from 'react'  // useState etc.
 import { Container, Typography, TextField, RadioGroup, Radio } from '@mui/material'  //
 import AppBarStd from '../components/AppBarStd'
-import AlertDialogSlide from '../components/AlertDialogSlide'
-
+import Footer from '../components/Footer.jsx'
 
 //
 export default function About({ theme }) {
@@ -65,9 +64,7 @@ export default function About({ theme }) {
         </Container>
       </main>
 
-      <footer>
-
-      </footer>
+      <Footer theme={theme} />
     </>
   )
 }  // About()

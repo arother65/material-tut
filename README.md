@@ -1,9 +1,9 @@
-# Stand: 15.10.2025
+# Stand: 08.01.2026
 
 # Starter Project for the Material UI-components
 - using bootstrap-scss in /src/scss
 
-# MongoDB
+## MongoDB
 import mongodb from 'mongodb';
 import MongoClient from 'mongodb';
 
@@ -19,6 +19,10 @@ client.connect(err => {
 
 # https://www.mongodb.com/docs/drivers/node/current/connect/mongoclient/#std-label-node-mongoclient
 
-# other databases
+## other databases
 - firebase: intransparent usage , via SDK-access?
 - postgreSQL: maybe use JDBC-driver
+
+# i18n / Internationalization
+- in folder /src/i18m 
+

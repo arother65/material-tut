@@ -7,16 +7,10 @@
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
    Accordion, AccordionSummary, AccordionDetails, Alert, Avatar, Box, Button, Card,
-   Divider, Radio, RadioGroup, Typography, Tooltip,
-   Zoom
-   // Fade
+   Radio, RadioGroup, Typography, Tooltip
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { makeStyles } from '@mui/styles'  // errs when taken from '@mui/material/styles'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -24,15 +18,21 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ClickableWheel from '../components/Wheel.jsx'
 import AppBarTop from '../components/AppBarTop.jsx'
-
 import SvgTests from '../components/SvgTests.jsx'
-
+import Footer from '../components/Footer.jsx'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
+// Texts from /src/i18n
+import deTexts from '../i18n/i18n-de.json'
+
+
 // 
 export default function Notes({ props, theme }) {
+
+   // imported texts
+   console.log(deTexts)
 
    // connect to hosting site firebase
 
@@ -184,7 +184,7 @@ export default function Notes({ props, theme }) {
       <>
          <ThemeProvider theme={theme}>
             <header>
-               <AppBarTop theme={theme}/>
+               <AppBarTop theme={theme} />
             </header>
 
             <main>
@@ -304,7 +304,7 @@ export default function Notes({ props, theme }) {
                         </Box>
 
                         <Box sx={{ position: 'relative', mt: 1 }}>
-                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)',borderRadius: 2, boxShadow: 1 }}></Alert>
+                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}></Alert>
                            <Alert severity="success"
                               variant="outlined"
                               sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
@@ -382,9 +382,7 @@ export default function Notes({ props, theme }) {
                </div>
             </main>
 
-            <footer>
-
-            </footer>
+            <Footer theme={theme} />
          </ThemeProvider >
       </>
    )

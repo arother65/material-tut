@@ -117,7 +117,6 @@ export default function AppBarTop(theme) {
                </Backdrop>
             </Menu>
 
-
             {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
             <AlertDialogSlide theme={theme}
                openState={openState}

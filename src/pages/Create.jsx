@@ -6,6 +6,10 @@
 // import React from 'react'  // useState etc.
 import { Container, Typography, TextField, RadioGroup, Radio } from '@mui/material'  //
 import AppBarStd from '../components/AppBarStd'
+import Footer from '../components/Footer.jsx'
+
+// Texts from /src/i18n
+// import deTexts from '../i18n/i18n-de.json'
 
 
 //
@@ -55,9 +59,7 @@ export default function Create({ theme }) {
         </Container>
       </main>
 
-      <footer>
-
-      </footer>
+      <Footer theme={theme} />
     </>
   )
 }

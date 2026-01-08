@@ -47,6 +47,8 @@ export default function AppRouter(props) {
       },
       success: {
         main: '#0ea30eff',
+        light: '#6fbf73', 
+        dark: '#357a38',
       },
       warning: {
         main: '#ff9900',
@@ -56,6 +58,7 @@ export default function AppRouter(props) {
       },
       background: {
         main: '#88090982',
+        light: ''
       },
       contrastThreshold: 3,
       tonalOffset: 0.5,
@@ -72,7 +75,7 @@ export default function AppRouter(props) {
 
   //
   /*   useEffect(() => {
-      // get the actual them from INDEX.HTML
+      // get the actual theme from INDEX.HTML
       // const actTheme = getActTheme()
       setActTheme(theme)
     }, [theme])  // useEffect() */
