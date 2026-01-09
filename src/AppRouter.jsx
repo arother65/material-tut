@@ -32,7 +32,7 @@ export default function AppRouter(props) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#556cd6ff',
+        main: process.env.REACT_APP_PRIMARY_COLOR || '#556cd6ff',  // '#556cd6ff',
         light: '#778deaff',
         dark: '#334ac2ff',
       },

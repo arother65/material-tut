@@ -14,16 +14,16 @@ import { ThemeProvider } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import ClickableWheel from '../components/Wheel.jsx'
-import AppBarTop from '../components/AppBarTop.jsx'
-import SvgTests from '../components/SvgTests.jsx'
-import Footer from '../components/Footer.jsx'
+import ClickableWheel from '../src/components/Wheel.jsx'
+import AppBarTop from '../src/components/AppBarTop.jsx'
+import SvgTests from '../src/components/SvgTests.jsx'
+import Footer from '../src/components/Footer.jsx'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
 // Texts from /src/i18n
-import deTexts from '../i18n/i18n-de.json'
+import deTexts from '../src/i18n/i18n-de.json'
 
 
 // 
@@ -84,18 +84,28 @@ export default function Notes({ props, theme }) {
 
    // reducing/restoring the container size
    const [isReduced, setIsReduced] = useState(false)
-   useEffect(() => {
-      setIsReduced(isReduced)
-   }, [isReduced])
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
+
+   // create CSS class / classes (test only)
+   // const useStyles = makeStyles({
+   //    heading: {
+   //       color: 'olivedrab',
+   //       fontSize: '18px',
+   //       fontWeight: 'initial',
+   //    },
+   //    details: {
+   //       backgroundColor: 'rgba(220, 175, 30, 0.5)',
+   //    },
+   //    color: 'white',
+   //    border: 'solid',
+   //    // border-color: 'blue',
+   // })
+   // const classes = useStyles()
 
    // fn used to reduce size of <Box />
    const switchContainerWidth = () => {
       const mainBox = document.getElementById('idMainBox')
-      const colMainBox = document.getElementById('idColMainBox')
-
-      console.log(process.env.REACT_APP_PRIMARY_COLOR )
 
       switch (isReduced) {
          case false:
@@ -106,11 +116,6 @@ export default function Notes({ props, theme }) {
                // className = className + ' ' + classes.widthBox.width50  // errs 
                className = className + ' widthBox50'
                mainBox.setAttribute('class', className)
-
-               // using col, the parent of box,  instead of Box
-               className = colMainBox.getAttribute('class')
-               className = className + ' widthBox50'
-               colMainBox.setAttribute('class', className)
 
                setIsReduced(true)
             }
@@ -169,7 +174,7 @@ export default function Notes({ props, theme }) {
 
             <main>
                <div className="row">
-                  <div className="col m-1 mt-5" id="idColMainBox" >
+                  <div className="col m-1 mt-5">
                      <Box id="idMainBox" width='95%' sx={{ mt: 5, ml: 5, mr: 5 }}>
 
                         <Fade in={true} timeout={5000}>
@@ -183,18 +188,18 @@ export default function Notes({ props, theme }) {
                                     <Button
                                        id='idBtnSwitchContainer'
                                        startIcon={startIcon}
-                                       color="inherit"
+                                       color=""
                                        onClick={switchContainerWidth}
                                        variant="contained" />
                                  </Tooltip>
                               </div>
                            </div>
                         </Fade>
-                        <Typography component="h4" variant="h4" gutterBottom="true">
+                        <Typography component="h4" variant="h4" gutterBottom="true" sx={{}}>
                            Notes page h4
                         </Typography>
 
-                        <Typography component="h5" variant="h5" gutterBottom="true">
+                        <Typography component="h5" variant="h5" gutterBottom="true" sx={{}}>
                            <ul>
                               <li>text from li h5</li>
                            </ul>
@@ -213,7 +218,7 @@ export default function Notes({ props, theme }) {
                               expandIcon={<ExpandMoreIcon />}
                               aria-controls="panel1-content"
                            >
-                              <Typography component="span">
+                              <Typography  component="span">
                                  Typography on AccordionSummary
                               </Typography>
                            </AccordionSummary>
@@ -306,15 +311,6 @@ export default function Notes({ props, theme }) {
                         </Box>
                      </div>
                   }
-               </div>
-
-               <div className='row m-1' width='100%'>
-                  <div className='col m-1 border rounded' width='50%'>
-                     col01
-                  </div>
-                  <div className='col m-1 border rounded' width='50%'>
-                     col02
-                  </div>
                </div>
 
                {/* using component Accordion */}

@@ -11936,6 +11936,10 @@ textarea.form-control-lg {
   pointer-events: none;
 }
 
+.widthBox50 {
+  width: "50%";
+}
+
 [data-bs-theme=blue] {
   --bs-body-color: var(--bs-white);
   --bs-body-bg: rgb(23.5, 24.2, 63.9);
