@@ -83,10 +83,15 @@ export default function Notes({ props, theme }) {
    };
 
    // reducing/restoring the container size
-   const [isReduced, setIsReduced] = useState(false)
+   let [isReduced, setIsReduced] = useState(false)
+
+   /*    const setIsReduced = (newState) => {
+         isReduced = newState
+      }
+    */
    useEffect(() => {
       setIsReduced(isReduced)
-   }, [isReduced])
+   }, [isReduced, setIsReduced])
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
@@ -171,8 +176,8 @@ export default function Notes({ props, theme }) {
             <main>
                <div className="row">
                   <div className="col m-1 mt-5" id="idColMainBox" width='95%'>
-                     <Box id="idMainBox"  sx={{ mt: 5, ml: 5, mr: 5 }}>
-                        <Fade in={true} timeout={5000}>
+                     <Box id="idMainBox" sx={{ mt: 5, ml: 5, mr: 5 }}>
+                        <Fade in={true} timeout={2000}>
                            <div className="row mt-1">
                               <div className="col">
                                  <p>Notes page with ThemeProvider</p>
@@ -263,17 +268,17 @@ export default function Notes({ props, theme }) {
                         <Box sx={{ position: 'relative', mt: 5 }}>
                            <div className="col text-center mt-2">
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'slategrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
 
                                  <p>Card 01 theme.palette.primary.main</p>
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'darkgrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
 
                                  <p>Card 02 theme.palette.primary.dark</p>
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'lightgrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
 
                                  <p>Card 03 theme.palette.secondary.light</p>
                               </Card>
@@ -308,7 +313,7 @@ export default function Notes({ props, theme }) {
                   }
                </div>
 
-{/*                <Tooltip title="Switch col width">
+               <Tooltip title="Switch col width">
                   <Button
                      id='idBtnSwitchContainer'
                      startIcon={startIcon}
@@ -343,7 +348,7 @@ export default function Notes({ props, theme }) {
                   <div id='idCol02' className='col m-1 border rounded' width='50%'>
                      col02
                   </div>
-               </div> */}
+               </div>
 
                {/* using component Accordion */}
                <div className="row m-3 rounded shadow">
