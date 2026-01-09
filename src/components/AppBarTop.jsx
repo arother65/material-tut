@@ -7,19 +7,16 @@ import { useState, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, FormControl, InputLabel, Select, Tooltip, Zoom } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 
-// rbg
+// Radio Butons inclusive a Group for these 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-
 // customer components
 import AlertDialogSlide from '../components/AlertDialogSlide'
 
-
-
 //
-export default function AppBarTop(theme) {
+export default function AppBarTop({theme}) {
 
    // hooks for a menu-component 
    const [anchorEl, setAnchorEl] = useState(null)
@@ -121,7 +118,8 @@ export default function AppBarTop(theme) {
             <AlertDialogSlide theme={theme}
                openState={openState}
                setopenState={setopenState}
-               navTarget={navTarget} />
+               navTarget={navTarget} 
+               dialogTexts={{ title: 'Titel' }}/>
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
 

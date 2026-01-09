@@ -27,6 +27,7 @@ import Layout from './components/Layout.js'
 export default function AppRouter(props) {
 
   // console.log(props)
+
   // create theme: typeof Theme
   const theme = createTheme({
     palette: {
@@ -47,7 +48,7 @@ export default function AppRouter(props) {
       },
       success: {
         main: '#0ea30eff',
-        light: '#6fbf73', 
+        light: '#6fbf73',
         dark: '#357a38',
       },
       warning: {
@@ -71,14 +72,7 @@ export default function AppRouter(props) {
     // .transitions
     // .components
   })  // createTheme()
-  const [actTheme, setActTheme] = useState(theme)
-
-  //
-  /*   useEffect(() => {
-      // get the actual theme from INDEX.HTML
-      // const actTheme = getActTheme()
-      setActTheme(theme)
-    }, [theme])  // useEffect() */
+  const [actTheme] = useState(theme)
 
   //
   return (

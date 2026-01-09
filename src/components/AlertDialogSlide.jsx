@@ -25,10 +25,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide direction="up" ref={ref} {...props} />
 })
 
-// View / Component 
-export default function AlertDialogSlide({ theme, openState, setopenState, navTarget }) {
+// View / Component "AlertDialogSlide"
+export default function AlertDialogSlide({ theme, openState, setopenState, navTarget, dialogTexts }) {
 
-   // navigation for MenuItem
+   // navigation-function from "factory-function" useNavigate() for use with Button 
    const fnNavigate = useNavigate()
 
    /**
@@ -39,6 +39,7 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
    const handleBtnAgree = () => { fnNavigate(navTarget) }
 
    // console.log('theme in child: ', theme.theme)
+   // console.log(dialogTexts)
 
    // 
    return (
@@ -52,9 +53,10 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
             keepMounted
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
+            // sx={{ border: 'black' }}
          >
             {/* handlinh theme-object unklar  */}
-            <DialogTitle sx={{ backgroundColor: theme.theme.palette.primary.dark }}>{"Dialog Title   "}
+            <DialogTitle sx={{ backgroundColor: theme.palette.primary.dark }}>{"Dialog Title   "}
                <IconButton
                   id="demo-positioned-menu"
                   size="large"
@@ -66,24 +68,36 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
                   <CancelIcon sx={{ color: 'darkred', justifyContent: 'right' }} />
                </IconButton>
             </DialogTitle>
-            <DialogContent sx={{ backgroundColor: theme.theme.palette.primary.light }}>
+            <DialogContent sx={{ backgroundColor: theme.palette.primary.light }}>
                {/* <DialogContentText id="alert-dialog-slide-description">
                   Dialog from component "AlertDialogSlide.jsx".
                </DialogContentText> */}
-               <div className='row border m-1'>
+               <div className='row m-1'>
                   <Card >
-                     <h6>h6 on Card</h6>
+                     <h6>...this is your lucky day</h6>
+                  </Card>
+               </div>
+               <div className='row m-1'>
+                  <Card >
+                     <h6>Payment for you is approved!</h6>
                   </Card>
                </div>
             </DialogContent>
- 
-            <DialogActions sx={{ backgroundColor: theme.theme.palette.primary.main }}>
+
+            <DialogActions >
                <div className='row border-2 border-top border-success m-1'>
                   {/* <div className='col m-1'>
                      <Button variant="outlined" color="error" onClick={handleClose}>Disagree</Button>
                   </div> */}
                   <div className='col m-1'>
-                     <Button variant="outlined" color="info" onClick={handleBtnAgree} endIcon={<SendIcon />}>Agree</Button>
+                     <Button variant="contained"
+                        color="primary"
+                        onClick={handleBtnAgree}
+                        endIcon={<SendIcon />}
+                        sx={{ color: 'white' }}
+                     >
+                        Agree
+                     </Button>
                   </div>
                </div>
             </DialogActions>

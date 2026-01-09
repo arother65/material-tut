@@ -32,14 +32,16 @@ import deTexts from '../i18n/i18n-de.json'
 export default function Notes({ props, theme }) {
 
    // imported texts
-   console.log(deTexts)
+   // console.log('deTexts: ', deTexts)
+   // console.log('theme: ', theme)
+   // console.log(theme.palette.primary)
 
-   // connect to hosting site firebase
+   //* Connect to hosting site firebase
 
    // TODO: Add SDKs for Firebase products that you want to use
    // https://firebase.google.com/docs/web/setup#available-libraries
 
-   // Your web app's Firebase configuration
+   //* Your web app's Firebase configuration
    const firebaseConfig = {
       apiKey: "AIzaSyBvvrVevAgumjE-U2e2Wp43VdZb9Y8RSh8",
       authDomain: "prj-test-98994.firebaseapp.com",
@@ -49,14 +51,13 @@ export default function Notes({ props, theme }) {
       appId: "1:487823466018:web:f375d773e8e401ae76747b"
    }
 
-   // Initialize Firebase
+   //* Initialize Firebase
    const app = initializeApp(firebaseConfig);
 
-   // console.log( {...theme } ) // puts out the whole object
-   // get the current windows sizes:
+   //* Get the current windows sizes:
    console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
 
-   // handler for <Accordion />
+   // handler for the <Accordion /> - component used:
    const [expanded, setExpanded] = React.useState(false);
    const [expanded00, setExpanded00] = React.useState(false);
    const [expanded02, setExpanded02] = React.useState(false);
@@ -277,13 +278,19 @@ export default function Notes({ props, theme }) {
                      <div className='col mt-5 mr-2 col-animate' style={{ width: '50%' }}>
                         <Box sx={{ position: 'relative', mt: 5 }}>
                            <div className="col text-center mt-2">
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
+                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}> */}
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'slategrey', color: 'white' }}>
+
                                  <p>Card 01 theme.palette.primary.main</p>
                               </Card>
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
+                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}> */}
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'darkgrey', color: 'white' }}>
+
                                  <p>Card 02 theme.palette.primary.dark</p>
                               </Card>
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
+                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}> */}
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'lightgrey', color: 'white' }}>
+
                                  <p>Card 03 theme.palette.secondary.light</p>
                               </Card>
                            </div>
@@ -304,7 +311,9 @@ export default function Notes({ props, theme }) {
                         </Box>
 
                         <Box sx={{ position: 'relative', mt: 1 }}>
-                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}></Alert>
+                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
+                              Simple Alert 
+                           </Alert>
                            <Alert severity="success"
                               variant="outlined"
                               sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
