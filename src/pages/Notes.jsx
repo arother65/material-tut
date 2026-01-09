@@ -95,23 +95,24 @@ export default function Notes({ props, theme }) {
       const mainBox = document.getElementById('idMainBox')
       const colMainBox = document.getElementById('idColMainBox')
 
-      console.log(process.env.REACT_APP_PRIMARY_COLOR )
+      console.log(process.env.REACT_APP_PRIMARY_COLOR)
 
       switch (isReduced) {
          case false:
             if (mainBox) {
-               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
+               // console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-               let className = mainBox.getAttribute('class')
-               // className = className + ' ' + classes.widthBox.width50  // errs 
-               className = className + ' widthBox50'
-               mainBox.setAttribute('class', className)
+               // let className = mainBox.getAttribute('class')
+               // className = className + ' widthBox50'
+               // mainBox.setAttribute('class', className)
 
-               // using col, the parent of box,  instead of Box
-               className = colMainBox.getAttribute('class')
-               className = className + ' widthBox50'
-               colMainBox.setAttribute('class', className)
+               // // using col, the parent of box,  instead of Box
+               // className = colMainBox.getAttribute('class')
+               // className = className + ' widthBox50'
+               // colMainBox.setAttribute('class', className)
 
+               colMainBox.style.maxWidth = '50%'
+               // colMainBox.setAttribute('style', 'maxWidth: 50%') 
                setIsReduced(true)
             }
             break;
@@ -169,9 +170,8 @@ export default function Notes({ props, theme }) {
 
             <main>
                <div className="row">
-                  <div className="col m-1 mt-5" id="idColMainBox" >
-                     <Box id="idMainBox" width='95%' sx={{ mt: 5, ml: 5, mr: 5 }}>
-
+                  <div className="col m-1 mt-5" id="idColMainBox" width='95%'>
+                     <Box id="idMainBox"  sx={{ mt: 5, ml: 5, mr: 5 }}>
                         <Fade in={true} timeout={5000}>
                            <div className="row mt-1">
                               <div className="col">
@@ -308,14 +308,42 @@ export default function Notes({ props, theme }) {
                   }
                </div>
 
+{/*                <Tooltip title="Switch col width">
+                  <Button
+                     id='idBtnSwitchContainer'
+                     startIcon={startIcon}
+                     color="inherit"
+                     onClick={() => {
+                        // alert('vvv')
+                        let col01 = document.getElementById('idCol01')
+                        // alert(col01.style.width)
+                        col01.style.maxWidth = '10%'
+                        // setIsReduced(true)
+                     }}
+                     variant="contained" />
+               </Tooltip>
+               <Tooltip title="Switch col width back">
+                  <Button
+                     id='idBtnSwitchContainer'
+                     startIcon={<ArrowForwardIosOutlinedIcon />}
+                     color="inherit"
+                     onClick={() => {
+                        // alert('vvv')
+                        let col01 = document.getElementById('idCol01')
+                        // alert(col01.style.width)
+                        col01.style.maxWidth = '50%'
+                        // setIsReduced(true)
+                     }}
+                     variant="contained" />
+               </Tooltip>
                <div className='row m-1' width='100%'>
-                  <div className='col m-1 border rounded' width='50%'>
+                  <div id='idCol01' className='col m-1 border rounded' width='50%'>
                      col01
                   </div>
-                  <div className='col m-1 border rounded' width='50%'>
+                  <div id='idCol02' className='col m-1 border rounded' width='50%'>
                      col02
                   </div>
-               </div>
+               </div> */}
 
                {/* using component Accordion */}
                <div className="row m-3 rounded shadow">
