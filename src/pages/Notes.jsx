@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
    Accordion, AccordionSummary, AccordionDetails, Alert, Avatar, Box, Button, Card,
-   Radio, RadioGroup, Typography, Tooltip
+   Fade, Radio, RadioGroup, Typography, Tooltip
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
@@ -85,48 +85,34 @@ export default function Notes({ props, theme }) {
    };
 
    // reducing/restoring the container size
-   const [containerClassList, setContainerClassList] = useState()
    const [isReduced, setIsReduced] = useState(false)
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
    // fn used to reduce size of <Box />
-   const switchContainerWidth = async () => {
-
+   const switchContainerWidth = () => {
       const mainBox = document.getElementById('idMainBox')
-
-      setContainerClassList(mainBox.classList)
 
       switch (isReduced) {
          case false:
             if (mainBox) {
-
                console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-               mainBox.getAttribute('style')
-               mainBox.style.maxWidth = '50%'
                // mainBox.style.backgroundColor = 'transparent'
 
                mainBox.setAttribute('style', 'maxWidth: 50%')
                console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
-
                setIsReduced(true)
             }
             break;
-
          case true:
             if (mainBox) {
-
-               //? set window.innerWidth, window.innerHeight : errs 
                console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-               mainBox.getAttribute('style')
+               // mainBox.getAttribute('style') 
                mainBox.style.maxWidth = '100%'
-               // mainBox.style.backgroundColor = 'transparent'
-
                mainBox.setAttribute('style', 'maxWidth: 100%')
                console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
-
                setIsReduced(false);
             }
             break;
@@ -189,28 +175,33 @@ export default function Notes({ props, theme }) {
             </header>
 
             <main>
-               <div className="row" style={{ width: '100%' }}>
+               <div className="row">
                   <div className="col m-1 mt-5">
-                     <Box id="idMainBox" maxWidth="xl" sx={{ mt: 5, ml: 5, mr: 5 }}>
-                        <div className="row mt-1">
-                           <div className="col">
-                              <p>Notes page with ThemeProvider</p>
-                              {/* <Divider orientation='vertical' component={FormControl} sx={{ color: 'white', ml: 3, mr: 3, width: 5 }} />                               */}
-                              <Tooltip title="Switch container width">
-                                 <Button
-                                    id='idBtnSwitchContainer'
-                                    startIcon={startIcon}
-                                    color="background"
-                                    onClick={switchContainerWidth}
-                                    variant="contained" />
-                              </Tooltip>
-                           </div>
-                        </div>
+                     <Box id="idMainBox" width= '95%'  sx={{ mt: 5, ml: 5, mr: 5 }}>
 
-                        <Typography component="h4" variant="h4" gutterBottom="true" className={classes.details}>
+                        <Fade in={true} timeout={5000}>
+                           <div className="row mt-1">
+                              <div className="col">
+                                 <p>Notes page with ThemeProvider</p>
+                              </div>
+                              <div className="col text-end">
+                                 {/* <Divider orientation='vertical' component={FormControl} sx={{ color: 'white', ml: 3, mr: 3, width: 5 }} />                               */}
+                                 <Tooltip title="Switch container width">
+                                    <Button
+                                       id='idBtnSwitchContainer'
+                                       startIcon={startIcon}
+                                       color="background"
+                                       onClick={switchContainerWidth}
+                                       variant="contained" />
+                                 </Tooltip>
+                              </div>
+                           </div>
+                        </Fade>
+                        <Typography component="h4" variant="h4" gutterBottom="true" sx={{}}>
                            Notes page h4
                         </Typography>
-                        <Typography component="h5" variant="h5" gutterBottom="true">
+
+                        <Typography component="h5" variant="h5" gutterBottom="true" sx={{}}>
                            <ul>
                               <li>text from li h5</li>
                            </ul>
@@ -312,7 +303,7 @@ export default function Notes({ props, theme }) {
 
                         <Box sx={{ position: 'relative', mt: 1 }}>
                            <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
-                              Simple Alert 
+                              Simple Alert
                            </Alert>
                            <Alert severity="success"
                               variant="outlined"
@@ -359,7 +350,7 @@ export default function Notes({ props, theme }) {
                         <div className='circle border'>
                            <span class="label">1</span>
                            <div className='circleInner border mx-2 p-1'>
-                              <span class="label">inner</span>
+                              <span className="label">inner</span>
                            </div>
                         </div>
                      </AccordionDetails>

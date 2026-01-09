@@ -1,7 +1,7 @@
 
 //
 import { createRoot } from 'react-dom/client';
-import AppRouter from './App.jsx';
+import AppRouter from './AppRouter.jsx';
 
 // global CSS file:
 import '../src/scss/index.css'; 

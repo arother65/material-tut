@@ -119,7 +119,7 @@ export default function AppBarTop({theme}) {
                openState={openState}
                setopenState={setopenState}
                navTarget={navTarget} 
-               dialogTexts={{ title: 'Titel' }}/>
+               dialogTexts={{ title: 'Titel from parent' }}/>
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
 

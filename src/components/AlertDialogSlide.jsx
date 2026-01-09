@@ -22,7 +22,7 @@ import { IconButton } from '@mui/material';
 
 // Declarations 
 const Transition = React.forwardRef(function Transition(props, ref) {
-   return <Slide direction="up" ref={ref} {...props} />
+   return <Slide direction="right" ref={ref} {...props} />
 })
 
 // View / Component "AlertDialogSlide"
@@ -47,27 +47,28 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
          <Button variant="outlined" onClick={handleClickOpen}>
             Slide in alert dialog
          </Button>
+
          <Dialog
             open={openState}
             slots={{ transition: Transition }}
             keepMounted
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
-            // sx={{ border: 'black' }}
          >
-            {/* handlinh theme-object unklar  */}
-            <DialogTitle sx={{ backgroundColor: theme.palette.primary.dark }}>{"Dialog Title   "}
+            <DialogTitle sx={{ backgroundColor: theme.palette.primary.dark }}>
+               { dialogTexts.title }
                <IconButton
                   id="demo-positioned-menu"
                   size="large"
                   edge="start"
                   color="inherit"
-                  sx={{ mr: 2 }}
+                  sx={{ ml: 20, justifyContent: 'right' }}
                   onClick={handleClose}
                >
                   <CancelIcon sx={{ color: 'darkred', justifyContent: 'right' }} />
                </IconButton>
             </DialogTitle>
+
             <DialogContent sx={{ backgroundColor: theme.palette.primary.light }}>
                {/* <DialogContentText id="alert-dialog-slide-description">
                   Dialog from component "AlertDialogSlide.jsx".
