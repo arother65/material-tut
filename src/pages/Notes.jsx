@@ -1,5 +1,5 @@
 /** 
-*   Stand: 08.01.2025
+*   Stand: 10.01.2026
 *   Theming and colors: https://mui.com/material-ui/customization/default-theme/?expand-path=$.palette
 */
 

@@ -5,14 +5,16 @@
 // imports
 // import { useState, forwardRef } from 'react'
 
-import { AppBar, IconButton, Toolbar, Tooltip } from "@mui/material"
+import { AppBar, Chip, IconButton, Toolbar, Tooltip } from "@mui/material"
 import { useNavigate } from 'react-router-dom'  // or imported from react-router
 import HomeIcon from '@mui/icons-material/Home'
-
 import logo from '../logo.svg'
 
 //
-export default function AppBarStd() {
+export default function AppBarStd({ theme, showLoginState }) {
+
+   // checking imported props
+   // console.log(showLoginState)
 
    // navigation for MenuItem
    const fnNavigate = useNavigate()
@@ -40,6 +42,12 @@ export default function AppBarStd() {
                   </a>
                </nav>
             </Tooltip>
+
+            {showLoginState &&
+               <Chip label="logged in" color="success" variant="filled"
+                  sx={{ mt: 1, color: 'white' }}
+               />
+            }
          </Toolbar>
       </AppBar>
    )  // return()
