@@ -11,9 +11,15 @@ import {
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
+
+// icons 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
+
+//* Customer components
 // import ClickableWheel from '../components/Wheel.jsx'
 import AppBarTop from '../components/AppBarTop.jsx'
 import SvgTests from '../components/SvgTests.jsx'
@@ -83,11 +89,6 @@ export default function Notes({ props, theme }) {
 
    // reducing/restoring the container size
    let [isReduced, setIsReduced] = useState(false)
-
-   /*    const setIsReduced = (newState) => {
-         isReduced = newState
-      }
-    */
    useEffect(() => {
       setIsReduced(isReduced)
    }, [isReduced, setIsReduced])
@@ -329,9 +330,16 @@ export default function Notes({ props, theme }) {
                      }}
                      variant="contained" />
                </Tooltip>
+
                <div className='row m-1 border'>
                   <div id='idCol01' className='col m-1 w-100 border rounded'>
                      col01
+
+                     {/* MUI: Unsupported `` color. */}
+                     {/* <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+                        Here is a gentle confirmation that your action was successful.
+                     </Alert> */}
+
                   </div>
                   {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
                   <div id='idCol02' className='col m-1 invisible'>

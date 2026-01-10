@@ -16,7 +16,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import AlertDialogSlide from '../components/AlertDialogSlide'
 
 //
-export default function AppBarTop({theme}) {
+export default function AppBarTop({ theme }) {
 
    // hooks for a menu-component 
    const [anchorEl, setAnchorEl] = useState(null)
@@ -72,7 +72,7 @@ export default function AppBarTop({theme}) {
                aria-controls={open ? 'demo-positioned-menu' : undefined}
                onClick={handleClick}
             >
-               <MenuIcon sx={{ color: 'green' }} />
+               <MenuIcon sx={{ color: 'lightgreen' }} />
             </IconButton>
             <Menu
                id="demo-positioned-menu"
@@ -118,8 +118,8 @@ export default function AppBarTop({theme}) {
             <AlertDialogSlide theme={theme}
                openState={openState}
                setopenState={setopenState}
-               navTarget={navTarget} 
-               dialogTexts={{ title: 'Titel from parent' }}/>
+               navTarget={navTarget}
+               dialogTexts={{ title: 'Titel from parent' }} />
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
 
@@ -165,7 +165,7 @@ export default function AppBarTop({theme}) {
                   slotProps={{
                      transition: { timeout: 500 },
                   }}>
-                  <FormControl variant="filled" sx={{ minWidth: 100 }}>
+                  <FormControl className='border border-warning rounded' variant="filled" sx={{ minWidth: 100, backgroundColor: 'lightgreen' }}>
                      <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
                      <Select
                         labelId="demo-simple-select-label"

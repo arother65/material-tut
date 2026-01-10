@@ -30,7 +30,7 @@ export default function AppBarStd() {
                   sx={{ mr: 2 }}
                   onClick={() => { fnNavigate('/') }}
                >
-                  <HomeIcon sx={{ color: 'green' }} />
+                  <HomeIcon sx={{ color: 'lightgreen' }} />
                </IconButton>
             </Tooltip>
             <Tooltip title='ReactJS home' arrow >
