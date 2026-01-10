@@ -25,7 +25,6 @@ import { initializeApp } from "firebase/app";
 // Texts from /src/i18n
 // import deTexts from '../i18n/i18n-de.json'
 
-
 // 
 export default function Notes({ props, theme }) {
 
@@ -123,12 +122,12 @@ export default function Notes({ props, theme }) {
             break;
          case true:
             if (mainBox) {
-               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
+               console.log('colMainBox.style.maxWidth', colMainBox.style.maxWidth)
 
                // mainBox.getAttribute('style') 
-               mainBox.style.maxWidth = '100%'
-               mainBox.setAttribute('style', 'maxWidth: 100%')
-               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
+               colMainBox.style.maxWidth = '100%'
+               // mainBox.setAttribute('style', 'maxWidth: 100%')
+               console.log('colMainBox.style.maxWidth', colMainBox.style.maxWidth)
                setIsReduced(false);
             }
             break;
@@ -206,7 +205,7 @@ export default function Notes({ props, theme }) {
                         </Typography>
 
                         {/* using component Accordion */}
-{/*                         <Accordion
+                        {/*                         <Accordion
                            className='bg-component rounded-2 mt-1 shadow'
                            expanded={expanded00}
                            onChange={handleExpansion}
@@ -267,16 +266,12 @@ export default function Notes({ props, theme }) {
                      <div className='col mt-5 mr-2 col-animate' style={{ width: '50%' }}>
                         <Box sx={{ position: 'relative', mt: 5 }}>
                            <div className="col text-center mt-2">
-                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}> */}
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
-
                                  <p>Card 01 theme.palette.primary.main</p>
                               </Card>
-                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}> */}
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
                                  <p>Card 02 theme.palette.primary.dark</p>
                               </Card>
-                              {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}> */}
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
                                  <p>Card 03 theme.palette.secondary.light</p>
                               </Card>
@@ -297,16 +292,9 @@ export default function Notes({ props, theme }) {
                            <div className='row m-1 border border-danger rounded'>row</div>
                         </Box>
 
-{/*                         <Box sx={{ position: 'relative', mt: 1 }}>
-                           <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
-                              Simple Alert
-                           </Alert>
-                           <Alert severity="success"
-                              variant="outlined"
-                              sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
-                              This is a success Alert.
-                           </Alert>
-                        </Box> */}
+                        <Box sx={{ position: 'relative', mt: 1 }}>
+                           <div className='row m-1 border border-danger rounded'>row</div>
+                        </Box>
                      </div>
                   }
                </div>
@@ -337,7 +325,7 @@ export default function Notes({ props, theme }) {
                         let col02 = document.getElementById('idCol02')
                         // let col02Classlist = col02.getAttribute('class')
                         let col02Classlist = 'col m-1 border rounded'
-                        col02.setAttribute('class', col02Classlist) 
+                        col02.setAttribute('class', col02Classlist)
                      }}
                      variant="contained" />
                </Tooltip>
