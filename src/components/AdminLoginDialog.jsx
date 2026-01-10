@@ -91,6 +91,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
          setLoginError(false)
          setLoggedIn(true)
          setLoginAttempts(0)
+         localStorage.setItem("userLoggedIn", true)
          fnNavigate(navTarget)
          return
       }

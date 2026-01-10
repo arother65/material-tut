@@ -11,10 +11,7 @@ import HomeIcon from '@mui/icons-material/Home'
 import logo from '../logo.svg'
 
 //
-export default function AppBarStd({ theme, showLoginState }) {
-
-   // checking imported props
-   // console.log(showLoginState)
+export default function AppBarStd({ theme, showLoginState, userLoggedIn }) {
 
    // navigation for MenuItem
    const fnNavigate = useNavigate()
@@ -43,10 +40,11 @@ export default function AppBarStd({ theme, showLoginState }) {
                </nav>
             </Tooltip>
 
+            {showLoginState && userLoggedIn &&
+               <Chip label="logged in" color="success" variant="filled" sx={{ mt: 1, color: 'white' }} />
+            }
             {showLoginState &&
-               <Chip label="logged in" color="success" variant="filled"
-                  sx={{ mt: 1, color: 'white' }}
-               />
+               <Chip label="NOT logged in" color="info" variant="filled" sx={{ mt: 1, color: 'white' }} />
             }
          </Toolbar>
       </AppBar>

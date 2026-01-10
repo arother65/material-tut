@@ -4,7 +4,7 @@
 */
 
 //* Imports 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button, Chip, Stack, Tooltip, Typography } from "@mui/material"
 import { Container } from '@mui/material'  //
 
@@ -17,13 +17,20 @@ import AppBarStd from '../components/AppBarStd.jsx'
 import Footer from '../components/Footer.jsx'
 
 //
-export default function Admin({ theme }) {
+export default function Admin({ props, theme }) {
+
+  // console.log(props)  // empty 
+  // console.log(theme)  // ok
 
   // react-standard-hooks/functions to control Sliders
   const [state, setState] = useState({
     idUsernameLength: 10,
     idPwdLength: 10
   })
+
+  // hooks for user-logged-in-state
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
+
 
   // handle function for data changes in the CHILD component "TestSlider"
   const [data, setData] = useState()
@@ -47,11 +54,20 @@ export default function Admin({ theme }) {
     }
   }  // handleChange() Slider-Components
 
+  const checkUserLoggedIn = () => {
+    const userLoggedIn = localStorage.getItem("userLoggedIn")
+    setUserLoggedIn(userLoggedIn)
+  }
+
+  useEffect(() => {
+    checkUserLoggedIn()
+  }, [userLoggedIn])
+
   // 
   return (
     <>
       <header>
-        <AppBarStd theme={theme} showLoginState={true} />
+        <AppBarStd theme={theme} showLoginState={true} userLoggedIn={userLoggedIn}/>
       </header>
 
       <main>
@@ -60,37 +76,33 @@ export default function Admin({ theme }) {
             <div className='col m-1 border rounded-2'>
               <Stack direction="row" spacing={1}
                 sx={{ m: 1, p: 1, flexDirection: 'row', justifyContent: 'flex-start' }}>
-                <Stack direction="col" sx={{ width: '50%', m: 1 }}>
-                  <Typography>
-                    Set Username-length:
-                  </Typography>
-                </Stack>
-                <Stack direction="col" sx={{ width: '50%', m: 1 }}>
-                  <Slider
-                    name='idUsernameLength'
-                    aria-label="Slider with pwdLengthValue"
-                    defaultValue={10}
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks
-                    /*                         min={ getState() } */
-                    min={10}
-                    /* min und max können nicht aus dem state-objekt gezogen werden! */
-                    max={20}
-                    onChange={handleChange}
-                    value={state.idUsernameLength}
-                  /* wird nicht aktuell an die UI weitergegeben */
-                  /* no change of state-object */
-                  /* onChangeCommitted={handleChange} */
-                  />
-                  <Chip label= {state.idUsernameLength} color="success" variant="outlined" />
-                </Stack>
+                <Typography>
+                  Set Username-length:
+                </Typography>
+                <Slider
+                  name='idUsernameLength'
+                  aria-label="Slider with pwdLengthValue"
+                  defaultValue={10}
+                  valueLabelDisplay="auto"
+                  step={1}
+                  marks
+                  /*                         min={ getState() } */
+                  min={10}
+                  /* min und max können nicht aus dem state-objekt gezogen werden! */
+                  max={20}
+                  onChange={handleChange}
+                  value={state.idUsernameLength}
+                /* wird nicht aktuell an die UI weitergegeben */
+                /* no change of state-object */
+                /* onChangeCommitted={handleChange} */
+                />
+                <Chip label={state.idUsernameLength} color="success" variant="outlined" />
               </Stack>  {/* Stack for one row with Sliders*/}
             </div>
 
             <div className='col m-1 border rounded-2'>
               <Tooltip title="set pwd-length" arrow>
-                <Stack direction="col" sx={{ m: 1 }}>
+                <Stack direction="row" sx={{ m: 1 }}>
                   <Typography sx={{ p: 1 }}>
                     Set Password-length:
                   </Typography>
@@ -112,21 +124,37 @@ export default function Admin({ theme }) {
                     onChange={handleChange}
                     value={state.idPwdLength}
                   />
-                  <Chip label= {state.idPwdLength} color="success" variant="outlined"/>
+                  <Chip label={state.idPwdLength} color="success" variant="outlined" />
                 </Stack>
               </Tooltip>
             </div>
           </div>
 
-          <div className='row border rounded shadow-lg'>
+          <div className='row mt-1 rounded shadow-lg'>
+            <div className='col rounded'>
+              <Typography>
+                Standard Theme:
+              </Typography>
+            </div>
+            <div className='col rounded'>
+              <Typography>
+                Number of users allowed:
+              </Typography>
+            </div>
+          </div>
+
+          <div className='row mt-2 border rounded shadow-lg'>
             <div className='col m-1 border rounded-2'>
-              <Button variant="contained" endIcon={<SendIcon />}
-                onClick={() => {
-                  // set the choosen values to localStorage, object state
-                  localStorage.setItem("adminData", JSON.stringify(state))
-                }}>
-                Save
-              </Button>
+
+              {userLoggedIn &&
+                <Button variant="contained" endIcon={<SendIcon />}
+                  onClick={() => {
+                    // set the choosen values to localStorage, object state
+                    localStorage.setItem("adminData", JSON.stringify(state))
+                  }}>
+                  Save
+                </Button>
+              }
             </div>
           </div>
         </Container>
