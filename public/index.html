@@ -22,7 +22,7 @@
 
 <!-- set the theme you want to use with the attribute "data-bs-theme" -->
 <!-- <body data-bs-theme="blue"> -->
-<body id="idBodyIndexHtml" data-bs-theme="orange">
+<body id="idBodyIndexHtml" onload="bodyOnLoad(this)" data-bs-theme="orange">
 
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
@@ -36,6 +36,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script defer>
+        function bodyOnLoad(){
+          // delete all local storage
+          // alert('#')
+          localStorage.clear()
+        }
+    </script>
 </body>
 
 </html>

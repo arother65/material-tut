@@ -43,7 +43,7 @@ export default function AppBarStd({ theme, showLoginState, userLoggedIn }) {
             {showLoginState && userLoggedIn &&
                <Chip label="logged in" color="success" variant="filled" sx={{ mt: 1, color: 'white' }} />
             }
-            {showLoginState &&
+            {showLoginState && !userLoggedIn &&
                <Chip label="NOT logged in" color="info" variant="filled" sx={{ mt: 1, color: 'white' }} />
             }
          </Toolbar>

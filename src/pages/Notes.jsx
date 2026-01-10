@@ -163,6 +163,10 @@ export default function Notes({ props, theme }) {
       }, 1500)  // setTimeout()
    }, []) // Ampel anzeigen
 
+   // useEffect(()=>{
+   //    // clearing all local storage now?
+   // })
+
    // 
    return (
       <>

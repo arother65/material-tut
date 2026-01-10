@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, FormControl, InputLabel, Select, Tooltip, Zoom } from "@mui/material"
 import Chip from '@mui/material/Chip'
 import MenuIcon from '@mui/icons-material/Menu'
+import { useNavigate } from 'react-router-dom'  // or imported from react-router
 
 // Radio Butons inclusive a Group for these 
 import Radio from '@mui/material/Radio'
@@ -68,6 +69,9 @@ export default function AppBarTop({ theme }) {
       bodyTag.setAttribute('data-bs-theme', event.target.value)
    }
 
+   // navigation-function from "factory-function" useNavigate() for use with Button 
+   const fnNavigate = useNavigate()
+
    // 
    return (
       <AppBar sx={{ backgroundColor: 'rgba(40, 45, 60, 0.85)', position: 'fixed' }} >
@@ -102,8 +106,9 @@ export default function AppBarTop({ theme }) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setOpenState(true)  // just open a dialog component
-                     setNavTarget('/create')
+                     setOpenState(false)  // just open a dialog component
+                     // setNavTarget('/create') 
+                     fnNavigate('/create')
                   }}>
                   create page
                </MenuItem>
@@ -120,8 +125,9 @@ export default function AppBarTop({ theme }) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setOpenState(true)
-                     setNavTarget('/about')
+                     setOpenState(false)
+                     // setNavTarget('/about')
+                     fnNavigate('/about')
                   }}>
                   about page
                </MenuItem>
@@ -181,7 +187,7 @@ export default function AppBarTop({ theme }) {
                </Tooltip>
             </div>
 
-            <Chip label="not logged in" color="success" variant="outlined" 
+            <Chip label="not logged in" color="success" variant="outlined"
                sx={{ color: 'white' }}
             />
 
