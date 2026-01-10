@@ -39,7 +39,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
    // navigation-function from "factory-function" useNavigate() for use with Button 
    const fnNavigate = useNavigate()
 
-   // ReactJS Standard hooks 
+   //* ReactJS Standard hooks 
    const [loggedIn, setLoggedIn] = useState(false)
    const [loginAttempts, setLoginAttempts] = useState(0)
    const [loginError, setLoginError] = useState(false)
@@ -116,7 +116,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
       }
    }  // handleBtnAgree()
 
-   // 
+   //  
    return (
       <>
          <Dialog

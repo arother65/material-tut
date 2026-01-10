@@ -18,8 +18,6 @@ import { ThemeProvider } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
 
 //* Customer components
 // import ClickableWheel from '../components/Wheel.jsx'
@@ -36,13 +34,11 @@ import { initializeApp } from "firebase/app";
 // 
 export default function Notes({ props, theme }) {
 
-   // imported texts
+   //* Imported texts
    // console.log('deTexts: ', deTexts)
-   // console.log('theme: ', theme)
-   // console.log(theme.palette.primary)
+
 
    //* Connect to hosting site firebase
-
    // TODO: Add SDKs for Firebase products that you want to use
    // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -62,12 +58,12 @@ export default function Notes({ props, theme }) {
    //* Get the current windows sizes:
    console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
 
-   // handler for the <Accordion /> - component used:
+   //* Handler for the <Accordion /> - component used:
    const [expanded, setExpanded] = React.useState(false);
    const [expanded00, setExpanded00] = React.useState(false);
    const [expanded02, setExpanded02] = React.useState(false);
 
-   // event handler for <Accordion />
+   //* Event handler for <Accordion />
    const handleExpansion = (e) => {
       // setExpanded( (prevExpanded) => !prevExpanded );  // ok
 
@@ -89,7 +85,7 @@ export default function Notes({ props, theme }) {
       }
    };
 
-   // reducing/restoring the container size
+   //* Reducing/restoring the container size
    let [isReduced, setIsReduced] = useState(false)
    useEffect(() => {
       setIsReduced(isReduced)
@@ -97,7 +93,7 @@ export default function Notes({ props, theme }) {
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
 
-   // fn used to reduce size of <Box />
+   //* fn used to reduce size of <Box />
    const switchContainerWidth = () => {
       const mainBox = document.getElementById('idMainBox')
       const colMainBox = document.getElementById('idColMainBox')
@@ -139,7 +135,7 @@ export default function Notes({ props, theme }) {
       }
    }  // switchContainerWidth()
 
-   // animate radio buttons 
+   //* animate radio buttons 
    const [rbState, setRbState] = useState('a')
    const [rbStateYellow, setRbStateYellow] = useState('')
    const [rbStateGreen, setRbStateGreen] = useState('')
@@ -179,7 +175,7 @@ export default function Notes({ props, theme }) {
                <div className="row">
                   <div className="col m-1 mt-5" id="idColMainBox" width='95%'>
                      <Box id="idMainBox" sx={{ mt: 5, ml: 5, mr: 5 }}>
-                        <Fade in={true} timeout={2000}>
+                        <Fade in={true} timeout={1500}>
                            <div className="row mt-1">
                               <div className="col">
                                  <p>Notes page with ThemeProvider</p>
@@ -206,34 +202,6 @@ export default function Notes({ props, theme }) {
                               <li>text from li h5</li>
                            </ul>
                         </Typography>
-
-                        {/* using component Accordion */}
-                        {/*                         <Accordion
-                           className='bg-component rounded-2 mt-1 shadow'
-                           expanded={expanded00}
-                           onChange={handleExpansion}
-                           // sx={{ backgroundColor: 'darkred' }}>
-                           sx={{ backgroundColor: theme.palette.background.main }}>
-                           <AccordionSummary
-                              id="idAccordion00"
-                              className='mt-1'
-                              expandIcon={<ExpandMoreIcon />}
-                              aria-controls="panel1-content"
-                           >
-                              <Typography component="span">
-                                 Typography on AccordionSummary
-                              </Typography>
-                           </AccordionSummary>
-                           <AccordionDetails>
-                              <div className='row m-1 p-1'>
-                                 <ClickableWheel segments={12}
-                                    onSelect={(segment) => {
-                                       // console.log("Clicked segment:", segment);
-                                       alert(segment)
-                                    }} />
-                              </div>
-                           </AccordionDetails>
-                        </Accordion> */}
 
                         {/* Card with Typography */}
                         <Card
