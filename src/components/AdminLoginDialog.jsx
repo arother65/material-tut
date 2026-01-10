@@ -54,7 +54,6 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
 
    useEffect((event) => {
       console.log(userName, passWord)
-
       // setUserName(userName)
       // setPassWord(passWord)
    }, [userName, passWord])
@@ -71,26 +70,33 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
 
    const handleBtnAgree = () => {
 
-      console.log(userData)
-      // holen der TextFiels von der UI
-      let actUserName = document.getElementById('idUserName')
-      let actPassWord = document.getElementById('idPassWord')
+      // console.log(userData)
 
-      userData.find((user) => {
-         if ((actUserName === user.userName) && (actPassWord === user.passWord)) {
-            return setLoggedIn(true)
+      // holen der TextFiels von der UI
+      // let actUserName = document.getElementById('idUserName')
+      // let actPassWord = document.getElementById('idPassWord')
+
+      let userFound = userData.find((user) => {
+         // if ((actUserName === user.userName) && (actPassWord === user.passWord)) {
+         if ((userName === user.userName) && (passWord === user.passWord)) {
+            return true
          } else {
-            return setLoggedIn(false)
+            return false
          }
       })
 
-      // only navigate when user is logged in / already known
-      if (loggedIn) {
+      if (userFound) {
+         setLoggedIn(true)
+
          setLoginError(false)
          setLoggedIn(true)
          setLoginAttempts(0)
          fnNavigate(navTarget)
-      } else {
+         return
+      }
+
+      // only navigate when user is logged in / already known
+      if (!loggedIn) {
          setLoginError(true)
 
          // Anzahl Fehlanmeldungen merken:
