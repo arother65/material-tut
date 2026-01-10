@@ -9,6 +9,8 @@ import {
    Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Button, Card,
    Fade, Radio, RadioGroup, Typography, Tooltip
 } from '@mui/material'
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 import { ThemeProvider } from '@mui/material/styles'
 
@@ -339,7 +341,16 @@ export default function Notes({ props, theme }) {
                      {/* <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
                         Here is a gentle confirmation that your action was successful.
                      </Alert> */}
-
+                     <Stack spacing={1} sx={{ alignItems: 'center' }}>
+                        <Stack direction="row" spacing={1}>
+                           <Chip label="primary" color="primary" />
+                           <Chip label="success" color="success" />
+                        </Stack>
+                        <Stack direction="row" spacing={1}>
+                           <Chip label="primary" color="primary" variant="outlined" />
+                           <Chip label="success" color="success" variant="outlined" />
+                        </Stack>
+                     </Stack>
                   </div>
                   {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
                   <div id='idCol02' className='col m-1 invisible'>

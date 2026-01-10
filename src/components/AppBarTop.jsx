@@ -5,15 +5,18 @@
 // imports
 import { useState, useEffect } from 'react'
 import { AppBar, Box, Backdrop, CircularProgress, IconButton, Toolbar, Menu, MenuItem, FormControl, InputLabel, Select, Tooltip, Zoom } from "@mui/material"
+import Chip from '@mui/material/Chip'
 import MenuIcon from '@mui/icons-material/Menu'
 
 // Radio Butons inclusive a Group for these 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 // customer components
-import AlertDialogSlide from '../components/AlertDialogSlide'
+import AlertDialogSlide from './AdminLoginDialog.jsx'
+import AdminLoginDialog from './AdminLoginDialog.jsx'
+
 
 //
 export default function AppBarTop({ theme }) {
@@ -25,11 +28,18 @@ export default function AppBarTop({ theme }) {
    const handleClose = () => { setAnchorEl(null) }
 
    // hook for openState (Dialog) in child-component
-   const [openState, setopenState] = useState(false)
+   const [openStateDlg, setOpenState] = useState(false)
    useEffect(() => {
-      setopenState(openState)
-   }, [openState])
+      setOpenState(openStateDlg)
+   }, [openStateDlg])
 
+   // hooks for Dialog AdminLogin
+   const [openDlgAdmin, setOpenDlgAdmin] = useState(false)
+   useEffect(() => {
+      setOpenDlgAdmin(openDlgAdmin)
+   }, [openDlgAdmin])
+
+   //
    const [navTarget, setNavTarget] = useState(null)
    useEffect(() => {
       setNavTarget(navTarget)
@@ -92,7 +102,7 @@ export default function AppBarTop({ theme }) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setopenState(true)  // just open a dialog component
+                     setOpenState(true)  // just open a dialog component
                      setNavTarget('/create')
                   }}>
                   create page
@@ -101,7 +111,16 @@ export default function AppBarTop({ theme }) {
                <MenuItem
                   sx={menuItemSx}
                   onClick={() => {
-                     setopenState(true)
+                     setOpenDlgAdmin(true)  // just open a dialog component
+                     setNavTarget('/admin')
+                  }}>
+                  Admin page
+               </MenuItem>
+
+               <MenuItem
+                  sx={menuItemSx}
+                  onClick={() => {
+                     setOpenState(true)
                      setNavTarget('/about')
                   }}>
                   about page
@@ -116,12 +135,18 @@ export default function AppBarTop({ theme }) {
 
             {/* <AlertDialogSlide openState={openState} setopenState= {setopenState}/> */}
             <AlertDialogSlide theme={theme}
-               openState={openState}
-               setopenState={setopenState}
+               openState={openStateDlg}
+               setopenState={setOpenState}
                navTarget={navTarget}
                dialogTexts={{ title: 'Titel from parent' }} />
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
             {/* <Switch defaultChecked /> */}
+
+            <AdminLoginDialog theme={theme}
+               openState={openDlgAdmin}
+               setopenState={setOpenDlgAdmin}
+               navTarget={navTarget}
+               dialogTexts={{ title: 'Admin Login page' }} />
 
             <div className="col m-3 p-1 border rounded">
                <Tooltip title="Switch theme" placement="bottom" arrow sx={{}}>
@@ -156,6 +181,10 @@ export default function AppBarTop({ theme }) {
                </Tooltip>
             </div>
 
+            <Chip label="not logged in" color="success" variant="outlined" 
+               sx={{ color: 'white' }}
+            />
+
             <div className="col text-end">
                <Tooltip title="Switch theme" placement="left-start" arrow sx={{}}
                   slots={{
@@ -165,7 +194,7 @@ export default function AppBarTop({ theme }) {
                   slotProps={{
                      transition: { timeout: 500 },
                   }}>
-                  <FormControl className='border border-warning rounded' variant="filled" sx={{ minWidth: 100, backgroundColor: 'lightgreen' }}>
+                  <FormControl className='border border-warning rounded' variant="filled" sx={{ minWidth: 100, backgroundColor: 'darkslategrey' }}>
                      <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
                      <Select
                         labelId="demo-simple-select-label"
@@ -174,13 +203,13 @@ export default function AppBarTop({ theme }) {
                         // defaultValue='blue'
                         label="Theme"
                         onChange={switchTheme}
-                        sx={{ color: 'white' }}
+                        sx={{ backgroundColor: 'lightgreen', color: 'white' }}
                      >
-                        <MenuItem value={'red'}>Red</MenuItem>
-                        <MenuItem value={'orange'}>Orange</MenuItem>
-                        <MenuItem value={'blue'}>Blue</MenuItem>
-                        <MenuItem value={'light'}>Light</MenuItem>
-                        <MenuItem value={'dark'}>Dark</MenuItem>
+                        <MenuItem value={'red'} sx={{ backgroundColor: 'green', color: 'red' }}>Red</MenuItem>
+                        <MenuItem value={'orange'} sx={{ backgroundColor: 'green', color: 'orange' }}>Orange</MenuItem>
+                        <MenuItem value={'blue'} sx={{ backgroundColor: 'green', color: 'blue' }}>Blue</MenuItem>
+                        <MenuItem value={'light'} sx={{ backgroundColor: 'green', color: 'white' }}>Light</MenuItem>
+                        <MenuItem value={'dark'} sx={{ backgroundColor: 'green', color: 'black' }}>Dark</MenuItem>
                      </Select>
                   </FormControl>
                </Tooltip>

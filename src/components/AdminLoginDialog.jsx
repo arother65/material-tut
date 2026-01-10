@@ -9,7 +9,6 @@ import Card from '@mui/material/Card';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
@@ -25,8 +24,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
    return <Slide direction="right" ref={ref} {...props} />
 })
 
-// View / Component "AlertDialogSlide"
-export default function AlertDialogSlide({ theme, openState, setopenState, navTarget, dialogTexts }) {
+// View / Component "AdminLoginDialog"
+export default function AdminLoginDialog({ theme, openState, setopenState, navTarget, dialogTexts }) {
 
    // navigation-function from "factory-function" useNavigate() for use with Button 
    const fnNavigate = useNavigate()
@@ -38,16 +37,9 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
    const handleClose = () => { setopenState(false) }
    const handleBtnAgree = () => { fnNavigate(navTarget) }
 
-   // console.log('theme in child: ', theme.theme)
-   // console.log(dialogTexts)
-
    // 
    return (
       <>
-         {/* <Button variant="outlined" onClick={handleClickOpen}>
-            Slide in alert dialog
-         </Button> */}
-
          <Dialog
             open={openState}
             slots={{ transition: Transition }}
@@ -55,7 +47,7 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
          >
-            <DialogTitle sx={{ backgroundColor: theme.palette.primary.dark }}>
+            <DialogTitle sx={{ backgroundColor: theme.palette.secondary.dark }}>
                { dialogTexts.title }
                <IconButton
                   id="demo-positioned-menu"
@@ -69,20 +61,11 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
                </IconButton>
             </DialogTitle>
 
-            <DialogContent sx={{ backgroundColor: theme.palette.primary.light }}>
+            <DialogContent sx={{ backgroundColor: theme.palette.secondary.light }}>
                {/* <DialogContentText id="alert-dialog-slide-description">
-                  Dialog from component "AlertDialogSlide.jsx".
+                  Dialog from component "AdminLoginDialog.jsx".
                </DialogContentText> */}
-               <div className='row m-1'>
-                  <Card >
-                     <h6>...this is your lucky day</h6>
-                  </Card>
-               </div>
-               <div className='row m-1'>
-                  <Card >
-                     <h6>Payment for you is approved!</h6>
-                  </Card>
-               </div>
+               <p>admin dialog</p>
             </DialogContent>
 
             <DialogActions >
@@ -92,7 +75,7 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
                   </div> */}
                   <div className='col m-1'>
                      <Button variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={handleBtnAgree}
                         endIcon={<SendIcon />}
                         sx={{ color: 'white' }}
@@ -105,4 +88,4 @@ export default function AlertDialogSlide({ theme, openState, setopenState, navTa
          </Dialog>
       </>
    )  // return()
-}  // AlertDialogSlide()
+}  // AdminLoginDialog()
