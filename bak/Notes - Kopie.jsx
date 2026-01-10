@@ -14,16 +14,16 @@ import { ThemeProvider } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import ClickableWheel from '../src/components/Wheel.jsx'
-import AppBarTop from '../src/components/AppBarTop.jsx'
-import SvgTests from '../src/components/SvgTests.jsx'
-import Footer from '../src/components/Footer.jsx'
+import ClickableWheel from '../components/Wheel.jsx'
+import AppBarTop from '../components/AppBarTop.jsx'
+import SvgTests from '../components/SvgTests.jsx'
+import Footer from '../components/Footer.jsx'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
 // Texts from /src/i18n
-import deTexts from '../src/i18n/i18n-de.json'
+import deTexts from '../i18n/i18n-de.json'
 
 
 // 
@@ -83,40 +83,41 @@ export default function Notes({ props, theme }) {
    };
 
    // reducing/restoring the container size
-   const [isReduced, setIsReduced] = useState(false)
+   let [isReduced, setIsReduced] = useState(false)
+
+   /*    const setIsReduced = (newState) => {
+         isReduced = newState
+      }
+    */
+   useEffect(() => {
+      setIsReduced(isReduced)
+   }, [isReduced, setIsReduced])
 
    let startIcon = isReduced ? <ArrowForwardIosOutlinedIcon /> : <ArrowBackIosNewOutlinedIcon />
-
-   // create CSS class / classes (test only)
-   // const useStyles = makeStyles({
-   //    heading: {
-   //       color: 'olivedrab',
-   //       fontSize: '18px',
-   //       fontWeight: 'initial',
-   //    },
-   //    details: {
-   //       backgroundColor: 'rgba(220, 175, 30, 0.5)',
-   //    },
-   //    color: 'white',
-   //    border: 'solid',
-   //    // border-color: 'blue',
-   // })
-   // const classes = useStyles()
 
    // fn used to reduce size of <Box />
    const switchContainerWidth = () => {
       const mainBox = document.getElementById('idMainBox')
+      const colMainBox = document.getElementById('idColMainBox')
+
+      console.log(process.env.REACT_APP_PRIMARY_COLOR)
 
       switch (isReduced) {
          case false:
             if (mainBox) {
-               console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
+               // console.log('mainBox.style.maxWidth', mainBox.style.maxWidth)
 
-               let className = mainBox.getAttribute('class')
-               // className = className + ' ' + classes.widthBox.width50  // errs 
-               className = className + ' widthBox50'
-               mainBox.setAttribute('class', className)
+               // let className = mainBox.getAttribute('class')
+               // className = className + ' widthBox50'
+               // mainBox.setAttribute('class', className)
 
+               // // using col, the parent of box,  instead of Box
+               // className = colMainBox.getAttribute('class')
+               // className = className + ' widthBox50'
+               // colMainBox.setAttribute('class', className)
+
+               colMainBox.style.maxWidth = '50%'
+               // colMainBox.setAttribute('style', 'maxWidth: 50%') 
                setIsReduced(true)
             }
             break;
@@ -174,10 +175,9 @@ export default function Notes({ props, theme }) {
 
             <main>
                <div className="row">
-                  <div className="col m-1 mt-5">
-                     <Box id="idMainBox" width='95%' sx={{ mt: 5, ml: 5, mr: 5 }}>
-
-                        <Fade in={true} timeout={5000}>
+                  <div className="col m-1 mt-5" id="idColMainBox" width='95%'>
+                     <Box id="idMainBox" sx={{ mt: 5, ml: 5, mr: 5 }}>
+                        <Fade in={true} timeout={2000}>
                            <div className="row mt-1">
                               <div className="col">
                                  <p>Notes page with ThemeProvider</p>
@@ -188,18 +188,18 @@ export default function Notes({ props, theme }) {
                                     <Button
                                        id='idBtnSwitchContainer'
                                        startIcon={startIcon}
-                                       color=""
+                                       color="inherit"
                                        onClick={switchContainerWidth}
                                        variant="contained" />
                                  </Tooltip>
                               </div>
                            </div>
                         </Fade>
-                        <Typography component="h4" variant="h4" gutterBottom="true" sx={{}}>
+                        <Typography component="h4" variant="h4" gutterBottom="true">
                            Notes page h4
                         </Typography>
 
-                        <Typography component="h5" variant="h5" gutterBottom="true" sx={{}}>
+                        <Typography component="h5" variant="h5" gutterBottom="true">
                            <ul>
                               <li>text from li h5</li>
                            </ul>
@@ -218,7 +218,7 @@ export default function Notes({ props, theme }) {
                               expandIcon={<ExpandMoreIcon />}
                               aria-controls="panel1-content"
                            >
-                              <Typography  component="span">
+                              <Typography component="span">
                                  Typography on AccordionSummary
                               </Typography>
                            </AccordionSummary>
@@ -268,17 +268,17 @@ export default function Notes({ props, theme }) {
                         <Box sx={{ position: 'relative', mt: 5 }}>
                            <div className="col text-center mt-2">
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'slategrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.main, color: 'white' }}>
 
                                  <p>Card 01 theme.palette.primary.main</p>
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'darkgrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
 
                                  <p>Card 02 theme.palette.primary.dark</p>
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}> */}
-                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: 'lightgrey', color: 'white' }}>
+                              <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
 
                                  <p>Card 03 theme.palette.secondary.light</p>
                               </Card>
@@ -311,6 +311,50 @@ export default function Notes({ props, theme }) {
                         </Box>
                      </div>
                   }
+               </div>
+
+               <Tooltip title="Switch col width">
+                  <Button
+                     id='idBtnSwitchContainer'
+                     startIcon={startIcon}
+                     color="inherit"
+                     onClick={() => {
+                        // alert('vvv')
+                        let col01 = document.getElementById('idCol01')
+                        // alert(col01.style.width)
+                        col01.style.maxWidth = '10%'
+                        // setIsReduced(true)
+                     }}
+                     variant="contained" />
+               </Tooltip>
+               <Tooltip title="Switch col width back">
+                  <Button
+                     id='idBtnSwitchContainer'
+                     startIcon={<ArrowForwardIosOutlinedIcon />}
+                     color="inherit"
+                     onClick={() => {
+                        // alert('vvv')
+                        let col01 = document.getElementById('idCol01')
+
+                        // alert(col01.style.width)
+                        col01.style.maxWidth = '50%'
+
+                        let col02 = document.getElementById('idCol02')
+                        // let col02Classlist = col02.getAttribute('class')
+                        let col02Classlist = 'col m-1 border rounded'
+                        col02.setAttribute('class', col02Classlist) 
+
+                     }}
+                     variant="contained" />
+               </Tooltip>
+               <div className='row m-1 border'>
+                  <div id='idCol01' className='col m-1 w-100 border rounded'>
+                     col01
+                  </div>
+                  {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
+                  <div id='idCol02' className='col m-1 invisible'>
+                     col02
+                  </div>
                </div>
 
                {/* using component Accordion */}

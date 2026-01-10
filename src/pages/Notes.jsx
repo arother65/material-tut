@@ -6,7 +6,7 @@
 //
 import React, { useState, useEffect } from 'react'  // Standard use-hooks
 import {
-   Accordion, AccordionSummary, AccordionDetails, Alert, Avatar, Box, Button, Card,
+   Accordion, AccordionSummary, AccordionDetails, Avatar, Box, Button, Card,
    Fade, Radio, RadioGroup, Typography, Tooltip
 } from '@mui/material'
 
@@ -14,7 +14,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import ClickableWheel from '../components/Wheel.jsx'
+// import ClickableWheel from '../components/Wheel.jsx'
 import AppBarTop from '../components/AppBarTop.jsx'
 import SvgTests from '../components/SvgTests.jsx'
 import Footer from '../components/Footer.jsx'
@@ -23,7 +23,7 @@ import Footer from '../components/Footer.jsx'
 import { initializeApp } from "firebase/app";
 
 // Texts from /src/i18n
-import deTexts from '../i18n/i18n-de.json'
+// import deTexts from '../i18n/i18n-de.json'
 
 
 // 
@@ -206,7 +206,7 @@ export default function Notes({ props, theme }) {
                         </Typography>
 
                         {/* using component Accordion */}
-                        <Accordion
+{/*                         <Accordion
                            className='bg-component rounded-2 mt-1 shadow'
                            expanded={expanded00}
                            onChange={handleExpansion}
@@ -231,7 +231,7 @@ export default function Notes({ props, theme }) {
                                     }} />
                               </div>
                            </AccordionDetails>
-                        </Accordion>
+                        </Accordion> */}
 
                         {/* Card with Typography */}
                         <Card
@@ -274,12 +274,10 @@ export default function Notes({ props, theme }) {
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}> */}
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.primary.dark, color: 'white' }}>
-
                                  <p>Card 02 theme.palette.primary.dark</p>
                               </Card>
                               {/* <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}> */}
                               <Card className="border rounded-2 mt-1" sx={{ backgroundColor: theme.palette.secondary.light, color: 'white' }}>
-
                                  <p>Card 03 theme.palette.secondary.light</p>
                               </Card>
                            </div>
@@ -299,7 +297,7 @@ export default function Notes({ props, theme }) {
                            <div className='row m-1 border border-danger rounded'>row</div>
                         </Box>
 
-                        <Box sx={{ position: 'relative', mt: 1 }}>
+{/*                         <Box sx={{ position: 'relative', mt: 1 }}>
                            <Alert sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
                               Simple Alert
                            </Alert>
@@ -308,7 +306,7 @@ export default function Notes({ props, theme }) {
                               sx={{ mt: 1, ml: 1, mr: 1, backgroundColor: 'rgba(40, 45, 60, 0.1)', borderRadius: 2, boxShadow: 1 }}>
                               This is a success Alert.
                            </Alert>
-                        </Box>
+                        </Box> */}
                      </div>
                   }
                </div>
@@ -333,19 +331,22 @@ export default function Notes({ props, theme }) {
                      startIcon={<ArrowForwardIosOutlinedIcon />}
                      color="inherit"
                      onClick={() => {
-                        // alert('vvv')
                         let col01 = document.getElementById('idCol01')
-                        // alert(col01.style.width)
                         col01.style.maxWidth = '50%'
-                        // setIsReduced(true)
+
+                        let col02 = document.getElementById('idCol02')
+                        // let col02Classlist = col02.getAttribute('class')
+                        let col02Classlist = 'col m-1 border rounded'
+                        col02.setAttribute('class', col02Classlist) 
                      }}
                      variant="contained" />
                </Tooltip>
-               <div className='row m-1' width='100%'>
-                  <div id='idCol01' className='col m-1 border rounded' width='50%'>
+               <div className='row m-1 border'>
+                  <div id='idCol01' className='col m-1 w-100 border rounded'>
                      col01
                   </div>
-                  <div id='idCol02' className='col m-1 border rounded' width='50%'>
+                  {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
+                  <div id='idCol02' className='col m-1 invisible'>
                      col02
                   </div>
                </div>
@@ -373,11 +374,9 @@ export default function Notes({ props, theme }) {
                            <Avatar className='avatar-rotate m-1'>
                               <p>01</p>
                            </Avatar>
-
                            <Avatar className='avatar-rotate m-1'>
                               <p>02</p>
                            </Avatar>
-
                            <Avatar className='avatar-rotate m-1'>
                               <p>03</p>
                            </Avatar>
