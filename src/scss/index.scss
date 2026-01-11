@@ -108,18 +108,16 @@
 
 // Themes 
 [data-bs-theme="blue"] {
-  --bs-body-color: var(--bs-white);
-  // --bs-body-color-rgb: #{to-rgb($white)};
+  --bs-body-color: #{mix($blue-100, $white)};
 
   --bs-body-bg: #{mix($blue-900, $purple-800)};
-  // --bs-body-bg-rgb: #{to-rgb($blue)};
 
   --bs-tertiary-bg: #{$blue-600};
 
   // for styling MUI-components:
   @keyframes animateBg {
     from {
-      background-color: #{mix(lightcoral, $purple-600)};
+      background-color: #{mix($white, $purple-100)};
     }
 
     to {
@@ -128,86 +126,72 @@
   }
 
   .bg-component {
-    background-color: #{mix($blue-700, $purple-700)};
+    background-color: #{mix($blue-800, $purple-600)};
     color: #{mix(lightsteelblue, $blue-100)};
     animation-name: animateBg;
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
   }
-
-  .dropdown-menu {
-    --bs-dropdown-bg: #{mix($blue-500, $blue-600)};
-    --bs-dropdown-link-active-bg: #{$blue-700};
-  }
-
-  .btn-secondary {
-    --bs-btn-bg: #{mix($gray-600, $blue-400, .5)};
-    --bs-btn-border-color: #{rgba($white, .25)};
-    --bs-btn-hover-bg: #{darken(mix($gray-600, $blue-400, .5), 5%)};
-    --bs-btn-hover-border-color: #{rgba($white, .25)};
-    --bs-btn-active-bg: #{darken(mix($gray-600, $blue-400, .5), 10%)};
-    --bs-btn-active-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
-  }
 }
 
 [data-bs-theme="orange"] {
   // --bs-body-color: var(--bs-white);  // colors any text on a view 
-  --bs-body-color: #{$orange-900}; // colors any text on a view 
+  --bs-body-color: #{mix($orange-100, $white)}; // colors any text on a view 
 
   // --bs-body-bg: var(--bs-orange);  // colors the background of one view 
-  --bs-body-bg: #{mix($orange-300, $orange-400)};
+  --bs-body-bg: #{mix($orange-500, $yellow-500)};
 
   --bs-tertiary-bg: #{$orange-600};
 
-  // colors component "dropdown-menu": https://getbootstrap.com/docs/5.3/components/dropdowns/
-  // class="dropdown", class="dropdown-menu"
-  .dropdown-menu {
-    --bs-dropdown-bg: #{mix($orange-500, $orange-600)};
-    --bs-dropdown-link-active-bg: #{$orange-700};
+  // for styling MUI-components:
+  @keyframes animateBg {
+    from {
+      background-color: #{mix(lightcoral, $orange-100)};
+    }
+
+    to {
+      background-color: #{mix($orange-600, $yellow-500)};
+    }
   }
 
-  // the component (button in this case) you want to theme / color:
-  .btn-secondary {
-    --bs-btn-bg: #{mix($gray-600, $orange-400, .5)};
-    --bs-btn-border-color: #{rgba($white, .25)};
-    --bs-btn-hover-bg: #{darken(mix($gray-600, $orange-400, .5), 5%)};
-    --bs-btn-hover-border-color: #{rgba($white, .25)};
-    --bs-btn-active-bg: #{darken(mix($gray-600, $orange-400, .5), 10%)};
-    --bs-btn-active-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+  .bg-component {
+    background-color: #{mix($orange-600, $yellow-600)};
+    color: #{mix(lightsteelblue, $orange-100)};
+    animation-name: animateBg;
+    // animation-name: animationBlueTheme;
+    animation-duration: 2s;
   }
 }
 
 [data-bs-theme="red"] {
   // --bs-body-color: var(--bs-white);  // colors any text on a view 
-  --bs-body-color: #{$red-900}; // colors any text on a view 
+  // --bs-body-color: #{$red-900}; // colors any text on a view 
+  --bs-body-color: #{mix($red-100, $white)}; // colors any text on a view 
 
   // --bs-body-bg: var(--bs-red);  // colors the background of one view 
   // --bs-body-bg: #{mix($red-100, $red-900)};
-  --bs-body-bg: #{mix($red-500, $orange-500)};
+  --bs-body-bg: #{mix($red-800, $red-700)};
 
-  --bs-tertiary-bg: #{$red-600};
+  --bs-secondary-bg: #{$red-400};
+  --bs-tertiary-bg: #{$red-500};
 
-  // colors component "dropdown-menu": https://getbootstrap.com/docs/5.3/components/dropdowns/
-  // class="dropdown", class="dropdown-menu"
-  .dropdown-menu {
-    --bs-dropdown-bg: #{mix($red-500, $red-600)};
-    --bs-dropdown-link-active-bg: #{$red-700};
+  // for styling MUI-components:
+  @keyframes animateBg {
+    from {
+      background-color: #{mix($white, $red-100)};
+    }
+
+    to {
+      background-color: #{mix($red-700, $red-600)};
+    }
   }
 
-  // the component (button in this case) you want to theme / color:
-  .btn-secondary {
-    --bs-btn-bg: #{mix($gray-600, $red-400, .5)};
-    --bs-btn-border-color: #{rgba($white, .25)};
-    --bs-btn-hover-bg: #{darken(mix($gray-600, $red-400, .5), 5%)};
-    --bs-btn-hover-border-color: #{rgba($white, .25)};
-    --bs-btn-active-bg: #{darken(mix($gray-600, $red-400, .5), 10%)};
-    --bs-btn-active-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+  .bg-component {
+    background-color: #{mix($red-800, $red-600)};
+    color: #{mix(lightsteelblue, $red-100)};
+    animation-name: animateBg;
+    // animation-name: animationBlueTheme;
+    animation-duration: 2s;
   }
 }
 

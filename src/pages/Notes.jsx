@@ -209,17 +209,15 @@ export default function Notes({ props, theme }) {
 
                         {/* Card with Typography */}
                         <Card
-                           className="bg-component rounded-2 mt-1 shadow"
-                           sx={{ backgroundColor: theme.palette.background.main }}>
+                           className="bg-component rounded-2 mt-1 shadow">
                            <p>p on card comp</p>
-                           <Typography className='bg-light' component="h6" variant="h6">
+                           <Typography component="h6" variant="h6">
                               Typography on Card
                            </Typography>
                         </Card>
 
                         {/* Card with another Card wrapping a RadioGroup */}
-                        <Card className="bg-component rounded-2 mt-1 shadow"
-                           sx={{ backgroundColor: theme.palette.background.main }}>
+                        <Card className="bg-component rounded-2 mt-1 shadow">
                            <Card
                               id='idCardAmple'
                               className="rounded-2 m-2 border-5 border-bottom border-danger"
@@ -263,7 +261,6 @@ export default function Notes({ props, theme }) {
                                  col
                               </div>
                            </div>
-
                            <div className='row m-1 border border-danger rounded'>row</div>
                         </Box>
 
@@ -298,9 +295,11 @@ export default function Notes({ props, theme }) {
                         col01.style.maxWidth = '50%'
 
                         let col02 = document.getElementById('idCol02')
-                        // let col02Classlist = col02.getAttribute('class')
-                        let col02Classlist = 'col m-1 border rounded'
-                        col02.setAttribute('class', col02Classlist)
+                        let col02Classlist = col02.getAttribute('class')
+                        console.log(col02Classlist)
+
+                        col02Classlist = 'col m-1 border rounded'
+                        col02.setAttribute('class', col02Classlist)  // errs
                      }}
                      variant="contained" />
                </Tooltip>
@@ -336,8 +335,8 @@ export default function Notes({ props, theme }) {
                      className='bg-component rounded-2 mt-1 shadow'
                      expanded={expanded}
                      onChange={handleExpansion}
-                     // sx={{ backgroundColor: 'darkred' }}>
-                     sx={{ backgroundColor: theme.palette.background.main }}>
+                  // sx={{ backgroundColor: 'darkred' }}>
+                  >
                      <AccordionSummary
                         id="idAccordion01"
                         className='mt-1'
@@ -373,15 +372,14 @@ export default function Notes({ props, theme }) {
                      className='bg-component mt-1 rounded-2 shadow'
                      expanded={expanded02}
                      onChange={handleExpansion}
-                     // sx={{ backgroundColor: 'darkred' }}>
-                     sx={{ backgroundColor: theme.palette.secondary.main }}>
+                  // sx={{ backgroundColor: 'darkred' }}>
+                  >
                      <AccordionSummary
                         id="idAccordion02"
                         className='mt-1 rounded-2'
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="idAccordion02"
-                        sx={{ backgroundColor: theme.palette.secondary.light }}
-                     >
+                        >
                         <Typography>
                            Testing SVG's
                         </Typography>

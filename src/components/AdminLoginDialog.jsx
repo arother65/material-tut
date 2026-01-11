@@ -9,8 +9,7 @@ import { useNavigate } from 'react-router-dom'  // or imported from react-router
 
 // MUI-Components used here: 
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
-import { IconButton } from '@mui/material'
+import { IconButton, Fade } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -71,10 +70,6 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
    const handleBtnAgree = () => {
 
       // console.log(userData)
-
-      // holen der TextFiels von der UI
-      // let actUserName = document.getElementById('idUserName')
-      // let actPassWord = document.getElementById('idPassWord')
 
       let userFound = userData.find((user) => {
          // if ((actUserName === user.userName) && (actPassWord === user.passWord)) {
@@ -141,6 +136,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
             </DialogTitle>
 
             <DialogContent sx={{ backgroundColor: theme.palette.secondary.light }}>
+               {/* <Fade in={true} timeout={1500}> */}
                <div className='row m-1'>
                   <div className='col'>
                      <FormControl variant="standard">
@@ -171,6 +167,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
                      <div className='row bg-danger border rounded'>Wrong Username or Password</div>
                   }
                </div>
+               {/* </Fade > */}
             </DialogContent>
 
             <DialogActions >
@@ -190,7 +187,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
                   </div>
                </div>
             </DialogActions>
-         </Dialog>
+         </Dialog >
       </>
    )  // return()
 }  // AdminLoginDialog()

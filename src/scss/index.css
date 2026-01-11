@@ -11940,78 +11940,69 @@ textarea.form-control-lg {
   width: "50%";
 }
 
+.widthBox100 {
+  width: "100%";
+}
+
 [data-bs-theme=blue] {
-  --bs-body-color: var(--bs-white);
+  --bs-body-color: rgb(230.8, 240.5, 254.8);
   --bs-body-bg: rgb(23.5, 24.2, 63.9);
   --bs-tertiary-bg: rgb(10.4, 88, 202.4);
 }
 @keyframes animateBg {
   from {
-    background-color: rgb(164.4, 90.4, 141.2);
+    background-color: rgb(240.6, 236.1, 248.8);
   }
   to {
     background-color: rgb(48.3, 59.4, 153.1);
   }
 }
 [data-bs-theme=blue] .bg-component {
-  background-color: rgb(37.2, 52.8, 133.8);
+  background-color: rgb(47, 48.4, 127.8);
   color: rgb(191.3, 211, 238.3);
   animation-name: animateBg;
   animation-duration: 2s;
 }
-[data-bs-theme=blue] .dropdown-menu {
-  --bs-dropdown-bg: rgb(11.7, 99, 227.7);
-  --bs-dropdown-link-active-bg: rgb(7.8, 66, 151.8);
-}
-[data-bs-theme=blue] .btn-secondary {
-  --bs-btn-bg: rgb(61.633, 138.89, 252.758);
-  --bs-btn-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-hover-bg: rgb(36.425271828, 123.7536565802, 252.465728172);
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-active-bg: rgb(11.217543656, 108.6173131604, 252.173456344);
-  --bs-btn-active-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
-}
 
 [data-bs-theme=orange] {
-  --bs-body-color: rgb(50.6, 25.2, 4);
-  --bs-body-bg: rgb(253.6, 164.7, 90.5);
+  --bs-body-color: rgb(254.8, 242.1, 231.5);
+  --bs-body-bg: rgb(254, 159.5, 13.5);
   --bs-tertiary-bg: rgb(202.4, 100.8, 16);
 }
-[data-bs-theme=orange] .dropdown-menu {
-  --bs-dropdown-bg: rgb(227.7, 113.4, 18);
-  --bs-dropdown-link-active-bg: rgb(151.8, 75.6, 12);
+@keyframes animateBg {
+  from {
+    background-color: rgb(247.3, 178.6, 168);
+  }
+  to {
+    background-color: rgb(228.7, 146.9, 11.5);
+  }
 }
-[data-bs-theme=orange] .btn-secondary {
-  --bs-btn-bg: rgb(252.673, 151.626, 67.29);
-  --bs-btn-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-hover-bg: rgb(252.3607529113, 137.754822282, 42.1022470887);
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-active-bg: rgb(252.0485058226, 123.883644564, 16.9144941774);
-  --bs-btn-active-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+[data-bs-theme=orange] .bg-component {
+  background-color: rgb(203.2, 127.6, 10.8);
+  color: rgb(215.3, 212.6, 215);
+  animation-name: animateBg;
+  animation-duration: 2s;
 }
 
 [data-bs-theme=red] {
-  --bs-body-color: rgb(44, 10.6, 13.8);
-  --bs-body-bg: rgb(236.5, 89.5, 44.5);
-  --bs-tertiary-bg: rgb(176, 42.4, 55.2);
+  --bs-body-color: rgb(251.5, 234.8, 236.4);
+  --bs-body-bg: rgb(110, 26.5, 34.5);
+  --bs-secondary-bg: rgb(227, 93.4, 106.2);
+  --bs-tertiary-bg: #dc3545;
 }
-[data-bs-theme=red] .dropdown-menu {
-  --bs-dropdown-bg: rgb(198, 47.7, 62.1);
-  --bs-dropdown-link-active-bg: rgb(132, 31.8, 41.4);
+@keyframes animateBg {
+  from {
+    background-color: rgb(251.5, 234.8, 236.4);
+  }
+  to {
+    background-color: rgb(154, 37.1, 48.3);
+  }
 }
-[data-bs-theme=red] .btn-secondary {
-  --bs-btn-bg: rgb(226.405, 93.518, 106.294);
-  --bs-btn-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-hover-bg: rgb(222.5688046686, 71.8541953314, 86.344174403);
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.25);
-  --bs-btn-active-bg: rgb(218.7326093373, 50.1903906627, 66.394348806);
-  --bs-btn-active-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-border-color: rgba(255, 255, 255, 0.5);
-  --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+[data-bs-theme=red] .bg-component {
+  background-color: rgb(132, 31.8, 41.4);
+  color: rgb(212, 205.3, 219.9);
+  animation-name: animateBg;
+  animation-duration: 2s;
 }
 
 /*# sourceMappingURL=index.css.map */
