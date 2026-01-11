@@ -13,6 +13,8 @@ import * as bootstrap from 'bootstrap'
 //
 export default function About({ theme }) {
 
+  const effectsPlaceholder = false
+
   // 
   return (
     <>
@@ -70,7 +72,7 @@ export default function About({ theme }) {
       <button type="button" className="btn btn-primary focus-ring" data-bs-toggle="modal" data-bs-target="#idBSModal"
         onClick={() => {
           // alert('') 
-          const myModalAlternative = new bootstrap.Modal('#idBSModal', { backdrop: false })
+          const myModalAlternative = bootstrap.Modal.getOrCreateInstance('#idBSModal', { backdrop: false })
           myModalAlternative.show()
         }}>
         Launch demo modal
@@ -79,21 +81,41 @@ export default function About({ theme }) {
       <div className="modal mt-5 fade" id="idBSModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+
+            <div className="modal-header border border-5 border-danger border-start-5 border-end-0 border-top-0 border-bottom-0" >
               <h5 class="modal-title">Modal title</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <p>Modal body text goes here.</p>
+              <div class="card" aria-hidden="true">
+                <div class="card-body">
+
+                  {effectsPlaceholder &&
+                    <>
+                      <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6"></span>
+                      </h5>
+                      <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-4"></span>
+                        <span class="placeholder col-6"></span>
+                        <span class="placeholder col-8"></span>
+                      </p>
+                    </>}
+
+                    <p>card-body text p</p>
+                </div>
+              </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+              <button type="button" className="btn btn-secondary border border-5 border-danger border-start-5 border-end-0 border-top-0 border-bottom-0" data-bs-dismiss="modal"
                 onClick={() => {
-                  let modal = bootstrap.Modal.getInstance(
+                  bootstrap.Modal.getInstance(
                     document.getElementById('idBSModal')
-                  )  // .hide()
-                  modal.hide()
+                  ).hide()
 
+                  // clean-up the backdrop from this modal:
                   document.body.classList.remove("modal-open");
                   document.body.style.removeProperty("overflow");
                   document.body.style.removeProperty("padding-right");
