@@ -89,9 +89,15 @@ export default function About({ theme }) {
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
                 onClick={() => {
-                  bootstrap.Modal.getInstance(
+                  let modal = bootstrap.Modal.getInstance(
                     document.getElementById('idBSModal')
-                  ).hide()  // .dispose()
+                  )  // .hide()
+                  modal.hide()
+
+                  document.body.classList.remove("modal-open");
+                  document.body.style.removeProperty("overflow");
+                  document.body.style.removeProperty("padding-right");
+                  document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
                 }}>
                 Close
               </button>
