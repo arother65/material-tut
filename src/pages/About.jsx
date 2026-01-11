@@ -1,12 +1,14 @@
 /** 
-*   Stand: 08.01.2026
+*   Stand: 11.01.2026
 *   Controller and view "Create", data from JSON-Server 
 */
 
 // import React from 'react'  // useState etc.
-import { Container, Typography, TextField, RadioGroup, Radio } from '@mui/material'  //
+import { Container, Typography } from '@mui/material'  //
 import AppBarStd from '../components/AppBarStd'
 import Footer from '../components/Footer.jsx'
+
+import * as bootstrap from 'bootstrap'
 
 //
 export default function About({ theme }) {
@@ -63,6 +65,41 @@ export default function About({ theme }) {
           </div>  {/* row */}
         </Container>
       </main>
+
+      {/* Bootstrao modal declaration */}
+      <button type="button" className="btn btn-primary focus-ring" data-bs-toggle="modal" data-bs-target="#idBSModal"
+        onClick={() => {
+          // alert('') 
+          const myModalAlternative = new bootstrap.Modal('#idBSModal', { backdrop: false })
+          myModalAlternative.show()
+        }}>
+        Launch demo modal
+      </button>
+
+      <div className="modal mt-5 fade" id="idBSModal" tabIndex="-1" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                onClick={() => {
+                  bootstrap.Modal.getInstance(
+                    document.getElementById('idBSModal')
+                  ).hide()  // .dispose()
+                }}>
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Footer theme={theme} />
     </>
