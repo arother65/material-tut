@@ -189,8 +189,9 @@ export default function Notes({ props, theme }) {
                                  <Tooltip title="Switch container width">
                                     <Button
                                        id='idBtnSwitchContainer'
+                                       className='btn'
                                        startIcon={startIcon}
-                                       color="inherit"
+                                       // color="black"
                                        onClick={switchContainerWidth}
                                        variant="contained" />
                                  </Tooltip>
@@ -274,6 +275,7 @@ export default function Notes({ props, theme }) {
                <Tooltip title="Switch col width">
                   <Button
                      id='idBtnSwitchContainer'
+                     className='btn'
                      startIcon={startIcon}
                      color="inherit"
                      onClick={() => {
@@ -288,6 +290,7 @@ export default function Notes({ props, theme }) {
                <Tooltip title="Switch col width back">
                   <Button
                      id='idBtnSwitchContainer'
+                     className='btn'
                      startIcon={<ArrowForwardIosOutlinedIcon />}
                      color="inherit"
                      onClick={() => {
@@ -379,7 +382,7 @@ export default function Notes({ props, theme }) {
                         className='mt-1 rounded-2'
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="idAccordion02"
-                        >
+                     >
                         <Typography>
                            Testing SVG's
                         </Typography>

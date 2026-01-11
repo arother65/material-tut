@@ -200,7 +200,7 @@ export default function AppBarTop({ theme }) {
                   slotProps={{
                      transition: { timeout: 500 },
                   }}>
-                  <FormControl className='border border-warning rounded' variant="filled" sx={{ minWidth: 100, backgroundColor: 'darkslategrey' }}>
+                  <FormControl className='border border-warning rounded' variant="filled" sx={{ minWidth: 100, backgroundColor: 'black' }}>
                      <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Theme</InputLabel>
                      <Select
                         labelId="demo-simple-select-label"
@@ -209,13 +209,14 @@ export default function AppBarTop({ theme }) {
                         // defaultValue='blue'
                         label="Theme"
                         onChange={switchTheme}
-                        sx={{ backgroundColor: 'lightgreen', color: 'white' }}
+                        sx={{ backgroundColor: 'darkgrey', color: 'white' }}
                      >
-                        <MenuItem value={'red'} sx={{ backgroundColor: 'green', color: 'red' }}>Red</MenuItem>
-                        <MenuItem value={'orange'} sx={{ backgroundColor: 'green', color: 'orange' }}>Orange</MenuItem>
-                        <MenuItem value={'blue'} sx={{ backgroundColor: 'green', color: 'blue' }}>Blue</MenuItem>
-                        <MenuItem value={'light'} sx={{ backgroundColor: 'green', color: 'white' }}>Light</MenuItem>
-                        <MenuItem value={'dark'} sx={{ backgroundColor: 'green', color: 'black' }}>Dark</MenuItem>
+                        <MenuItem value={'red'} sx={{ backgroundColor: 'white', color: 'red' }}>Red</MenuItem>
+                        <MenuItem value={'orange'} sx={{ backgroundColor: 'white', color: 'orange' }}>Orange</MenuItem>
+                        <MenuItem value={'blue'} sx={{ backgroundColor: 'white', color: 'blue' }}>Blue</MenuItem>
+                        <MenuItem value={'light'} sx={{ backgroundColor: 'white', color: 'darkgrey' }}>Light</MenuItem>
+                        <MenuItem value={'dark'} sx={{ backgroundColor: 'lightgrey', color: 'black' }}>Dark</MenuItem>
+                        {/* <MenuItem value={'dark'} sx={{ backgroundColor: '', color: 'black' }}>Dark</MenuItem> */}
                      </Select>
                   </FormControl>
                </Tooltip>

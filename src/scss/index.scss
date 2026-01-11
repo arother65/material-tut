@@ -41,6 +41,7 @@
     }
   }
 }
+
 // cannot be used as a value for property "animation-name"
 
 @keyframes rotateAvatar {
@@ -102,6 +103,7 @@
 .widthBox50 {
   width: '50%'
 }
+
 .widthBox100 {
   width: '100%'
 }
@@ -132,6 +134,14 @@
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
   }
+  .btn {
+    background-color: $blue-500;
+  }
+
+  .btn:hover {
+    background-color: $blue-600;
+    color: white;
+  }
 }
 
 [data-bs-theme="orange"] {
@@ -161,6 +171,15 @@
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
   }
+
+  .btn {
+    background-color: $orange-500;
+  }
+
+  .btn:hover {
+    background-color: $orange-600;
+    color: white;
+  }
 }
 
 [data-bs-theme="red"] {
@@ -174,6 +193,15 @@
 
   --bs-secondary-bg: #{$red-400};
   --bs-tertiary-bg: #{$red-500};
+
+  .btn {
+    background-color: $red-500;
+  }
+
+  .btn:hover {
+    background-color: $red-600;
+    color: white;
+  }
 
   // for styling MUI-components:
   @keyframes animateBg {
