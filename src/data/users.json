@@ -2,7 +2,15 @@
    {
       "userName": "root",
       "passWord": "root2026",
-      "passKey": "!xyzStart2026"
+      "passKey": "!xyzStart2026",
+      "personalData": {
+         "familyName": "",
+         "firstName" : "",
+         "poCode": "",
+         "city": "",
+         "street": "",
+         "streetNo": ""
+      }
    },
    {
       "userName": "test",

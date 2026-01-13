@@ -112,34 +112,48 @@
 [data-bs-theme="blue"] {
   --bs-body-color: #{mix($blue-100, $white)};
 
-  --bs-body-bg: #{mix($blue-900, $purple-800)};
+  --bs-body-bg: #{mix($blue-900, $purple-900)};
 
   --bs-tertiary-bg: #{$blue-600};
 
   // for styling MUI-components:
   @keyframes animateBg {
     from {
-      background-color: #{mix($white, $purple-100)};
+      background-color: #{mix($white, $blue-100)};
     }
 
     to {
-      background-color: #{mix($blue-700, $purple-600)};
+      background-color: #{mix($blue-900, $purple-700)};
     }
   }
 
   .bg-component {
-    background-color: #{mix($blue-800, $purple-600)};
-    color: #{mix(lightsteelblue, $blue-100)};
+    background-color: #{mix($blue-500, $purple-900)};
+    color: #{mix(white, $blue-100)};
+    border: 1px solid #{mix(darkred, $blue-500)};
+
     animation-name: animateBg;
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
+
+    // background-image: url('../pics/icons8-joker-64.png');
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-size: cover;
+    // background-size: 100% 100%;
   }
+
+  .bg-component-top {
+    background-color: #{mix($blue-500, $purple-800)};
+    color: #{mix(white, $blue-100)};
+  }
+
   .btn {
-    background-color: $blue-500;
+    background-color: $blue-600;
   }
 
   .btn:hover {
-    background-color: $blue-600;
+    background-color: $blue-800;
     color: white;
   }
 }
@@ -149,7 +163,7 @@
   --bs-body-color: #{mix($orange-100, $white)}; // colors any text on a view 
 
   // --bs-body-bg: var(--bs-orange);  // colors the background of one view 
-  --bs-body-bg: #{mix($orange-500, $yellow-500)};
+  --bs-body-bg: #{mix($orange-700, $yellow-500)};
 
   --bs-tertiary-bg: #{$orange-600};
 
@@ -165,11 +179,16 @@
   }
 
   .bg-component {
-    background-color: #{mix($orange-600, $yellow-600)};
+    background-color: #{mix($orange-600, $yellow-500)};
     color: #{mix(lightsteelblue, $orange-100)};
     animation-name: animateBg;
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
+  }
+
+  .bg-component-top {
+    background-color: #{mix($orange-500, $yellow-500)};
+    color: #{mix(white, $orange-100)};
   }
 
   .btn {
@@ -221,7 +240,60 @@
     // animation-name: animationBlueTheme;
     animation-duration: 2s;
   }
+
+  .bg-component-top {
+    background-color: #{mix($red-700, $red-500)};
+    color: #{mix(white, $red-100)};
+  }
 }
+
+[data-bs-theme="yellow"] {
+  // --bs-body-color: var(--bs-white);  // colors any text on a view 
+  // --bs-body-color: #{$yellow-900}; // colors any text on a view 
+  --bs-body-color: #{mix($yellow-100, $white)}; // colors any text on a view 
+
+  // --bs-body-bg: var(--bs-yellow);  // colors the background of one view 
+  // --bs-body-bg: #{mix($yellow-100, $yellow-900)};
+  --bs-body-bg: #{mix($yellow-900, $yellow-500)};
+
+  --bs-secondary-bg: #{$yellow-400};
+  --bs-tertiary-bg: #{$yellow-500};
+
+  .btn {
+    background-color: $yellow-500;
+  }
+
+  .btn:hover {
+    background-color: $yellow-600;
+    color: white;
+  }
+
+  // for styling MUI-components:
+  @keyframes animateBg {
+    from {
+      background-color: #{mix($white, $yellow-100)};
+    }
+
+    to {
+      background-color: #{mix($yellow-700, $yellow-500)};
+    }
+  }
+
+  .bg-component {
+    background-color: #{mix($yellow-800, $yellow-500)};
+    color: #{mix(lightsteelblue, $yellow-100)};
+    animation-name: animateBg;
+    // animation-name: animationBlueTheme;
+    animation-duration: 2s;
+  }
+
+  .bg-component-top {
+    background-color: #{mix($yellow-700, $yellow-500)};
+    color: #{mix(white, $yellow-100)};
+  }
+}
+
+// theme yellow
 
 // other themes using: [data-bs-theme="<name>"]{ key: value }
 

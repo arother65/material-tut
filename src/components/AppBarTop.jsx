@@ -213,6 +213,7 @@ export default function AppBarTop({ theme }) {
                      >
                         <MenuItem value={'red'} sx={{ backgroundColor: 'white', color: 'red' }}>Red</MenuItem>
                         <MenuItem value={'orange'} sx={{ backgroundColor: 'white', color: 'orange' }}>Orange</MenuItem>
+                        <MenuItem value={'yellow'} sx={{ backgroundColor: 'white', color: 'yellow' }}>Yellow</MenuItem>                        
                         <MenuItem value={'blue'} sx={{ backgroundColor: 'white', color: 'blue' }}>Blue</MenuItem>
                         <MenuItem value={'light'} sx={{ backgroundColor: 'white', color: 'darkgrey' }}>Light</MenuItem>
                         <MenuItem value={'dark'} sx={{ backgroundColor: 'lightgrey', color: 'black' }}>Dark</MenuItem>

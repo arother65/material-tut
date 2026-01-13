@@ -24,8 +24,11 @@ import SendIcon from '@mui/icons-material/Send'
 // import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import CancelIcon from '@mui/icons-material/Cancel'
 
-// user data
-import userData from '../data/users.json'
+//* user data
+// import userData from '../data/users.json'
+
+// fn's to get user data from firestore
+import getCollection from '../utils/getFirebaseApp'
 
 // Declarations 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -67,26 +70,40 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
       setopenState(false)
    }  // handleClose()
 
-   const handleBtnAgree = () => {
+   const writeLogFile = (actDate) => {
+      console.log(actDate)
 
-      // console.log(userData)
+      //* fs write file synchronous
 
-      let userFound = userData.find((user) => {
-         // if ((actUserName === user.userName) && (actPassWord === user.passWord)) {
-         if ((userName === user.userName) && (passWord === user.passWord)) {
-            return true
-         } else {
-            return false
-         }
-      })
+   }  // writeLogFile
+
+   const checkUserInDb = async () => {
+      let retValue = false
+
+      await getCollection('colAdminUsers', { userName: userName, passWord: passWord })
+         .then((result) => {
+            retValue = result
+         })
+         .catch((e) => {
+            retValue = false
+         })
+      return retValue
+   }  // checkUserInDb()
+
+   const handleBtnAgree = async () => {
+
+      //* userData from firebase-db
+      let userFound = await checkUserInDb()
 
       if (userFound) {
          setLoggedIn(true)
-
          setLoginError(false)
-         setLoggedIn(true)
          setLoginAttempts(0)
          localStorage.setItem("userLoggedIn", true)
+
+         // writeLogFile()
+         writeLogFile(new Date())
+
          fnNavigate(navTarget)
          return
       }
@@ -122,7 +139,7 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
             onClose={handleClose}
             aria-describedby="alert-dialog-slide-description"
          >
-            <DialogTitle sx={{ backgroundColor: theme.palette.secondary.dark, color: 'white' }}>
+            <DialogTitle className='text-bg-dark'>   {/* sx={{ backgroundColor: theme.palette.secondary.dark, color: 'white' }} */}
                {dialogTexts.title}
                <IconButton
                   size="large"
@@ -135,7 +152,9 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
                </IconButton>
             </DialogTitle>
 
-            <DialogContent sx={{ backgroundColor: theme.palette.secondary.light }}>
+            {/* <DialogContent sx={{ backgroundColor: theme.palette.secondary.light }}> */}
+            <DialogContent className='bg-component'>
+
                {/* <Fade in={true} timeout={1500}> */}
                <div className='row m-1'>
                   <div className='col'>
@@ -164,14 +183,15 @@ export default function AdminLoginDialog({ theme, openState, setopenState, navTa
                   </div>
 
                   {loginError &&
-                     <div className='row bg-danger border rounded'>Wrong Username or Password</div>
+                     <div className='row bg-danger border-2 rounded'>Wrong Username or Password</div>
                   }
                </div>
                {/* </Fade > */}
             </DialogContent>
 
-            <DialogActions >
-               <div className='row border-2 border-top border-success m-1'>
+            <DialogActions  className='border border-5'>
+               {/* <div className='row border-2 border-top border-success m-1'> */}
+               <div className='row m-1'>                  
                   {/* <div className='col m-1'>
                      <Button variant="outlined" color="error" onClick={handleClose}>Disagree</Button>
                   </div> */}

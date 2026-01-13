@@ -16,8 +16,10 @@ import { ThemeProvider } from '@mui/material/styles'
 
 // icons 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
-import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined'
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown'
+import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined'
 
 //* Customer components
 // import ClickableWheel from '../components/Wheel.jsx'
@@ -26,10 +28,11 @@ import SvgTests from '../components/SvgTests.jsx'
 import Footer from '../components/Footer.jsx'
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+// import { dbObject } from "../utils/getFirebaseApp.js"
 
 // Texts from /src/i18n
 // import deTexts from '../i18n/i18n-de.json'
+// import img from '../pics/icons8-joker-64.png'
 
 // 
 export default function Notes({ props, theme }) {
@@ -37,26 +40,12 @@ export default function Notes({ props, theme }) {
    //* Imported texts
    // console.log('deTexts: ', deTexts)
 
+   //* getting an db-Object for accessing firestore-db:
+   // if (dbObject) {
+   //    console.log(dbObject)
+   //    // dbObject.type
 
-   //* Connect to hosting site firebase
-   // TODO: Add SDKs for Firebase products that you want to use
-   // https://firebase.google.com/docs/web/setup#available-libraries
-
-   //* Your web app's Firebase configuration
-   const firebaseConfig = {
-      apiKey: "AIzaSyBvvrVevAgumjE-U2e2Wp43VdZb9Y8RSh8",
-      authDomain: "prj-test-98994.firebaseapp.com",
-      projectId: "prj-test-98994",
-      storageBucket: "prj-test-98994.firebasestorage.app",
-      messagingSenderId: "487823466018",
-      appId: "1:487823466018:web:f375d773e8e401ae76747b"
-   }
-
-   //* Initialize Firebase
-   const app = initializeApp(firebaseConfig);
-
-   //* Get the current windows sizes:
-   console.log('outerWidth:', window.outerWidth, 'outerHeight:', window.outerHeight)
+   // }
 
    //* Handler for the <Accordion /> - component used:
    const [expanded, setExpanded] = React.useState(false);
@@ -67,8 +56,8 @@ export default function Notes({ props, theme }) {
    const handleExpansion = (e) => {
       // setExpanded( (prevExpanded) => !prevExpanded );  // ok
 
-      // get accordion id: idAccordion01
-      let actAccordion = document.getElementById(e.currentTarget.id) // ! gets event from icon, not from accordion
+      //
+      let actAccordion = document.getElementById(e.currentTarget.id)
 
       switch (actAccordion.id) {
          case 'idAccordion00':
@@ -83,7 +72,7 @@ export default function Notes({ props, theme }) {
          default:
             break;
       }
-   };
+   }
 
    //* Reducing/restoring the container size
    let [isReduced, setIsReduced] = useState(false)
@@ -163,10 +152,6 @@ export default function Notes({ props, theme }) {
       }, 1500)  // setTimeout()
    }, []) // Ampel anzeigen
 
-   // useEffect(()=>{
-   //    // clearing all local storage now?
-   // })
-
    // 
    return (
       <>
@@ -210,18 +195,32 @@ export default function Notes({ props, theme }) {
 
                         {/* Card with Typography */}
                         <Card
-                           className="bg-component rounded-2 mt-1 shadow">
+                           className="bg-component rounded-2 mt-1 shadow"
+                        // component='image'
+                        // image = {img}
+                        // image= '../logo.svg'
+                        >
                            <p>p on card comp</p>
                            <Typography component="h6" variant="h6">
                               Typography on Card
                            </Typography>
+                           {/*                            <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+                              <image
+                                 href={img}
+                                 width="40"
+                                 height="40"
+                                 x="0"
+                                 y="25"
+                              // transform="rotate(-45 0 0)"
+                              ></image>
+                           </svg> */}
                         </Card>
 
                         {/* Card with another Card wrapping a RadioGroup */}
                         <Card className="bg-component rounded-2 mt-1 shadow">
                            <Card
                               id='idCardAmple'
-                              className="rounded-2 m-2 border-5 border-bottom border-danger"
+                              className="bg-component-top rounded-2 m-2 border-5 border-bottom border-danger"
                               // sx={{ width: '8%', borderLeft: 15, borderColor: 'red' }}
                               sx={{ width: '8%' }}
                            >
@@ -272,127 +271,137 @@ export default function Notes({ props, theme }) {
                   }
                </div>
 
-               <Tooltip title="Switch col width">
-                  <Button
-                     id='idBtnSwitchContainer'
-                     className='btn'
-                     startIcon={startIcon}
-                     color="inherit"
-                     onClick={() => {
-                        // alert('vvv')
-                        let col01 = document.getElementById('idCol01')
-                        // alert(col01.style.width)
-                        col01.style.maxWidth = '10%'
-                        // setIsReduced(true)
-                     }}
-                     variant="contained" />
-               </Tooltip>
-               <Tooltip title="Switch col width back">
-                  <Button
-                     id='idBtnSwitchContainer'
-                     className='btn'
-                     startIcon={<ArrowForwardIosOutlinedIcon />}
-                     color="inherit"
-                     onClick={() => {
-                        let col01 = document.getElementById('idCol01')
-                        col01.style.maxWidth = '50%'
+               <div className='row m-5 rounded shadow'>
+                  <div className='row m-1 rounded shadow'>
+                     <div className='col m-1 rounded'>
+                        <Tooltip title="Switch col width">
+                           <Button
+                              id='idBtnSwitchContainer'
+                              className='btn'
+                              startIcon={startIcon}
+                              color="inherit"
+                              onClick={() => {
+                                 // alert('vvv')
+                                 let col01 = document.getElementById('idCol01')
+                                 // alert(col01.style.width)
+                                 col01.style.maxWidth = '10%'
+                                 // setIsReduced(true)
+                              }}
+                              variant="contained" />
+                        </Tooltip>
+                        <Tooltip title="Switch col width back">
+                           <Button
+                              id='idBtnSwitchContainer'
+                              className='btn'
+                              startIcon={<ArrowForwardIosOutlinedIcon />}
+                              color="inherit"
+                              onClick={() => {
+                                 let col01 = document.getElementById('idCol01')
+                                 col01.style.maxWidth = '50%'
 
-                        let col02 = document.getElementById('idCol02')
-                        let col02Classlist = col02.getAttribute('class')
-                        console.log(col02Classlist)
+                                 let col02 = document.getElementById('idCol02')
+                                 let col02Classlist = col02.getAttribute('class')
+                                 console.log(col02Classlist)
 
-                        col02Classlist = 'col m-1 border rounded'
-                        col02.setAttribute('class', col02Classlist)  // errs
-                     }}
-                     variant="contained" />
-               </Tooltip>
+                                 col02Classlist = 'col m-1 border rounded'
+                                 col02.setAttribute('class', col02Classlist)  // errs
+                              }}
+                              variant="contained" />
+                        </Tooltip>
+                     </div>
+                  </div>
 
-               <div className='row m-1 border'>
-                  <div id='idCol01' className='col m-1 w-100 border rounded'>
-                     col01
+                  <div className="col m-1" id="idColMainBox" width='95%'>
+                     <div id='idCol01' className='col border rounded'>
+                        col01
 
-                     {/* MUI: Unsupported `` color. */}
-                     {/* <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+                        {/* MUI: Unsupported `` color. */}
+                        {/* <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
                         Here is a gentle confirmation that your action was successful.
                      </Alert> */}
-                     <Stack spacing={1} sx={{ alignItems: 'center' }}>
-                        <Stack direction="row" spacing={1}>
-                           <Chip label="primary" color="primary" />
-                           <Chip label="success" color="success" />
+                        <Stack spacing={1} sx={{ alignItems: 'center' }}>
+                           <Stack direction="row" spacing={1}>
+                              <Chip label="primary" color="primary" />
+                              <Chip label="success" color="success" />
+                           </Stack>
+                           <Stack direction="row" spacing={1}>
+                              <Chip label="primary" color="primary" variant="outlined" />
+                              <Chip label="success" color="success" variant="outlined" />
+                           </Stack>
                         </Stack>
-                        <Stack direction="row" spacing={1}>
-                           <Chip label="primary" color="primary" variant="outlined" />
-                           <Chip label="success" color="success" variant="outlined" />
-                        </Stack>
-                     </Stack>
-                  </div>
-                  {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
-                  <div id='idCol02' className='col m-1 invisible'>
-                     col02
+                     </div>
+                     {/* <div id='idCol02' className='col m-1 border rounded invisible'> */}
+                     <div id='idCol02' className='col invisible'>
+                        col02
+                     </div>
                   </div>
                </div>
 
                {/* using component Accordion */}
-               <div className="row m-3 rounded shadow">
-                  <Accordion
-                     className='bg-component rounded-2 mt-1 shadow'
-                     expanded={expanded}
-                     onChange={handleExpansion}
-                  // sx={{ backgroundColor: 'darkred' }}>
-                  >
-                     <AccordionSummary
-                        id="idAccordion01"
-                        className='mt-1'
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="idAccordion01"
+               <div className="row m-5 rounded shadow" >
+                  <div className="col ms-1 me-1 " id="idColMainBox" width='95%'>
+                     <Accordion
+                        className='bg-component rounded-2 m-1 shadow'
+                        expanded={expanded}
+                        onChange={handleExpansion}
+                     // sx={{ backgroundColor: 'darkred' }}>
                      >
-                        <Typography>
-                           AccordionSummary
-                        </Typography>
-                     </AccordionSummary>
-                     <AccordionDetails>
-                        <div className='row m-2 p-0' style={{ width: '50%', height: '50%' }}>
-                           <Avatar className='avatar-rotate m-1'>
-                              <p>01</p>
-                           </Avatar>
-                           <Avatar className='avatar-rotate m-1'>
-                              <p>02</p>
-                           </Avatar>
-                           <Avatar className='avatar-rotate m-1'>
-                              <p>03</p>
-                           </Avatar>
-                        </div>
-                        <div className='circle border'>
-                           <span class="label">1</span>
-                           <div className='circleInner border mx-2 p-1'>
-                              <span className="label">inner</span>
+                        <AccordionSummary
+                           id="idAccordion01"
+                           className='mt-1'
+                           expandIcon={<BubbleChartOutlinedIcon sx={{ color: 'black' }} />}
+                           aria-controls="idAccordion01"
+                        >
+                           <Typography>
+                              AccordionSummary
+                           </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails className='bg-component-top rounded'>
+                           <div className='row m-2 p-0' style={{ width: '50%', height: '50%' }}>
+                              <Avatar className='avatar-rotate m-1'>
+                                 <p>01</p>
+                              </Avatar>
+                              <Avatar className='avatar-rotate m-1'>
+                                 <p>02</p>
+                              </Avatar>
+                              <Avatar className='avatar-rotate m-1'>
+                                 <p>03</p>
+                              </Avatar>
                            </div>
-                        </div>
-                     </AccordionDetails>
-                  </Accordion>
+                           <div className='circle border'>
+                              <span class="label">1</span>
+                              <div className='circleInner border mx-2 p-1'>
+                                 <span className="label">inner</span>
+                              </div>
+                           </div>
+                        </AccordionDetails>
+                     </Accordion>
 
-                  <Accordion
-                     className='bg-component mt-1 rounded-2 shadow'
-                     expanded={expanded02}
-                     onChange={handleExpansion}
-                  // sx={{ backgroundColor: 'darkred' }}>
-                  >
-                     <AccordionSummary
-                        id="idAccordion02"
-                        className='mt-1 rounded-2'
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="idAccordion02"
+                     <Accordion
+                        className='bg-component m-1 rounded-2 shadow'
+                        expanded={expanded02}
+                        onChange={handleExpansion}
+                     // sx={{ backgroundColor: 'darkred' }}>
                      >
-                        <Typography>
-                           Testing SVG's
-                        </Typography>
-                     </AccordionSummary>
-                     <AccordionDetails>
-                        <div className='row m-1 p-1'>
-                           <SvgTests theme={theme} />
-                        </div>
-                     </AccordionDetails>
-                  </Accordion>
+                        <AccordionSummary
+                           id="idAccordion02"
+                           className='mt-1 rounded-2'
+                           expandIcon={<ArrowCircleDownIcon sx={{ color: 'black' }} />}
+                           // import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+
+                           aria-controls="idAccordion02"
+                        >
+                           <Typography>
+                              Testing SVG's
+                           </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails className='bg-component-top rounded'>
+                           <div className='row m-1 p-1'>
+                              <SvgTests theme={theme} />
+                           </div>
+                        </AccordionDetails>
+                     </Accordion>
+                  </div>
                </div>
             </main>
 

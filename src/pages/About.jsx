@@ -4,7 +4,12 @@
 */
 
 // import React from 'react'  // useState etc.
+
+import * as React from 'react'
 import { Container, Typography } from '@mui/material'  //
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
+
 import AppBarStd from '../components/AppBarStd'
 import Footer from '../components/Footer.jsx'
 
@@ -14,6 +19,15 @@ import * as bootstrap from 'bootstrap'
 export default function About({ theme }) {
 
   const effectsPlaceholder = false
+
+  // handling Snackbar component
+  const [open, setOpen] = React.useState(true);
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   // 
   return (
@@ -81,10 +95,9 @@ export default function About({ theme }) {
       <div className="modal mt-5 fade" id="idBSModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
-
             <div className="modal-header border border-5 border-danger border-start-5 border-end-0 border-top-0 border-bottom-0" >
               <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <div class="card" aria-hidden="true">
@@ -104,7 +117,7 @@ export default function About({ theme }) {
                       </p>
                     </>}
 
-                    <p>card-body text p</p>
+                  <p>card-body text p</p>
                 </div>
               </div>
             </div>
@@ -123,11 +136,23 @@ export default function About({ theme }) {
                 }}>
                 Close
               </button>
-              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn focus-ring">Save changes</button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* <Button onClick={handleClick}>Open Snackbar</Button> */}
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          This is a success Alert inside a Snackbar!
+        </Alert>
+      </Snackbar>
 
       <Footer theme={theme} />
     </>

@@ -147,7 +147,7 @@ export default function Admin({ props, theme }) {
             <div className='col m-1 border rounded-2'>
 
               {userLoggedIn &&
-                <Button variant="contained" endIcon={<SendIcon />}
+                <Button className='bg-component' variant="contained" endIcon={<SendIcon />}
                   onClick={() => {
                     // set the choosen values to localStorage, object state
                     localStorage.setItem("adminData", JSON.stringify(state))

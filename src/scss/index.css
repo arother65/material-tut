@@ -11946,34 +11946,39 @@ textarea.form-control-lg {
 
 [data-bs-theme=blue] {
   --bs-body-color: rgb(230.8, 240.5, 254.8);
-  --bs-body-bg: rgb(23.5, 24.2, 63.9);
+  --bs-body-bg: rgb(12.4, 17.6, 44.6);
   --bs-tertiary-bg: rgb(10.4, 88, 202.4);
 }
 @keyframes animateBg {
   from {
-    background-color: rgb(240.6, 236.1, 248.8);
+    background-color: rgb(230.8, 240.5, 254.8);
   }
   to {
-    background-color: rgb(48.3, 59.4, 153.1);
+    background-color: rgb(34.6, 30.8, 83.2);
   }
 }
 [data-bs-theme=blue] .bg-component {
-  background-color: rgb(47, 48.4, 127.8);
-  color: rgb(191.3, 211, 238.3);
+  background-color: rgb(17.6, 61.6, 145.8);
+  color: rgb(230.8, 240.5, 254.8);
+  border: 1px solid rgb(76, 55, 126.5);
   animation-name: animateBg;
   animation-duration: 2s;
 }
+[data-bs-theme=blue] .bg-component-top {
+  background-color: rgb(28.7, 68.2, 165.1);
+  color: rgb(230.8, 240.5, 254.8);
+}
 [data-bs-theme=blue] .btn {
-  background-color: #0d6efd;
+  background-color: rgb(10.4, 88, 202.4);
 }
 [data-bs-theme=blue] .btn:hover {
-  background-color: rgb(10.4, 88, 202.4);
+  background-color: rgb(5.2, 44, 101.2);
   color: white;
 }
 
 [data-bs-theme=orange] {
   --bs-body-color: rgb(254.8, 242.1, 231.5);
-  --bs-body-bg: rgb(254, 159.5, 13.5);
+  --bs-body-bg: rgb(203.4, 134.3, 9.5);
   --bs-tertiary-bg: rgb(202.4, 100.8, 16);
 }
 @keyframes animateBg {
@@ -11985,10 +11990,14 @@ textarea.form-control-lg {
   }
 }
 [data-bs-theme=orange] .bg-component {
-  background-color: rgb(203.2, 127.6, 10.8);
+  background-color: rgb(228.7, 146.9, 11.5);
   color: rgb(215.3, 212.6, 215);
   animation-name: animateBg;
   animation-duration: 2s;
+}
+[data-bs-theme=orange] .bg-component-top {
+  background-color: rgb(254, 159.5, 13.5);
+  color: rgb(254.8, 242.1, 231.5);
 }
 [data-bs-theme=orange] .btn {
   background-color: #fd7e14;
@@ -12024,6 +12033,42 @@ textarea.form-control-lg {
   color: rgb(212, 205.3, 219.9);
   animation-name: animateBg;
   animation-duration: 2s;
+}
+[data-bs-theme=red] .bg-component-top {
+  background-color: rgb(176, 42.4, 55.2);
+  color: rgb(251.5, 234.8, 236.4);
+}
+
+[data-bs-theme=yellow] {
+  --bs-body-color: rgb(255, 248.8, 230.2);
+  --bs-body-bg: rgb(153, 115.8, 4.2);
+  --bs-secondary-bg: rgb(255, 205.4, 56.6);
+  --bs-tertiary-bg: #ffc107;
+}
+[data-bs-theme=yellow] .btn {
+  background-color: #ffc107;
+}
+[data-bs-theme=yellow] .btn:hover {
+  background-color: rgb(204, 154.4, 5.6);
+  color: white;
+}
+@keyframes animateBg {
+  from {
+    background-color: rgb(255, 248.8, 230.2);
+  }
+  to {
+    background-color: rgb(204, 154.4, 5.6);
+  }
+}
+[data-bs-theme=yellow] .bg-component {
+  background-color: rgb(178.5, 135.1, 4.9);
+  color: rgb(215.5, 219.3, 213.7);
+  animation-name: animateBg;
+  animation-duration: 2s;
+}
+[data-bs-theme=yellow] .bg-component-top {
+  background-color: rgb(204, 154.4, 5.6);
+  color: rgb(255, 248.8, 230.2);
 }
 
 /*# sourceMappingURL=index.css.map */
